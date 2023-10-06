@@ -11,7 +11,7 @@ import SignUp from "./Pages/SignUp/SignUp";
 function App() {
   return (
     <ContextProviders>
-      <BrowserRouter>
+      <BrowserRouter basename="react_ts_todo">
         <Routes>
           <Route
             path="/"
