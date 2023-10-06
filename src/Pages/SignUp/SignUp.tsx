@@ -3,9 +3,10 @@ import AuthContext, { AuthType } from "../../Contexts/authContext";
 import { useContext, useState } from "react";
 import Logo from "../../Img/Logo.png";
 import * as S from "./styles";
+import LoaderInButton from "../../Components/AuthLoader/AuthLoader";
 
 const SignUp = () => {
-  const { registration, signInWithGoogle } = useContext(
+  const { registration, signInWithGoogle, isLoading } = useContext(
     AuthContext
   ) as AuthType;
   const [name, setName] = useState("");
@@ -69,7 +70,10 @@ const SignUp = () => {
           <S.Checkbox />
           <S.Subtitle>Remember me</S.Subtitle>
         </S.KeepSigned>
-        <S.SignIn onClick={handleSignUpClick}>Sign Up</S.SignIn>
+        <S.SignIn onClick={handleSignUpClick}>
+          Sign Up
+          <LoaderInButton isLoading={isLoading} />
+        </S.SignIn>
         <S.Subtitle>
           Already have an account? <Link to="/login">Sign In</Link>
           <br />

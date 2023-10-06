@@ -95,7 +95,7 @@ export const SignIn = styled.button`
   font-size: 16px;
   border: 0px;
   font-weight: 400;
-
+  gap: 10px;
   margin: 16px 0px;
 
   &:hover {

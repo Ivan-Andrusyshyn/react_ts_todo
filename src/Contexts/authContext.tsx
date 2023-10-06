@@ -19,19 +19,26 @@ export interface UserDataProps {
 export type AuthType = {
   userData: UserDataProps | null;
   setUserData: (data: UserDataProps) => void;
-  signInWithGoogle: () => void;
-  signOut: () => void;
-  handleLogin: (email: string, password: string) => void;
-  registration: (email: string, password: string, name: string) => void;
+  signInWithGoogle: () => Promise<void>;
+  signOut: () => Promise<void>;
+  handleLogin: (email: string, password: string) => Promise<void>;
+  registration: (
+    email: string,
+    password: string,
+    name: string
+  ) => Promise<void>;
+  isLoading: boolean;
 };
 
 const AuthContext = createContext<AuthType | null>(null);
 
 export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
   const [userData, setUserData] = useState<UserDataProps | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
+      setIsLoading(true);
       if (user) {
         setUserData({
           email: user.email,
@@ -42,34 +49,44 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
         setUserData(null);
         localStorage.removeItem("@Project:email");
       }
+      setIsLoading(false);
     });
   }, []);
 
   const signInWithGoogle = async () => {
+    setIsLoading(true);
     const provider = new GoogleAuthProvider();
     try {
       await signInWithRedirect(auth, provider);
     } catch (error) {
       throw error;
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const signOut = async () => {
+    setIsLoading(true);
     try {
       await firebaseSignOut(auth);
       localStorage.removeItem("@Project:email");
       setUserData(null);
     } catch (error) {
       throw error;
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleLogin = async (email: string, password: string) => {
+    setIsLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
       alert("Login successful!");
     } catch (error) {
-      if (error) alert("Error during login: " + error);
+      alert("Error during login: " + error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -78,11 +95,14 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
     password: string,
     name: string
   ) => {
+    setIsLoading(true);
     try {
       const userCredential = await firebaseCreateUser(auth, email, password);
       await updateProfile(userCredential.user, { displayName: name });
     } catch (error) {
       throw error;
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -95,6 +115,7 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
         signOut,
         handleLogin,
         registration,
+        isLoading,
       }}
     >
       {children}

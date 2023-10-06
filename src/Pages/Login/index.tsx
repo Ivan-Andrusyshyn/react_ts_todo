@@ -3,9 +3,10 @@ import * as S from "./styles";
 import Logo from "../../Img/Logo.png";
 import { Link } from "react-router-dom";
 import AuthContext, { AuthType } from "../../Contexts/authContext";
+import LoaderInButton from "../../Components/AuthLoader/AuthLoader";
 
 const Login: React.FC = () => {
-  const { handleLogin } = useContext(AuthContext) as AuthType;
+  const { handleLogin, isLoading } = useContext(AuthContext) as AuthType;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -50,7 +51,9 @@ const Login: React.FC = () => {
           <S.Checkbox />
           <S.Subtitle>Remember me</S.Subtitle>
         </S.KeepSigned>
-        <S.SignIn onClick={handleLoginClick}>Sign In</S.SignIn>
+        <S.SignIn onClick={handleLoginClick}>
+          Sign In <LoaderInButton isLoading={isLoading} />
+        </S.SignIn>
         <S.Subtitle>
           Don't have an account? <Link to="/signup">Sign Up</Link>
         </S.Subtitle>
