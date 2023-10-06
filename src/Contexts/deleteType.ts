@@ -1,10 +1,10 @@
 import React from "react";
 
-
-
-export type DeleteType ={
-    showDelete:boolean;
-    setShowDelete: Function;
-    id: number;
-    setId: Function;
-}
+export type DeleteType = {
+  showDelete: boolean;
+  showEdit: boolean;
+  setShowEdit: Function;
+  setShowDelete: Function;
+  id: number;
+  setId: Function;
+};

@@ -19,13 +19,14 @@ import { AuthType } from "../../Contexts/authType";
 import { useMediaQuery } from "react-responsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideBar from "./SideBar";
+import EditModal from "../../Components/EditModal/EditModal";
 const Home: React.FC = () => {
   const { taskList, doneTasks, notDoneTasks } = useContext(
     TaskListContext
   ) as TaskListType;
   const { userData, isLoading } = useContext(AuthContext) as AuthType;
 
-  const { showDelete } = useContext(DeleteContext) as DeleteType;
+  const { showDelete, showEdit } = useContext(DeleteContext) as DeleteType;
   const { showAdd } = useContext(AddContext) as AddType;
   const [listToDisplay, setListToDisplay] = useState(0);
   const listOfLists = [taskList, doneTasks, notDoneTasks];
@@ -104,6 +105,7 @@ const Home: React.FC = () => {
         ))}
         <AddTask></AddTask>
       </S.Main>
+      {showEdit && <EditModal />}
       {showDelete && <DeleteModal />}
       {showAdd && <AddModal />}
     </S.Page>

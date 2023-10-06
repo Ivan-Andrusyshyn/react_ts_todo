@@ -13,7 +13,7 @@ export const Name = styled.h3`
 
 export const Container = styled.div<ContainerProps>`
   height: 40px;
-  width: 15vw;
+  width: 18vw;
   border-radius: 8px;
   display: flex;
   align-items: center;

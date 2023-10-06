@@ -1,22 +1,22 @@
 import React, { useContext, useState } from "react";
 import * as S from "./styles";
-import { AddContext } from "../../Contexts/addContext";
-import { AddType } from "../../Contexts/addType";
 import { TaskListContext } from "../../Contexts/taskListContext";
 import { TaskProps, TaskListType } from "../../Contexts/taskType";
 import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { CategorieContextType } from "../../Contexts/categoriesType";
 import { ActionMeta, InputActionMeta } from "react-select";
 import Select from "react-select/dist/declarations/src/Select";
+import { DeleteContext } from "../../Contexts/deleteContext";
+import { DeleteType } from "../../Contexts/deleteType";
 
-const AddModal: React.FC = () => {
-  const { addTask } = useContext(TaskListContext) as TaskListType;
+const EditModal: React.FC = () => {
+  const { editTask } = useContext(TaskListContext) as TaskListType;
+  const { setShowEdit, id } = useContext(DeleteContext) as DeleteType;
   const { categList } = useContext(CategoriesContext) as CategorieContextType;
-  const { setShowAdd } = useContext(AddContext) as AddType;
 
   const [taskName, setTaskName] = useState("");
   const [taskCat, setTaskCat] = useState(
-    categList.findIndex((cat) => cat.name == "None")
+    categList.findIndex((cat) => cat.name === "None")
   );
 
   function handleTyping(event: React.ChangeEvent<HTMLInputElement>) {
@@ -24,10 +24,10 @@ const AddModal: React.FC = () => {
   }
 
   function handleCancel() {
-    setShowAdd(false);
+    setShowEdit(false);
   }
 
-  function handleAdd() {
+  function handleEdit() {
     const newTask: TaskProps = {
       id: Math.random(),
       title: taskName,
@@ -36,9 +36,9 @@ const AddModal: React.FC = () => {
       done: false,
     };
 
-    setShowAdd(false);
+    setShowEdit(false);
 
-    addTask(newTask);
+    editTask(id, newTask);
   }
 
   var e = document.getElementById("select") as HTMLSelectElement;
@@ -64,11 +64,11 @@ const AddModal: React.FC = () => {
         </S.Select>
         <S.Buttons>
           <S.CancelButton onClick={handleCancel}>Cancel</S.CancelButton>
-          <S.DeletButton onClick={handleAdd}>Add</S.DeletButton>
+          <S.DeletButton onClick={handleEdit}>Edit</S.DeletButton>
         </S.Buttons>
       </S.Container>
     </S.Background>
   );
 };
 
-export default AddModal;
+export default EditModal;

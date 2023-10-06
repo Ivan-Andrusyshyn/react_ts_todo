@@ -29,6 +29,7 @@ import SideBar from "../Home/SideBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from "react-responsive";
+import EditModal from "../../Components/EditModal/EditModal";
 
 const CategoriePage: React.FC = () => {
   const { name } = useParams<string>();
@@ -36,7 +37,7 @@ const CategoriePage: React.FC = () => {
   const { taskList, doneTasks, notDoneTasks } = useContext(
     TaskListContext
   ) as TaskListType;
-  const { showDelete } = useContext(DeleteContext) as DeleteType;
+  const { showDelete, showEdit } = useContext(DeleteContext) as DeleteType;
   const { showAdd } = useContext(AddContext) as AddType;
   const [listToDisplay, setListToDisplay] = useState(0);
   const listOfLists = [
@@ -120,6 +121,7 @@ const CategoriePage: React.FC = () => {
         ))}
         <AddTask></AddTask>
       </S.Main>
+      {showEdit && <EditModal />}
       {showDelete && <DeleteModal />}
       {showAdd && <AddModal />}
     </S.Page>

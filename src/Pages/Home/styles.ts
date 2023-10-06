@@ -27,7 +27,7 @@ export const Page = styled.div`
 
 export const Sidebar = styled.div`
   height: 100vh;
-  width: 18vw;
+  width: 25vw;
   background-color: white;
   z-index: 9999;
   display: flex;

@@ -26,14 +26,12 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
           email: user.email,
           userName: user.displayName,
         });
+        localStorage.setItem("@Project:email", JSON.stringify(userData?.email));
       } else {
         setUserData(null);
       }
       setIsLoading(false);
     });
-    return () => {
-      localStorage.setItem("@Project:email", JSON.stringify(userData?.email));
-    };
   }, []);
 
   const signInWithGoogle = async () => {

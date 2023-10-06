@@ -14,6 +14,7 @@ export type TaskListType = {
   taskList: TaskProps[];
   doneTasks: TaskProps[];
   notDoneTasks: TaskProps[];
+  editTask: (id: number, newTask: TaskProps) => void;
   addTask: (task: TaskProps) => void;
   checkTask: (id: number) => void;
   deleteTask: (id: number) => void;
