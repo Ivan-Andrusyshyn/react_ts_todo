@@ -82,7 +82,6 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
     setIsLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      alert("Login successful!");
     } catch (error) {
       alert("Error during login: " + error);
     } finally {
