@@ -54,6 +54,9 @@ export const Main = styled.div`
   align-items: center;
   justify-content: start;
   overflow-y: scroll;
+  @media screen and (min-width: 820px) {
+    width: 100vw;
+  }
 `;
 
 export const Header = styled.h1`
