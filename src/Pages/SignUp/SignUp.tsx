@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import AuthContext, { AuthType } from "../../Contexts/authContext";
+import AuthContext from "../../Contexts/authContext";
 import { useContext, useState } from "react";
 import Logo from "../../Img/Logo.png";
 import * as S from "./styles";
 import LoaderInButton from "../../Components/AuthLoader/AuthLoader";
+import { AuthType } from "../../Contexts/authType";
 
 const SignUp = () => {
   const { registration, signInWithGoogle, isLoading } = useContext(

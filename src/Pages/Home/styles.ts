@@ -1,6 +1,22 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
-
+export const Backdrop = styled.div`
+  position: fixed;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+`;
+export const BurgerWrapper = styled.div`
+  position: fixed;
+  left: 50px;
+  top: 30px;
+  cursor: pointer;
+`;
 export const Page = styled.div`
   width: 100vw;
   height: 100vh;
@@ -13,6 +29,7 @@ export const Sidebar = styled.div`
   height: 100vh;
   width: 18vw;
   background-color: white;
+  z-index: 9999;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,6 +56,9 @@ export const Main = styled.div`
   align-items: center;
   justify-content: start;
   overflow-y: scroll;
+  @media screen and (min-width: 820px) {
+    width: 100vw;
+  }
 `;
 
 export const Header = styled.h1`

@@ -1,12 +1,6 @@
 import React, { useContext, useState } from "react";
 import * as S from "./styles";
-import Logo from "../../Img/Logo.png";
-import TaskFill from "../../Img/taskFill.png";
-import Settings from "../../Img/settings.svg";
-import Folder from "../../Img/folder.svg";
-import Logout from "../../Img/logout.svg";
-import SidebarItem from "../../Components/SidebarItem";
-import ExpandSidebarItem from "../../Components/ExpandSidebarItem";
+
 import TaskCard from "../../Components/TaskCard";
 import AddTask from "../../Components/AddTask";
 import { TaskListContext } from "../../Contexts/taskListContext";
@@ -19,13 +13,12 @@ import DeleteModal from "../../Components/DeleteModal";
 import AddModal from "../../Components/AddModal";
 import { AddContext } from "../../Contexts/addContext";
 import { AddType } from "../../Contexts/addType";
-import { Link } from "react-router-dom";
-import AuthContext, {
-  AuthType,
-  UserDataProps,
-} from "../../Contexts/authContext";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-
+import AuthContext from "../../Contexts/authContext";
+import { faBars, faUser } from "@fortawesome/free-solid-svg-icons";
+import { AuthType } from "../../Contexts/authType";
+import { useMediaQuery } from "react-responsive";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SideBar from "./SideBar";
 const Home: React.FC = () => {
   const { taskList, doneTasks, notDoneTasks } = useContext(
     TaskListContext
@@ -39,9 +32,15 @@ const Home: React.FC = () => {
   const [allActive, setAllActive] = useState(true);
   const [doneActive, setDoneActive] = useState(false);
   const [notDoneActive, setNotDoneActive] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const toggleSidebar = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const clickedElement = e.target as HTMLElement;
+    if (clickedElement.id === "backdrop") {
+      setIsSidebarOpen(!isSidebarOpen);
+    }
+  };
 
-  const { signOut } = useContext(AuthContext) as AuthType;
-
+  const isTablet = useMediaQuery({ minWidth: 320, maxWidth: 920 });
   function handleAll() {
     setListToDisplay(0);
     setAllActive(true);
@@ -62,47 +61,20 @@ const Home: React.FC = () => {
     setNotDoneActive(true);
   }
 
-  function handleLogout() {
-    signOut();
-  }
-  console.log(userData);
-
   return (
     <S.Page>
-      <S.Sidebar>
-        <S.Img src={Logo} />
-        <S.UserName>
-          <S.UserIcon icon={faUser} />
-          {userData?.userName}
-        </S.UserName>
-        <S.Tabs>
-          <SidebarItem
-            icon={TaskFill}
-            name="Tasks"
-            isActive={true}
-          ></SidebarItem>
-          <ExpandSidebarItem
-            icon={Folder}
-            name="Categories"
-          ></ExpandSidebarItem>
-          <SidebarItem
-            icon={Settings}
-            name="Settings"
-            isActive={false}
-          ></SidebarItem>
-        </S.Tabs>
-        <Link
-          to="/login"
-          style={{ textDecoration: "none" }}
-          onClick={handleLogout}
-        >
-          <SidebarItem
-            icon={Logout}
-            name="Logout"
-            isActive={false}
-          ></SidebarItem>
-        </Link>
-      </S.Sidebar>
+      <S.BurgerWrapper
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        id="burger_menu"
+      >
+        <FontAwesomeIcon icon={faBars} size="xl" />
+      </S.BurgerWrapper>
+      {!isTablet && <SideBar />}
+      {isSidebarOpen && (
+        <S.Backdrop onClick={toggleSidebar} id="backdrop">
+          <SideBar />
+        </S.Backdrop>
+      )}
       <S.Main>
         <S.Header>All your tasks</S.Header>
         <S.TitleAndFilter>

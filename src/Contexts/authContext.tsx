@@ -10,25 +10,7 @@ import {
   signInWithRedirect,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase";
-
-export interface UserDataProps {
-  email: string | null;
-  userName: string | null;
-}
-
-export type AuthType = {
-  userData: UserDataProps | null;
-  setUserData: (data: UserDataProps) => void;
-  signInWithGoogle: () => Promise<void>;
-  signOut: () => Promise<void>;
-  handleLogin: (email: string, password: string) => Promise<void>;
-  registration: (
-    email: string,
-    password: string,
-    name: string
-  ) => Promise<void>;
-  isLoading: boolean;
-};
+import { AuthType, UserDataProps } from "./authType";
 
 const AuthContext = createContext<AuthType | null>(null);
 
@@ -44,13 +26,14 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
           email: user.email,
           userName: user.displayName,
         });
-        localStorage.setItem("@Project:email", JSON.stringify(user.email));
       } else {
         setUserData(null);
-        localStorage.removeItem("@Project:email");
       }
       setIsLoading(false);
     });
+    return () => {
+      localStorage.setItem("@Project:email", JSON.stringify(userData?.email));
+    };
   }, []);
 
   const signInWithGoogle = async () => {
