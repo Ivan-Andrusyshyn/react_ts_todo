@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./styles";
 import { Link, useParams } from "react-router-dom";
 
@@ -9,7 +9,7 @@ interface CategorieItemProps {
 
 const CategorieItem: React.FC<CategorieItemProps> = ({ name, color }) => {
   const params = useParams();
-
+  const [isChecked, setIsChecked] = useState<boolean>(false);
   return (
     <Link
       to={"/categorie/" + name}
@@ -21,7 +21,8 @@ const CategorieItem: React.FC<CategorieItemProps> = ({ name, color }) => {
         <S.CustomRadioInput
           type="radio"
           id={name}
-          checked={name === params.name}
+          onChange={() => setIsChecked(name === params.name)}
+          checked={isChecked}
           color={color}
         />
         <S.LabelForm htmlFor={name} color={color}>
