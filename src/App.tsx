@@ -1,7 +1,7 @@
 import React from "react";
 import GlobalStyle from "./global";
 import ContextProviders from "./contextProviders";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./Pages/Login";
 import Home from "./Pages/Home";
 import CategoriePage from "./Pages/Categorie";
@@ -45,6 +45,7 @@ function App() {
               </ProtectedRoute>
             }
           ></Route>
+          <Route path="*" element={<Navigate to="/" replace={true} />} />
         </Routes>
       </BrowserRouter>
       <GlobalStyle />

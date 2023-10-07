@@ -1,40 +1,33 @@
-import React, {createContext, useState, ReactNode} from "react";
-import { CategorieProps, CategorieContextType } from "./categoriesType";
+import React, { createContext, useState, ReactNode, useEffect } from "react";
+import {
+  CategorieProps,
+  CategorieContextType,
+} from "./typesContext/categoriesType";
 
 interface ChildrenProps {
-    children: React.ReactNode;
+  children: React.ReactNode;
+}
+
+export const CategoriesContext = createContext<CategorieContextType | null>(
+  null
+);
+
+export const CategoriesContextProvider: React.FC<ChildrenProps> = ({
+  children,
+}) => {
+  const [categList, setCategList] = useState<CategorieProps[]>(() => {
+    const savedCategories = localStorage.getItem("categories");
+    return savedCategories ? JSON.parse(savedCategories) : [];
+  });
+  useEffect(() => {
+    localStorage.setItem("categories", JSON.stringify(categList));
+  }, [categList]);
+  const addCategory = (newCategory: CategorieProps) => {
+    setCategList([...categList, newCategory]);
   };
-
-export const CategoriesContext = createContext<CategorieContextType|null>(null);
-
-export const CategoriesContextProvider:React.FC<ChildrenProps> = ({children})=>{
-
-    const [categList, setCategList] = useState<CategorieProps[]>([
-        {
-            id:0,
-            name: "None",
-            color: "#afafaf"
-        },
-        {
-            id:1,
-            name: "Home",
-            color: "#FF9C9C"
-        },
-        {   id:2,
-            name:"School",
-            color: "#FFD79C"
-        },
-        {
-            id:3,
-            name:"Shopping list",
-            color: "#9CD0FF"
-        },
-    ])
-
-    return(
-        <CategoriesContext.Provider value={{categList}}>
-            {children}
-        </CategoriesContext.Provider>
-    )
+  return (
+    <CategoriesContext.Provider value={{ categList, addCategory }}>
+      {children}
+    </CategoriesContext.Provider>
+  );
 };
-

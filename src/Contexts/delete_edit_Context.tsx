@@ -1,5 +1,5 @@
 import React, { useState, createContext, ReactNode } from "react";
-import { DeleteType } from "./deleteType";
+import { DeleteType } from "./typesContext/delete_edit_Type";
 
 export interface ChildrenProps {
   children: ReactNode;

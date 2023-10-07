@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import * as S from "./styles";
 import { TaskListContext } from "../../Contexts/taskListContext";
-import { TaskProps, TaskListType } from "../../Contexts/taskType";
+import { TaskProps, TaskListType } from "../../Contexts/typesContext/taskType";
 import { CategoriesContext } from "../../Contexts/categoriesContext";
-import { CategorieContextType } from "../../Contexts/categoriesType";
+import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
 import { ActionMeta, InputActionMeta } from "react-select";
 import Select from "react-select/dist/declarations/src/Select";
-import { DeleteContext } from "../../Contexts/deleteContext";
-import { DeleteType } from "../../Contexts/deleteType";
+import { DeleteContext } from "../../Contexts/delete_edit_Context";
+import { DeleteType } from "../../Contexts/typesContext/delete_edit_Type";
 
 const EditModal: React.FC = () => {
   const { editTask, taskList } = useContext(TaskListContext) as TaskListType;

@@ -1,5 +1,5 @@
 import React, { useState, createContext, ReactNode } from "react";
-import { TaskProps, TaskListType } from "./taskType";
+import { TaskProps, TaskListType } from "./typesContext/taskType";
 
 interface ChildrenProps {
   children: React.ReactNode;

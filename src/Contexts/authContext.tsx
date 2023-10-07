@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
-import { ChildrenProps } from "./deleteContext";
+import { ChildrenProps } from "./delete_edit_Context";
 import {
   createUserWithEmailAndPassword as firebaseCreateUser,
   signInWithEmailAndPassword,
@@ -10,7 +10,7 @@ import {
   signInWithRedirect,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase";
-import { AuthType, UserDataProps } from "./authType";
+import { AuthType, UserDataProps } from "./typesContext/authType";
 
 const AuthContext = createContext<AuthType | null>(null);
 

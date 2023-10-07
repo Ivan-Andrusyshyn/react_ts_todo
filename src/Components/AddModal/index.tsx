@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import * as S from "./styles";
 import { AddContext } from "../../Contexts/addContext";
-import { AddType } from "../../Contexts/addType";
+import { AddType } from "../../Contexts/typesContext/addType";
 import { TaskListContext } from "../../Contexts/taskListContext";
-import { TaskProps, TaskListType } from "../../Contexts/taskType";
+import { TaskProps, TaskListType } from "../../Contexts/typesContext/taskType";
 import { CategoriesContext } from "../../Contexts/categoriesContext";
-import { CategorieContextType } from "../../Contexts/categoriesType";
+import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
 
 const AddModal: React.FC = () => {
   const { addTask } = useContext(TaskListContext) as TaskListType;

@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Routes, Route, Link, Navigate } from "react-router-dom";
-import { ChildrenProps } from "../Contexts/deleteContext";
+import { ChildrenProps } from "../Contexts/delete_edit_Context";
 
 import AuthContext from "../Contexts/authContext";
-import { AuthType } from "../Contexts/authType";
+import { AuthType } from "../Contexts/typesContext/authType";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;

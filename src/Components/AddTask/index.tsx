@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import * as S from "./styles";
 import Add from "../../Img/add.svg";
-import { AddType } from "../../Contexts/addType";
+import { AddType } from "../../Contexts/typesContext/addType";
 import { AddContext } from "../../Contexts/addContext";
 
 const AddTask: React.FC = () => {

@@ -4,7 +4,7 @@ import Logo from "../../Img/Logo.png";
 import { Link } from "react-router-dom";
 import AuthContext from "../../Contexts/authContext";
 import LoaderInButton from "../../Components/AuthLoader/AuthLoader";
-import { AuthType } from "../../Contexts/authType";
+import { AuthType } from "../../Contexts/typesContext/authType";
 import ErrorMessageAuth from "../../Components/ErrorComponent";
 
 const Login: React.FC = () => {

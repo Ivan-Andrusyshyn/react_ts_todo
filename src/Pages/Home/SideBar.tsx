@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../Contexts/authContext";
-import { AuthType } from "../../Contexts/authType";
+import { AuthType } from "../../Contexts/typesContext/authType";
 import Logo from "../../Img/Logo.png";
 import TaskFill from "../../Img/taskFill.png";
 import Settings from "../../Img/settings.svg";

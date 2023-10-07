@@ -3,9 +3,9 @@ import * as S from "./styles";
 import Edit from "../../Img/edit.svg";
 import Erase from "../../Img/erase.svg";
 import { TaskListContext } from "../../Contexts/taskListContext";
-import { TaskListType } from "../../Contexts/taskType";
-import { DeleteContext } from "../../Contexts/deleteContext";
-import { DeleteType } from "../../Contexts/deleteType";
+import { TaskListType } from "../../Contexts/typesContext/taskType";
+import { DeleteContext } from "../../Contexts/delete_edit_Context";
+import { DeleteType } from "../../Contexts/typesContext/delete_edit_Type";
 
 interface TaskCardProps {
   id: number;
