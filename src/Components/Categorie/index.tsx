@@ -15,7 +15,6 @@ const CategorieItem: React.FC<CategorieItemProps> = ({ name, color }) => {
       to={"/categorie/" + name}
       style={{
         textDecoration: "none",
-        borderBottom: params.name === name ? `1px solid ${color}` : "",
       }}
     >
       <S.Categorie

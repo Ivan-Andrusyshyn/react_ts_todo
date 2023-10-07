@@ -66,27 +66,30 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
           <CategorieItem key={cat.id} name={cat.name} color={cat.color} />
         ))}
         {showForm ? (
-          <S.CategoryForm action="" onSubmit={addNewCategory}>
-            <S.ColorInput
-              value={title}
-              style={{ border: error ? "1px solid red" : "" }}
-              type="text"
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            {error && <S.ErrorText>{error}</S.ErrorText>}
-            <S.ColorInputWrapper>
-              <S.TitleInput
-                value={color}
-                type="color"
+          <S.FormModal>
+            <S.CategoryForm action="" onSubmit={addNewCategory}>
+              <S.ColorInput
+                value={title}
                 style={{ border: error ? "1px solid red" : "" }}
-                onChange={(e) => setColor(e.target.value)}
+                type="text"
+                onChange={(e) => setTitle(e.target.value)}
               />
-              <span>{color}</span>
-            </S.ColorInputWrapper>
-
-            <button type="submit">Add</button>
-            <button onClick={handleCancel}>Cancel</button>
-          </S.CategoryForm>
+              {error && <S.ErrorText>{error}</S.ErrorText>}
+              <S.ColorInputWrapper>
+                <S.TitleInput
+                  value={color}
+                  type="color"
+                  style={{ border: error ? "1px solid red" : "" }}
+                  onChange={(e) => setColor(e.target.value)}
+                />
+                <span>{color}</span>
+              </S.ColorInputWrapper>
+              <S.BtnWrapper>
+                <S.FormBtn type="submit">Add</S.FormBtn>
+                <S.FormBtn onClick={handleCancel}>Cancel</S.FormBtn>
+              </S.BtnWrapper>
+            </S.CategoryForm>
+          </S.FormModal>
         ) : (
           <S.AddArea onClick={() => setShowForm(true)}>
             <S.AddIcon src={Add} />

@@ -22,23 +22,25 @@ const AddModal: React.FC = () => {
   function handleCancel() {
     setShowAdd(false);
   }
-
   function handleAdd() {
-    const newTask: TaskProps = {
-      id: Math.random(),
-      title: taskName,
-      categorie: categList[taskCat].name,
-      color: categList[taskCat].color,
-      done: false,
-    };
-
-    setShowAdd(false);
-    addTask(newTask);
+    if (categList[taskCat]) {
+      const newTask: TaskProps = {
+        id: Math.random(),
+        title: taskName,
+        categorie: categList[taskCat].name,
+        color: categList[taskCat].color,
+        done: false,
+      };
+      setShowAdd(false);
+      addTask(newTask);
+    } else {
+      console.error("Invalid category selected");
+    }
   }
 
-  function handleChange() {
-    let e = document.getElementById("select") as HTMLSelectElement;
-    setTaskCat(Number(e.options[e.selectedIndex].value));
+  function handleChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    const isNumber = Number(event.target.value);
+    setTaskCat(isNumber);
   }
 
   return (
@@ -52,8 +54,8 @@ const AddModal: React.FC = () => {
         />
         <S.Text>Select a categorie</S.Text>
         <S.Select id="select" onChange={handleChange}>
-          {categList.map((cat) => (
-            <option value={cat.id} key={cat.id}>
+          {categList.map((cat, i) => (
+            <option value={i} key={cat.id}>
               {cat.name}
             </option>
           ))}
