@@ -4,11 +4,13 @@ interface UserDataProps {
 }
 
 type AuthType = {
+  isError: string | null;
   userData: UserDataProps | null;
   setUserData: (data: UserDataProps) => void;
   signInWithGoogle: () => Promise<void>;
   signOut: () => Promise<void>;
   handleLogin: (email: string, password: string) => Promise<void>;
+  setIsError: (arg: string | null) => void;
   registration: (
     email: string,
     password: string,

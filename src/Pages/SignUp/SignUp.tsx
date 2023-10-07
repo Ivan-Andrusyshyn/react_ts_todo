@@ -5,11 +5,11 @@ import Logo from "../../Img/Logo.png";
 import * as S from "./styles";
 import LoaderInButton from "../../Components/AuthLoader/AuthLoader";
 import { AuthType } from "../../Contexts/authType";
+import ErrorMessageAuth from "../../Components/ErrorComponent/ErrorMessageAuth";
 
 const SignUp = () => {
-  const { registration, signInWithGoogle, isLoading } = useContext(
-    AuthContext
-  ) as AuthType;
+  const { registration, signInWithGoogle, isLoading, setIsError, isError } =
+    useContext(AuthContext) as AuthType;
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,10 +28,9 @@ const SignUp = () => {
 
   const handleSignUpClick = () => {
     if (!name || !email || !password) {
-      alert("Please fill in all fields.");
+      setIsError("Please fill in all fields.");
       return;
     }
-
     registration(email, password, name);
   };
 
@@ -71,6 +70,7 @@ const SignUp = () => {
           <S.Checkbox />
           <S.Subtitle>Remember me</S.Subtitle>
         </S.KeepSigned>
+        {isError && <ErrorMessageAuth isError={isError} />}
         <S.SignIn onClick={handleSignUpClick}>
           Sign Up
           <LoaderInButton isLoading={isLoading} />

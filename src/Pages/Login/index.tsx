@@ -5,13 +5,20 @@ import { Link } from "react-router-dom";
 import AuthContext from "../../Contexts/authContext";
 import LoaderInButton from "../../Components/AuthLoader/AuthLoader";
 import { AuthType } from "../../Contexts/authType";
+import ErrorMessageAuth from "../../Components/ErrorComponent/ErrorMessageAuth";
 
 const Login: React.FC = () => {
-  const { handleLogin, isLoading } = useContext(AuthContext) as AuthType;
+  const { handleLogin, isLoading, isError, setIsError } = useContext(
+    AuthContext
+  ) as AuthType;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   function handleLoginClick() {
+    if (!email || !password) {
+      setIsError("Please fill in all fields.");
+      return;
+    }
     handleLogin(email, password);
   }
 
@@ -22,6 +29,7 @@ const Login: React.FC = () => {
   function handlePassword(event: React.ChangeEvent<HTMLInputElement>) {
     setPassword(event.target.value);
   }
+  console.log(isError);
 
   return (
     <S.Page>
@@ -52,6 +60,7 @@ const Login: React.FC = () => {
           <S.Checkbox />
           <S.Subtitle>Remember me</S.Subtitle>
         </S.KeepSigned>
+        {isError && <ErrorMessageAuth isError={isError} />}
         <S.SignIn onClick={handleLoginClick}>
           Sign In <LoaderInButton isLoading={isLoading} />
         </S.SignIn>

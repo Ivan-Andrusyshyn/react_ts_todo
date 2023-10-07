@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./styles";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 interface CategorieItemProps {
   name: string;
@@ -8,11 +8,15 @@ interface CategorieItemProps {
 }
 
 const CategorieItem: React.FC<CategorieItemProps> = ({ name, color }) => {
+  const params = useParams();
+  console.log(params);
+
   return (
     <Link
       to={"/categorie/" + name}
       style={{
         textDecoration: "none",
+        borderBottom: params.name === name ? `1px solid ${color}` : "",
       }}
     >
       <S.Categorie>

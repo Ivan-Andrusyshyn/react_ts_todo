@@ -17,7 +17,7 @@ const AuthContext = createContext<AuthType | null>(null);
 export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
   const [userData, setUserData] = useState<UserDataProps | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [isError, setIsError] = useState<string | null>(null);
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setIsLoading(true);
@@ -33,7 +33,12 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
       setIsLoading(false);
     });
   }, []);
-
+  useEffect(() => {
+    const errorTimeout = setTimeout(() => {
+      setIsError(null);
+    }, 2000);
+    return () => clearTimeout(errorTimeout);
+  }, [isError]);
   const signInWithGoogle = async () => {
     setIsLoading(true);
     const provider = new GoogleAuthProvider();
@@ -64,7 +69,7 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
-      alert("Error during login: " + error);
+      setIsError("Error during login: " + error);
     } finally {
       setIsLoading(false);
     }
@@ -80,7 +85,7 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
       const userCredential = await firebaseCreateUser(auth, email, password);
       await updateProfile(userCredential.user, { displayName: name });
     } catch (error) {
-      throw error;
+      setIsError("Error during registration: " + error);
     } finally {
       setIsLoading(false);
     }
@@ -96,6 +101,8 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
         handleLogin,
         registration,
         isLoading,
+        isError,
+        setIsError,
       }}
     >
       {children}
