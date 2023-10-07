@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/react_ts_todo/static/js/main.34ae8f08.js",
+    "main.js": "/react_ts_todo/static/js/main.8199d120.js",
     "static/js/383.ac3d239d.chunk.js": "/react_ts_todo/static/js/383.ac3d239d.chunk.js",
     "static/js/754.94f42d0f.chunk.js": "/react_ts_todo/static/js/754.94f42d0f.chunk.js",
     "static/js/466.d16d44e9.chunk.js": "/react_ts_todo/static/js/466.d16d44e9.chunk.js",
@@ -18,7 +18,7 @@
     "static/media/logout.svg": "/react_ts_todo/static/media/logout.939fc1a552ef6818533f62bb0c4841bc.svg",
     "static/media/edit.svg": "/react_ts_todo/static/media/edit.b0860e7ee9377be4315000ab81ca80d4.svg",
     "static/media/erase.svg": "/react_ts_todo/static/media/erase.5d8cfcdbd79b805755a560ebfa32f149.svg",
-    "main.34ae8f08.js.map": "/react_ts_todo/static/js/main.34ae8f08.js.map",
+    "main.8199d120.js.map": "/react_ts_todo/static/js/main.8199d120.js.map",
     "383.ac3d239d.chunk.js.map": "/react_ts_todo/static/js/383.ac3d239d.chunk.js.map",
     "754.94f42d0f.chunk.js.map": "/react_ts_todo/static/js/754.94f42d0f.chunk.js.map",
     "466.d16d44e9.chunk.js.map": "/react_ts_todo/static/js/466.d16d44e9.chunk.js.map",
@@ -28,6 +28,6 @@
     "756.e41a9c4f.chunk.js.map": "/react_ts_todo/static/js/756.e41a9c4f.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.34ae8f08.js"
+    "static/js/main.8199d120.js"
   ]
 }
