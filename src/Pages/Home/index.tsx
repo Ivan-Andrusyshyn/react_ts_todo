@@ -40,6 +40,7 @@ const Home: React.FC = () => {
       setIsSidebarOpen(!isSidebarOpen);
     }
   };
+  console.log(listOfLists);
 
   const isTablet = useMediaQuery({ minWidth: 320, maxWidth: 920 });
   function handleAll() {

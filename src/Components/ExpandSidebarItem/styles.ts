@@ -126,9 +126,13 @@ export const ErrorText = styled.p`
   color: red;
 `;
 export const ColorInput = styled.input`
+  padding-left: 5px;
+  box-sizing: border-box;
   width: 14vw;
 `;
-export const TitleInput = styled.input``;
+export const TitleInput = styled.input`
+  border-radius: 4px;
+`;
 
 export const AddText = styled.p`
   font-size: 16px;

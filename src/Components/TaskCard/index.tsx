@@ -20,6 +20,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ id, name, list, color, done }) => {
     DeleteContext
   ) as DeleteType;
   const { checkTask } = useContext(TaskListContext) as TaskListType;
+  console.log(id);
 
   function handleCheck() {
     checkTask(id);

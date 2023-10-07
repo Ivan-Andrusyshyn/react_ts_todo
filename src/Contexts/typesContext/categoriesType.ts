@@ -1,5 +1,5 @@
 export interface CategorieProps {
-  id: number;
+  id: string;
   name: string;
   color: string;
 }

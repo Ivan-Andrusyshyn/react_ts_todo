@@ -40,7 +40,7 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
       return;
     }
     const category = {
-      id: Number(nanoid()),
+      id: nanoid(),
       name: title,
       color: color,
     };
@@ -69,6 +69,7 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
           <S.CategoryForm action="" onSubmit={addNewCategory}>
             <S.ColorInput
               value={title}
+              style={{ border: error ? "1px solid red" : "" }}
               type="text"
               onChange={(e) => setTitle(e.target.value)}
             />
@@ -77,6 +78,7 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
               <S.TitleInput
                 value={color}
                 type="color"
+                style={{ border: error ? "1px solid red" : "" }}
                 onChange={(e) => setColor(e.target.value)}
               />
               <span>{color}</span>
