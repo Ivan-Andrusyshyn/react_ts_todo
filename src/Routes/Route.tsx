@@ -12,9 +12,11 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, priv }) => {
   const { userData } = useContext(AuthContext) as AuthType;
-  const authLocal = localStorage.getItem("@Project:email");
+  const authLocal = JSON.parse(
+    localStorage.getItem("@Project:email") || "null"
+  );
 
-  if (!!userData?.email === priv || !!authLocal === priv) {
+  if (!!userData?.email === priv || !!authLocal.email === priv) {
     return <>{children}</>;
   } else {
     return (

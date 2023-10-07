@@ -16,7 +16,6 @@ interface propsSidebar {
 }
 const SideBar: React.FC<propsSidebar> = () => {
   const { signOut, userData } = useContext(AuthContext) as AuthType;
-
   function handleLogout() {
     signOut();
   }

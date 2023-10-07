@@ -26,7 +26,7 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
           email: user.email,
           userName: user.displayName,
         });
-        localStorage.setItem("@Project:email", JSON.stringify(user?.email));
+        localStorage.setItem("@Project:email", JSON.stringify(user));
       } else {
         setUserData(null);
       }

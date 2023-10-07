@@ -19,7 +19,6 @@ export const CategoriesContextProvider: React.FC<ChildrenProps> = ({
     const savedCategories = localStorage.getItem("categories");
     return savedCategories ? JSON.parse(savedCategories) : [];
   });
-  console.log(categList);
 
   useEffect(() => {
     localStorage.setItem("categories", JSON.stringify(categList));
