@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import * as S from "./styles";
 import { TaskListContext } from "../../Contexts/taskListContext";
 import { TaskProps, TaskListType } from "../../Contexts/taskType";
@@ -10,42 +10,31 @@ import { DeleteContext } from "../../Contexts/deleteContext";
 import { DeleteType } from "../../Contexts/deleteType";
 
 const EditModal: React.FC = () => {
-  const { editTask } = useContext(TaskListContext) as TaskListType;
+  const { editTask, taskList } = useContext(TaskListContext) as TaskListType;
   const { setShowEdit, id } = useContext(DeleteContext) as DeleteType;
   const { categList } = useContext(CategoriesContext) as CategorieContextType;
 
   const [taskName, setTaskName] = useState("");
   const [taskCat, setTaskCat] = useState(
-    categList.findIndex((cat) => cat.name === "None")
+    taskList.filter((item) => item.id === id)
   );
 
   function handleTyping(event: React.ChangeEvent<HTMLInputElement>) {
     setTaskName(event.target.value);
   }
-
   function handleCancel() {
     setShowEdit(false);
   }
 
   function handleEdit() {
-    const newTask: TaskProps = {
-      id: Math.random(),
-      title: taskName,
-      categorie: categList[taskCat].name,
-      color: categList[taskCat].color,
-      done: false,
-    };
-
+    taskCat[0].title = taskName;
+    editTask(id, taskCat[0]);
     setShowEdit(false);
-
-    editTask(id, newTask);
   }
-
-  var e = document.getElementById("select") as HTMLSelectElement;
-
-  function handleChange() {
-    setTaskCat(Number(e.options[e.selectedIndex].value));
-  }
+  useEffect(() => {
+    const oldName = taskCat[0].title;
+    setTaskName(oldName);
+  }, [taskList]);
 
   return (
     <S.Background>
@@ -56,15 +45,13 @@ const EditModal: React.FC = () => {
           onChange={handleTyping}
           value={taskName}
         />
-        <S.Text>Select a categorie</S.Text>
-        <S.Select id="select" onChange={handleChange}>
-          {categList.map((cat) => (
-            <option value={cat.id}>{cat.name}</option>
-          ))}
+        <S.Text>Category</S.Text>
+        <S.Select id="select">
+          <option>{taskCat[0].categorie}</option>
         </S.Select>
         <S.Buttons>
-          <S.CancelButton onClick={handleCancel}>Cancel</S.CancelButton>
           <S.DeletButton onClick={handleEdit}>Edit</S.DeletButton>
+          <S.CancelButton onClick={handleCancel}>Cancel</S.CancelButton>
         </S.Buttons>
       </S.Container>
     </S.Background>

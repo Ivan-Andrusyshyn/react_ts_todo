@@ -9,7 +9,6 @@ interface CategorieItemProps {
 
 const CategorieItem: React.FC<CategorieItemProps> = ({ name, color }) => {
   const params = useParams();
-  console.log(params);
 
   return (
     <Link
