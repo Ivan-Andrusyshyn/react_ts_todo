@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { ChildrenProps } from "../Contexts/delete_edit_Context";
 
 import AuthContext from "../Contexts/authContext";
@@ -16,7 +16,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, priv }) => {
     localStorage.getItem("@Project:email") || "null"
   );
 
-  if (!!userData?.email === priv || !!authLocal.email === priv) {
+  if (!!userData?.email === priv || !!authLocal === priv) {
     return <>{children}</>;
   } else {
     return (

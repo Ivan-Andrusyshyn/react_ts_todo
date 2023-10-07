@@ -13,7 +13,6 @@ import { auth } from "../firebase/firebase";
 import { AuthType, UserDataProps } from "./typesContext/authType";
 
 const AuthContext = createContext<AuthType | null>(null);
-
 export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
   const [userData, setUserData] = useState<UserDataProps | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -26,7 +25,7 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
           email: user.email,
           userName: user.displayName,
         });
-        localStorage.setItem("@Project:email", JSON.stringify(user));
+        localStorage.setItem("@Project:email", JSON.stringify(user?.email));
       } else {
         setUserData(null);
       }
