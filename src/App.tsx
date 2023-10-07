@@ -45,7 +45,7 @@ function App() {
                 </ProtectedRoute>
               }
             ></Route>
-            <Route path="*" element={<Navigate to="/" replace={true} />} />
+            <Route path="*" element={<Navigate to="/login" replace={true} />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
