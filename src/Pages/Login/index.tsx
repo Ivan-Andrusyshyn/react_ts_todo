@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import AuthContext from "../../Contexts/authContext";
 import LoaderInButton from "../../Components/AuthLoader/AuthLoader";
 import { AuthType } from "../../Contexts/authType";
-import ErrorMessageAuth from "../../Components/ErrorComponent/ErrorMessageAuth";
+import ErrorMessageAuth from "../../Components/ErrorComponent";
 
 const Login: React.FC = () => {
   const { handleLogin, isLoading, isError, setIsError } = useContext(

@@ -6,7 +6,7 @@ import Login from "./Pages/Login";
 import Home from "./Pages/Home";
 import CategoriePage from "./Pages/Categorie";
 import ProtectedRoute from "./Routes/Route";
-import SignUp from "./Pages/SignUp/SignUp";
+import SignUp from "./Pages/SignUp";
 
 function App() {
   return (

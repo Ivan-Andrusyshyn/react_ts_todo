@@ -1,5 +1,5 @@
 import React from "react";
-import { Loader, LoaderWrapper, Backdrop } from "./Loader.styled";
+import * as S from "./styles";
 interface loaderProp {
   isLoading: boolean;
 }
@@ -7,11 +7,11 @@ const LoaderComponent: React.FC<loaderProp> = ({ isLoading }) => {
   return (
     <>
       {isLoading && (
-        <LoaderWrapper>
-          <Backdrop>
-            <Loader />
-          </Backdrop>
-        </LoaderWrapper>
+        <S.LoaderWrapper>
+          <S.Backdrop>
+            <S.Loader />
+          </S.Backdrop>
+        </S.LoaderWrapper>
       )}
     </>
   );

@@ -5,7 +5,7 @@ import Logo from "../../Img/Logo.png";
 import * as S from "./styles";
 import LoaderInButton from "../../Components/AuthLoader/AuthLoader";
 import { AuthType } from "../../Contexts/authType";
-import ErrorMessageAuth from "../../Components/ErrorComponent/ErrorMessageAuth";
+import ErrorMessageAuth from "../../Components/ErrorComponent";
 
 const SignUp = () => {
   const { registration, signInWithGoogle, isLoading, setIsError, isError } =
