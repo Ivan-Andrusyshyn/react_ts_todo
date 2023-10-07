@@ -21,7 +21,6 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
   const [color, setColor] = useState<string>("");
   const [showForm, setShowForm] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
-
   function handleActivate() {
     setActive(!active);
   }
@@ -54,6 +53,7 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
     setShowForm(false);
     setColor("");
   };
+
   return (
     <S.OuterContainer isActive={active}>
       <S.Container isActive={active} onClick={handleActivate}>

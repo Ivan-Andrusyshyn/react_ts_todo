@@ -46,6 +46,7 @@ export const Container = styled.div<ContainerProps>`
     props.isActive &&
     css`
       background: #f5f5f5;
+      height: 50px;
     `};
   margin: 0;
 
@@ -55,7 +56,6 @@ export const Container = styled.div<ContainerProps>`
       props.isActive
         ? css`
             background: #f5f5f5;
-            height: 60px;
           `
         : css`
             background: #fafafa;
@@ -88,6 +88,7 @@ export const CatArea = styled.div<ContainerProps>`
   border-radius: 8px;
   flex-direction: column;
   padding-bottom: 8px;
+  margin-left: 5px;
   transition: height 0.2s linear;
   ${(props) =>
     !props.isActive &&
@@ -107,9 +108,6 @@ export const AddArea = styled.button`
   outline: none;
   cursor: pointer;
   position: relative;
-  &:focus {
-    transform: translateX(5px);
-  }
 `;
 export const ColorInputWrapper = styled.div`
   display: flex;

@@ -17,12 +17,17 @@ const CategorieItem: React.FC<CategorieItemProps> = ({ name, color }) => {
         textDecoration: "none",
       }}
     >
-      <S.Categorie
-        style={{
-          transform: params.name === name ? "translateX(5px)" : "none",
-        }}
-      >
-        <S.ColorTag color={color} />
+      <S.Categorie>
+        <S.CustomRadioInput
+          type="radio"
+          id={name}
+          checked={name === params.name}
+          color={color}
+        />
+        <S.LabelForm htmlFor={name} color={color}>
+          {params.name === name && <S.Selected color={color} />}
+        </S.LabelForm>
+
         <S.ListName>{name}</S.ListName>
       </S.Categorie>
     </Link>

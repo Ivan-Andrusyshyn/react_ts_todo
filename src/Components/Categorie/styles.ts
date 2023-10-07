@@ -4,10 +4,11 @@ interface ColorTagProps {
   color: string;
 }
 
-export const Categorie = styled.div`
+export const Categorie = styled.li`
   height: 20px;
-  margin: 4px 0 4px 10px;
+  margin: 4px 0 4px 15px;
   display: flex;
+  position: relative;
   align-items: center;
   transition: transform 0.25s linear;
 `;
@@ -17,10 +18,35 @@ export const ColorTag = styled.div<ColorTagProps>`
   border-radius: 4px;
   background: ${(props) => props.color};
 `;
-
+export const LabelForm = styled.label<ColorTagProps>`
+  display: flex;
+  border: 2px solid ${(props) => props.color};
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  align-items: center;
+  position: relative;
+`;
 export const ListName = styled.p`
   font-size: 16px;
   color: #777;
   margin-left: 8px;
-  font-weight: 400;
+  font-weight: 600;
+`;
+export const Selected = styled.div`
+  position: absolute;
+  background: ${(props) => props.color};
+  width: 7px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  margin-right: 1px;
+  height: 7px;
+`;
+export const CustomRadioInput = styled.input<ColorTagProps>`
+  opacity: 0;
+  position: absolute;
 `;
