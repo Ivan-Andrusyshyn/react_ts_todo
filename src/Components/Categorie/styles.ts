@@ -9,7 +9,7 @@ export const Categorie = styled.div`
   margin: 4px 0 4px 10px;
   display: flex;
   align-items: center;
-  background: #f5f5f5;
+  transition: transform 0.25s linear;
 `;
 export const ColorTag = styled.div<ColorTagProps>`
   height: 14px;

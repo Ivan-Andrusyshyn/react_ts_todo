@@ -19,7 +19,11 @@ const CategorieItem: React.FC<CategorieItemProps> = ({ name, color }) => {
         borderBottom: params.name === name ? `1px solid ${color}` : "",
       }}
     >
-      <S.Categorie>
+      <S.Categorie
+        style={{
+          transform: params.name === name ? "translateX(5px)" : "none",
+        }}
+      >
         <S.ColorTag color={color} />
         <S.ListName>{name}</S.ListName>
       </S.Categorie>
