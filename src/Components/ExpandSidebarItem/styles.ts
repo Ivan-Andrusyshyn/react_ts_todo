@@ -152,12 +152,12 @@ export const ErrorText = styled.p`
   color: red;
 `;
 export const ColorInput = styled.input`
-  padding-left: 5px;
-  box-sizing: border-box;
-  width: 100%;
+  border-radius: 4px;
 `;
 export const TitleInput = styled.input`
-  border-radius: 4px;
+  padding: 5px;
+  box-sizing: border-box;
+  width: 100%;
 `;
 export const FormBtn = styled.button`
   width: 75px;

@@ -68,7 +68,7 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
         {showForm ? (
           <S.FormModal>
             <S.CategoryForm action="" onSubmit={addNewCategory}>
-              <S.ColorInput
+              <S.TitleInput
                 value={title}
                 style={{ border: error ? "1px solid red" : "" }}
                 type="text"
@@ -76,13 +76,13 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
               />
               {error && <S.ErrorText>{error}</S.ErrorText>}
               <S.ColorInputWrapper>
-                <S.TitleInput
+                <S.ColorInput
                   value={color}
                   type="color"
                   style={{ border: error ? "1px solid red" : "" }}
                   onChange={(e) => setColor(e.target.value)}
                 />
-                <span>{color}</span>
+                <span>{color ? color : "Choose color"}</span>
               </S.ColorInputWrapper>
               <S.BtnWrapper>
                 <S.FormBtn type="submit">Add</S.FormBtn>
