@@ -1,37 +1,136 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import * as S from "./styles";
-import { Link, useParams } from "react-router-dom";
-
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { CategoriesContext } from "../../Contexts/categoriesContext";
+import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
+import { nanoid } from "nanoid";
+import CategoryEditForm from "./CategoryEditForm";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 interface CategorieItemProps {
   name: string;
   color: string;
+  categoryId: string;
 }
 
-const CategorieItem: React.FC<CategorieItemProps> = ({ name, color }) => {
+const CategorieItem: React.FC<CategorieItemProps> = ({
+  name,
+  color,
+  categoryId,
+}) => {
   const params = useParams();
   const [isChecked, setIsChecked] = useState<boolean>(false);
-  return (
-    <Link
-      to={"/categorie/" + name}
-      style={{
-        textDecoration: "none",
-      }}
-    >
-      <S.Categorie>
-        <S.CustomRadioInput
-          type="radio"
-          id={name}
-          onChange={() => setIsChecked(name === params.name)}
-          checked={isChecked}
-          color={color}
-        />
-        <S.LabelForm htmlFor={name} color={color}>
-          {params.name === name && <S.Selected color={color} />}
-        </S.LabelForm>
+  const navigation = useNavigate();
+  const { categList, deleteCategory, editCategory } = useContext(
+    CategoriesContext
+  ) as CategorieContextType;
+  const [editedName, setEditedName] = useState<string>("");
+  const [editedColor, setEditedColor] = useState<string>("");
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [modalOpenForm, setModalOpenForm] = useState<boolean>(false);
 
-        <S.ListName>{name}</S.ListName>
-      </S.Categorie>
-    </Link>
+  useEffect(() => {
+    setEditedColor(color);
+    setEditedName(name);
+  }, [name, color]);
+  const handleDelete = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    deleteCategory(categoryId);
+    const remainingCategories = categList.filter(
+      (cat) => cat.id !== categoryId
+    );
+    const nameCategorie =
+      remainingCategories[remainingCategories.length - 1]?.name;
+    if (nameCategorie) {
+      navigation("/categorie/" + nameCategorie);
+    }
+    e.preventDefault();
+  };
+  const showFormForEdit = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    setModalOpenForm(true);
+  };
+
+  const handleEdit = (editedName: string, editedColor: string) => {
+    const editedCategorie = {
+      id: nanoid(),
+      name: editedName,
+      color: editedColor,
+    };
+    editCategory(categoryId, editedCategorie);
+    navigation("/categorie/" + editedName);
+  };
+
+  const handleCancel = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    if (e.currentTarget === e.target) {
+      setIsOpen(false);
+      setEditedName(name);
+      setEditedColor(color);
+    }
+  };
+  const backdropCloseModal = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    if (e.currentTarget === e.target) {
+      setIsOpen(false);
+    }
+  };
+  const handleOpenModal = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setIsOpen(!isOpen);
+  };
+  return (
+    <>
+      <Link
+        to={"/categorie/" + name}
+        style={{
+          textDecoration: "none",
+        }}
+      >
+        <S.Categorie>
+          <S.CustomRadioInput
+            type="radio"
+            id={name}
+            onChange={() => setIsChecked(name === params.name)}
+            checked={isChecked}
+            color={color}
+          />
+          <S.LabelForm htmlFor={name} color={color}>
+            {params.name === name && <S.Selected color={color} />}
+          </S.LabelForm>
+          <S.ItemWrapper>
+            <S.ListName>{name}</S.ListName>
+            <div onClick={handleOpenModal} style={{ marginLeft: 40 }}>
+              <FontAwesomeIcon
+                icon={faPenToSquare}
+                style={{ color: "#828ea6" }}
+              />
+            </div>
+          </S.ItemWrapper>
+        </S.Categorie>
+      </Link>
+      {isOpen && (
+        <S.ModalOverlay onClick={(e) => backdropCloseModal(e)}>
+          <S.ModalContent>
+            {!modalOpenForm ? (
+              <div>
+                <S.EditModalTitle>Category Actions</S.EditModalTitle>
+                <S.Button onClick={showFormForEdit}>Edit</S.Button>
+                <S.Button onClick={handleDelete}>Delete</S.Button>
+                <S.Button onClick={handleCancel}>Cancel</S.Button>
+              </div>
+            ) : (
+              <CategoryEditForm
+                initialName={editedName}
+                initialColor={editedColor}
+                onCancel={setModalOpenForm}
+                onSave={handleEdit}
+                openModal={modalOpenForm}
+              />
+            )}
+          </S.ModalContent>
+        </S.ModalOverlay>
+      )}
+    </>
   );
 };
 

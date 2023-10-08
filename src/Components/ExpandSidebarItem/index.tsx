@@ -7,6 +7,7 @@ import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
 import { nanoid } from "nanoid";
 import { useNavigate } from "react-router-dom";
+import SidebarItemForm from "./SidebarItemForm";
 
 interface SidebarItemProps {
   name: string;
@@ -59,10 +60,12 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
     setShowForm(false);
   };
 
-  const handleCancel = () => {
-    setTitle("");
-    setShowForm(false);
-    setColor("");
+  const handleCancel = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    if (e.currentTarget.id === "close") {
+      setTitle("");
+      setShowForm(false);
+      setColor("");
+    }
   };
 
   return (
@@ -74,40 +77,29 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
       </S.Container>
       <S.CatArea isActive={active}>
         {categList.map((cat) => (
-          <CategorieItem key={cat.id} name={cat.name} color={cat.color} />
+          <CategorieItem
+            key={cat.id}
+            categoryId={cat.id}
+            name={cat.name}
+            color={cat.color}
+          />
         ))}
-        {showForm ? (
-          <S.FormModal>
-            <S.CategoryForm action="" onSubmit={addNewCategory}>
-              <S.TitleInput
-                value={title}
-                style={{ border: error ? "1px solid red" : "" }}
-                type="text"
-                maxLength={10}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-              {error && <S.ErrorText>{error}</S.ErrorText>}
-              <S.ColorInputWrapper>
-                <S.ColorInput
-                  value={color}
-                  type="color"
-                  style={{ border: error ? "1px solid red" : "" }}
-                  onChange={(e) => setColor(e.target.value)}
-                />
-                <span>{color ? color : "Choose color"}</span>
-              </S.ColorInputWrapper>
-              <S.BtnWrapper>
-                <S.FormBtn type="submit">Add</S.FormBtn>
-                <S.FormBtn onClick={handleCancel}>Cancel</S.FormBtn>
-              </S.BtnWrapper>
-            </S.CategoryForm>
-          </S.FormModal>
-        ) : (
-          <S.AddArea onClick={() => setShowForm(true)}>
-            <S.AddIcon src={Add} />
-            <S.AddText>Add new</S.AddText>
-          </S.AddArea>
+        {showForm && (
+          <SidebarItemForm
+            error={error}
+            setShowForm={setShowForm}
+            color={color}
+            handleCancel={handleCancel}
+            setColor={setColor}
+            setTitle={setTitle}
+            title={title}
+            addNewCategory={addNewCategory}
+          />
         )}
+        <S.AddArea onClick={() => setShowForm(true)}>
+          <S.AddIcon src={Add} />
+          <S.AddText>Add new</S.AddText>
+        </S.AddArea>
       </S.CatArea>
     </S.OuterContainer>
   );

@@ -11,7 +11,7 @@ export const Name = styled.h3`
   font-weight: 500;
 `;
 export const OuterContainer = styled.div<ContainerProps>`
-  height: auto;
+  height: 50px;
   width: 15vw;
   border-radius: 6px;
   display: flex;
@@ -21,12 +21,14 @@ export const OuterContainer = styled.div<ContainerProps>`
   color: #777;
   font-weight: 100;
   margin: 4px 0;
+  transition: height 0.2s linear;
 
   border-radius: 8px;
   ${(props) =>
     props.isActive &&
     css`
       background: #f5f5f5;
+      height: 200px;
     `};
   margin: 0;
 `;
@@ -39,13 +41,11 @@ export const Container = styled.div<ContainerProps>`
   align-items: center;
   justify-content: left;
   color: #777;
-  transition: height 0.2s linear;
   font-weight: 100;
   ${(props) =>
     props.isActive &&
     css`
       background: #f5f5f5;
-      height: 60px;
     `};
   margin: 0;
 
@@ -70,7 +70,7 @@ export const Icon = styled.img`
 export const Arrow = styled.img<ContainerProps>`
   width: 14px;
   margin: 8px 16px;
-
+  transition: transform 0.3s linear;
   ${(props) =>
     props.isActive &&
     css`
@@ -83,7 +83,6 @@ export const CatArea = styled.div<ContainerProps>`
   display: flex;
   width: 15vw;
   height: auto;
-  background: #f5f5f5;
   border-radius: 8px;
   flex-direction: column;
   padding-bottom: 8px;
@@ -91,8 +90,21 @@ export const CatArea = styled.div<ContainerProps>`
   max-height: 200px;
   opacity: 1;
   overflow: hidden;
+  overflow-y: scroll;
   transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
   opacity: 1;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
   ${(props) =>
     !props.isActive &&
     css`
@@ -130,16 +142,28 @@ export const Backdrop = styled.div`
 export const FormModal = styled.div`
   background-color: #fff;
   position: absolute;
-  width: 180px;
+  width: 200px;
   border-radius: 6px;
   z-index: 222;
-  left: 150px;
-  top: 300px;
+  left: 180px;
+  top: 330px;
   display: flex;
   justify-content: center;
   padding: 10px;
   box-sizing: border-box;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+`;
+export const ModalOverlay = styled.div`
+  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
 `;
 export const CategoryForm = styled.form`
   margin-top: 10px;
@@ -168,7 +192,9 @@ export const FormBtn = styled.button`
 `;
 export const BtnWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+  justify-content: center;
 `;
 export const AddText = styled.p`
   font-size: 16px;
