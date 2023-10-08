@@ -23,7 +23,6 @@ export const OuterContainer = styled.div<ContainerProps>`
   margin: 4px 0;
 
   border-radius: 8px;
-
   ${(props) =>
     props.isActive &&
     css`
@@ -46,7 +45,7 @@ export const Container = styled.div<ContainerProps>`
     props.isActive &&
     css`
       background: #f5f5f5;
-      height: 50px;
+      height: 60px;
     `};
   margin: 0;
 
@@ -89,12 +88,16 @@ export const CatArea = styled.div<ContainerProps>`
   flex-direction: column;
   padding-bottom: 8px;
   margin-left: 5px;
-  transition: height 0.2s linear;
+  max-height: 200px;
+  opacity: 1;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  opacity: 1;
   ${(props) =>
     !props.isActive &&
     css`
-      display: none;
-      height: 0;
+      max-height: 0;
+      opacity: 0;
     `};
 `;
 

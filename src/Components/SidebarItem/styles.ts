@@ -12,7 +12,7 @@ export const Name = styled.h3`
 `;
 
 export const Container = styled.div<ContainerProps>`
-  height: 40px;
+  height: 50px;
   width: 15vw;
   border-radius: 8px;
   display: flex;
@@ -24,7 +24,6 @@ export const Container = styled.div<ContainerProps>`
     props.isActive &&
     css`
       background: #f5f5f5;
-      color: #7f56da;
     `};
   margin: 4px 0;
 

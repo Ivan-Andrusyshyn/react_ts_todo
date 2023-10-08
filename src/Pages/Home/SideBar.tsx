@@ -4,13 +4,14 @@ import AuthContext from "../../Contexts/authContext";
 import { AuthType } from "../../Contexts/typesContext/authType";
 import Logo from "../../Img/Logo.png";
 import TaskFill from "../../Img/taskFill.png";
-import Settings from "../../Img/settings.svg";
 import Folder from "../../Img/folder.svg";
 import Logout from "../../Img/logout.svg";
 import SidebarItem from "../../Components/SidebarItem";
 import ExpandSidebarItem from "../../Components/ExpandSidebarItem";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import * as S from "./styles";
+import Settings from "../../Img/settings.svg";
+import SettingsItem from "../../Components/Settings";
 interface propsSidebar {
   toggleSidebar?: () => void;
 }
@@ -29,11 +30,7 @@ const SideBar: React.FC<propsSidebar> = () => {
       <S.Tabs>
         <SidebarItem icon={TaskFill} name="Tasks" isActive={true}></SidebarItem>
         <ExpandSidebarItem icon={Folder} name="Categories"></ExpandSidebarItem>
-        <SidebarItem
-          icon={Settings}
-          name="Settings"
-          isActive={false}
-        ></SidebarItem>
+        <SettingsItem isActive={false} icon={Settings} name="Settings" />
       </S.Tabs>
       <Link
         to="/login"

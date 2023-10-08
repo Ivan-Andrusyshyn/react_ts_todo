@@ -6,6 +6,7 @@ import Add from "../../Img/add.svg";
 import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
 import { nanoid } from "nanoid";
+import { useNavigate } from "react-router-dom";
 
 interface SidebarItemProps {
   name: string;
@@ -21,6 +22,7 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
   const [color, setColor] = useState<string>("");
   const [showForm, setShowForm] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+  const navigate = useNavigate();
   function handleActivate() {
     setActive(!active);
   }
@@ -34,9 +36,17 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
   }, [error]);
   const addNewCategory = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!title || !color) {
+    if (!title) {
       setError("Please enter category");
       return;
+    }
+    if (!color) {
+      setError("Please select a category color");
+      return;
+    }
+
+    if (categList.length === 0) {
+      navigate("/categorie/" + title);
     }
     const category = {
       id: nanoid(),
@@ -48,6 +58,7 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
     setColor("");
     setShowForm(false);
   };
+
   const handleCancel = () => {
     setTitle("");
     setShowForm(false);
@@ -72,6 +83,7 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
                 value={title}
                 style={{ border: error ? "1px solid red" : "" }}
                 type="text"
+                maxLength={10}
                 onChange={(e) => setTitle(e.target.value)}
               />
               {error && <S.ErrorText>{error}</S.ErrorText>}

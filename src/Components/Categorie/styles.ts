@@ -10,6 +10,8 @@ export const Categorie = styled.li`
   display: flex;
   position: relative;
   align-items: center;
+
+  gap: 8px;
   transition: transform 0.25s linear;
 `;
 export const ColorTag = styled.div<ColorTagProps>`
@@ -28,11 +30,11 @@ export const LabelForm = styled.label<ColorTagProps>`
   height: 10px;
   align-items: center;
   position: relative;
+  cursor: pointer;
 `;
 export const ListName = styled.p`
   font-size: 16px;
   color: #777;
-  margin-left: 8px;
   font-weight: 600;
 `;
 export const Selected = styled.div`
