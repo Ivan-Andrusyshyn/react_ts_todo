@@ -1,4 +1,3 @@
-import { error } from "console";
 import styled, { css } from "styled-components";
 interface propInput {
   error: string;
@@ -11,11 +10,12 @@ export const Background = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 9999;
   background: rgba(0, 0, 0, 0.6);
 `;
 
 export const Container = styled.div`
-  width: 40vw;
+  width: 25vw;
   background: white;
   border-radius: 16px;
   opacity: 1;
@@ -38,38 +38,44 @@ export const CancelButton = styled.button`
   background: white;
   border: 1px solid blue;
   color: blue;
-  width: 120px;
   height: 40px;
   border-radius: 8px;
-  font-size: 20px;
   margin: 8px;
-
+  width: 70px;
   &:hover {
     border: 2px solid blue;
     font-weight: 500;
     background: #eee;
   }
+  font-size: 14px;
+  @media screen and (min-width: 920px) {
+    width: 120px;
+    font-size: 20px;
+  }
 `;
 
-export const DeletButton = styled.button`
+export const AddButton = styled.button`
   background: white;
   border: 1px solid green;
   color: green;
-  width: 120px;
   height: 40px;
   border-radius: 8px;
-  font-size: 20px;
   margin: 8px;
-
+  font-size: 14px;
+  width: 70px;
   &:hover {
     border: 2px solid green;
     font-weight: 500;
     background: #eee;
   }
+  @media screen and (min-width: 920px) {
+    width: 120px;
+    font-size: 20px;
+  }
 `;
 
 export const TitleInput = styled.input<propInput>`
-  width: 32vw;
+  width: 20vw;
   height: 40px;
   border-radius: 8px;
   border: 1px solid #999;
@@ -95,7 +101,7 @@ export const TitleInput = styled.input<propInput>`
 `;
 
 export const Select = styled.select`
-  width: 32vw;
+  width: 20vw;
   height: 40px;
   border-radius: 8px;
   border: 1px solid #999;

@@ -39,7 +39,7 @@ const EditModal: React.FC = () => {
   return (
     <S.Background>
       <S.Container>
-        <S.Text>Insert name</S.Text>
+        <S.Text>Edit name</S.Text>
         <S.TitleInput
           placeholder="Task name"
           onChange={handleTyping}
@@ -50,7 +50,7 @@ const EditModal: React.FC = () => {
           <option>{taskCat[0].categorie}</option>
         </S.Select>
         <S.Buttons>
-          <S.DeletButton onClick={handleEdit}>Edit</S.DeletButton>
+          <S.AddButton onClick={handleEdit}>Edit</S.AddButton>
           <S.CancelButton onClick={handleCancel}>Cancel</S.CancelButton>
         </S.Buttons>
       </S.Container>

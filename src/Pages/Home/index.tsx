@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import * as S from "./styles";
 
 import TaskCard from "../../Components/TaskCard";
@@ -20,11 +20,16 @@ import { useMediaQuery } from "react-responsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SideBar from "./SideBar";
 import EditModal from "../../Components/EditModal/EditModal";
+import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
+import { CategoriesContext } from "../../Contexts/categoriesContext";
+import { useNavigate } from "react-router-dom";
 const Home: React.FC = () => {
   const { taskList, doneTasks, notDoneTasks } = useContext(
     TaskListContext
   ) as TaskListType;
   const { userData, isLoading } = useContext(AuthContext) as AuthType;
+  const { categList } = useContext(CategoriesContext) as CategorieContextType;
+  const navigate = useNavigate();
 
   const { showDelete, showEdit } = useContext(DeleteContext) as DeleteType;
   const { showAdd } = useContext(AddContext) as AddType;
@@ -40,7 +45,12 @@ const Home: React.FC = () => {
       setIsSidebarOpen(!isSidebarOpen);
     }
   };
-
+  useEffect(() => {
+    if (categList) {
+      const nameNav = categList[0].name;
+      navigate("/categorie/" + nameNav);
+    }
+  }, []);
   const isTablet = useMediaQuery({ minWidth: 320, maxWidth: 920 });
   function handleAll() {
     setListToDisplay(0);

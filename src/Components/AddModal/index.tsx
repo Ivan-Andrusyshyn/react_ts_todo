@@ -73,7 +73,7 @@ const AddModal: React.FC = () => {
           ))}
         </S.Select>
         <S.Buttons>
-          <S.DeletButton onClick={handleAdd}>Add</S.DeletButton>
+          <S.AddButton onClick={handleAdd}>Add</S.AddButton>
           <S.CancelButton onClick={handleCancel}>Cancel</S.CancelButton>
         </S.Buttons>
       </S.Container>
