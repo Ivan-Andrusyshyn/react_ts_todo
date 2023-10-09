@@ -28,7 +28,7 @@ export const Text = styled.p`
   color: #555;
   wrap: wrap;
   text-align: center;
-  padding: 20px;
+  padding: 10px;
   @media screen and (min-width: 920px) {
     font-size: 20px;
   }

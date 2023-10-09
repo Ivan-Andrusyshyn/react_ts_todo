@@ -56,7 +56,7 @@ export const Main = styled.div`
   align-items: center;
   justify-content: start;
   overflow-y: scroll;
-  @media screen and (min-width: 820px) {
+  @media screen and (min-width: 920px) {
     width: 100vw;
   }
 `;

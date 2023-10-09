@@ -25,8 +25,8 @@ const DeleteModal: React.FC = () => {
       <S.Container>
         <S.Text>Are you sure you want to delete this task?</S.Text>
         <S.Buttons>
-          <S.CancelButton onClick={handleCancel}>Cancel</S.CancelButton>
           <S.DeletButton onClick={handleConfirm}>Delete</S.DeletButton>
+          <S.CancelButton onClick={handleCancel}>Cancel</S.CancelButton>
         </S.Buttons>
       </S.Container>
     </S.Background>

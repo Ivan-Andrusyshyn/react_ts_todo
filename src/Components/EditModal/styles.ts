@@ -13,7 +13,7 @@ export const Background = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 25vw;
+  width: 300px;
   background: white;
   border-radius: 16px;
   opacity: 1;
@@ -23,9 +23,9 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-top: 32px;
+  padding-bottom: 8px;
 `;
 export const Buttons = styled.div`
-  height: 80px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -38,7 +38,7 @@ export const CancelButton = styled.button`
   height: 40px;
   border-radius: 8px;
   margin: 8px;
-  width: 70px;
+  width: 90px;
   &:hover {
     border: 2px solid blue;
     font-weight: 500;
@@ -59,7 +59,7 @@ export const AddButton = styled.button`
   border-radius: 8px;
   margin: 8px;
   font-size: 14px;
-  width: 70px;
+  width: 90px;
   &:hover {
     border: 2px solid green;
     font-weight: 500;
@@ -70,17 +70,15 @@ export const AddButton = styled.button`
     font-size: 20px;
   }
 `;
-
 export const TitleInput = styled.input`
-  width: 20vw;
   height: 40px;
   border-radius: 8px;
   border: 1px solid #999;
   padding-left: 8px;
   font-size: 20px;
+  width: 260px;
   color: #555;
   box-sizing: border-box;
-
   &:focus {
     border: 1px solid #999;
     outline: none;
@@ -88,11 +86,13 @@ export const TitleInput = styled.input`
 
   &::placeholder {
     color: #bbb;
+    opacity: 0.6;
+    font-size: 18px;
   }
 `;
 
 export const Select = styled.select`
-  width: 20vw;
+  width: 260px;
   height: 40px;
   border-radius: 8px;
   border: 1px solid #999;
@@ -112,6 +112,9 @@ export const Select = styled.select`
 `;
 
 export const Text = styled.p`
-  font-size: 20px;
+  font-size: 18px;
   color: #555;
+  @media screen and (min-width: 920px) {
+    font-size: 20px;
+  }
 `;
