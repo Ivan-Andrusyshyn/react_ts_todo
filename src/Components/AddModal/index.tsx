@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import * as S from "./styles";
 import { AddContext } from "../../Contexts/addContext";
 import { AddType } from "../../Contexts/typesContext/addType";
@@ -12,17 +12,28 @@ const AddModal: React.FC = () => {
   const { categList } = useContext(CategoriesContext) as CategorieContextType;
   const { setShowAdd } = useContext(AddContext) as AddType;
 
-  const [taskName, setTaskName] = useState("");
+  const [taskName, setTaskName] = useState<string>("");
   const [taskCat, setTaskCat] = useState(0);
-
+  const [error, setError] = useState<string>("");
   function handleTyping(event: React.ChangeEvent<HTMLInputElement>) {
     setTaskName(event.target.value);
   }
-
+  useEffect(() => {
+    const newTimeOut = setTimeout(() => {
+      setError("");
+    }, 2000);
+    return () => {
+      clearTimeout(newTimeOut);
+    };
+  }, [error]);
   function handleCancel() {
     setShowAdd(false);
   }
   function handleAdd() {
+    if (!taskName) {
+      setError("Please enter task name.");
+      return;
+    }
     if (categList[taskCat]) {
       const newTask: TaskProps = {
         id: Math.random(),
@@ -48,7 +59,8 @@ const AddModal: React.FC = () => {
       <S.Container>
         <S.Text>Insert name</S.Text>
         <S.TitleInput
-          placeholder="Task name"
+          error={error}
+          placeholder={error ? error : "Task name"}
           onChange={handleTyping}
           value={taskName}
         />
