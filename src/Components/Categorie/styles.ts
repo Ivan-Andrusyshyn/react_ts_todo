@@ -40,12 +40,12 @@ export const Selected = styled.div`
   position: absolute;
   background: ${(props) => props.color};
   width: 7px;
+  height: 7px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   margin-right: 1px;
-  height: 7px;
 `;
 export const CustomRadioInput = styled.input<ColorTagProps>`
   opacity: 0;

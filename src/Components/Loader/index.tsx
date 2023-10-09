@@ -3,17 +3,11 @@ import * as S from "./styles";
 interface loaderProp {
   isLoading: boolean;
 }
-const LoaderComponent: React.FC<loaderProp> = ({ isLoading }) => {
+const LoaderComponent: React.FC<loaderProp> = () => {
   return (
-    <>
-      {isLoading && (
-        <S.LoaderWrapper>
-          <S.Backdrop>
-            <S.Loader />
-          </S.Backdrop>
-        </S.LoaderWrapper>
-      )}
-    </>
+    <S.Backdrop>
+      <S.Loader />
+    </S.Backdrop>
   );
 };
 

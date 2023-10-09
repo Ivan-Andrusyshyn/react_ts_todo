@@ -14,7 +14,8 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleLoginClick() {
+  function handleLoginClick(e: React.MouseEvent<HTMLFormElement>) {
+    e.preventDefault();
     if (!email || !password) {
       setIsError("Please fill in all fields.");
       return;
@@ -29,7 +30,6 @@ const Login: React.FC = () => {
   function handlePassword(event: React.ChangeEvent<HTMLInputElement>) {
     setPassword(event.target.value);
   }
-  console.log(isError);
 
   return (
     <S.Page>
@@ -41,29 +41,33 @@ const Login: React.FC = () => {
         <S.Subtitle>
           Please, insert your information to access your tasks.
         </S.Subtitle>
-        <S.FieldName>Email</S.FieldName>
-        <S.InputField
-          value={email}
-          id="email"
-          onChange={handleEmail}
-          placeholder="Insert your email"
-        ></S.InputField>
-        <S.FieldName>Password</S.FieldName>
-        <S.InputField
-          value={password}
-          id="password"
-          onChange={handlePassword}
-          placeholder="Insert your password"
-          type="password"
-        ></S.InputField>
-        <S.KeepSigned>
-          <S.Checkbox />
-          <S.Subtitle>Remember me</S.Subtitle>
-        </S.KeepSigned>
-        {isError && <ErrorMessageAuth isError={isError} />}
-        <S.SignIn onClick={handleLoginClick}>
-          Sign In <LoaderInButton isLoading={isLoading} />
-        </S.SignIn>
+        <form action="" onSubmit={handleLoginClick}>
+          <S.FieldName>Email</S.FieldName>
+          <S.InputField
+            autoComplete="username"
+            value={email}
+            id="email"
+            onChange={handleEmail}
+            placeholder="Insert your email"
+          ></S.InputField>
+          <S.FieldName>Password</S.FieldName>
+          <S.InputField
+            value={password}
+            id="password"
+            onChange={handlePassword}
+            placeholder="Insert your password"
+            type="password"
+            autoComplete="current-password"
+          ></S.InputField>
+          <S.KeepSigned>
+            <S.Checkbox />
+            <S.Subtitle>Remember me</S.Subtitle>
+          </S.KeepSigned>
+          {isError && <ErrorMessageAuth isError={isError} />}
+          <S.SignIn type="submit">
+            Sign In <LoaderInButton isLoading={isLoading} />
+          </S.SignIn>
+        </form>
         <S.Subtitle>
           Don't have an account? <Link to="/signup">Sign Up</Link>
         </S.Subtitle>

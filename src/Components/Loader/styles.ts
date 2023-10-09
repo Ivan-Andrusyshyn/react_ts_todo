@@ -84,15 +84,5 @@ const Loader = styled.span`
     }
   }
 `;
-const LoaderWrapper = styled.div`
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: #161616c8;
-`;
-export { Loader, LoaderWrapper, Backdrop };
+
+export { Loader, Backdrop };

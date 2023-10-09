@@ -94,9 +94,12 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
             checked={isChecked}
             color={color}
           />
-          <S.LabelForm htmlFor={name} color={color}>
-            {params.name === name && <S.Selected color={color} />}
-          </S.LabelForm>
+          <div style={{ width: 20 }}>
+            <S.LabelForm htmlFor={name} color={color}>
+              {params.name === name && <S.Selected color={color} />}
+            </S.LabelForm>
+          </div>
+
           <S.ItemWrapper>
             <S.ListName>{name}</S.ListName>
             <div onClick={handleOpenModal} style={{ marginLeft: 40 }}>

@@ -18,7 +18,7 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState<string | null>(null);
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setIsLoading(true);
       if (user) {
         setUserData({
@@ -31,6 +31,9 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
       }
       setIsLoading(false);
     });
+    return () => {
+      unsubscribe();
+    };
   }, []);
   useEffect(() => {
     const errorTimeout = setTimeout(() => {
@@ -38,6 +41,7 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
     }, 2000);
     return () => clearTimeout(errorTimeout);
   }, [isError]);
+
   const signInWithGoogle = async () => {
     setIsLoading(true);
     const provider = new GoogleAuthProvider();
