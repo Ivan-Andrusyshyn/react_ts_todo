@@ -5,7 +5,9 @@ import { css } from "styled-components";
 interface ContainerProps {
   isActive: boolean;
 }
-
+interface propInput {
+  error: string;
+}
 export const Name = styled.h3`
   font-size: 16px;
   font-weight: 500;
@@ -187,13 +189,28 @@ export const ErrorText = styled.p`
   font-size: 12px;
   color: red;
 `;
-export const ColorInput = styled.input`
+export const ColorInput = styled.input<propInput>`
   border-radius: 4px;
+  ${(props) =>
+    props.error &&
+    css`
+      border: 1px solid red;
+    `};
 `;
-export const TitleInput = styled.input`
+export const TitleInput = styled.input<propInput>`
   padding: 5px;
   box-sizing: border-box;
   width: 100%;
+  ${(props) =>
+    props.error &&
+    css`
+      border: 1px solid red;
+    `};
+  &::placeholder {
+    color: #bbb;
+    opacity: 0.6;
+    color: ${(props) => (props.error ? "red" : "#bbb")};
+  }
 `;
 export const FormBtn = styled.button`
   width: 100%;

@@ -28,26 +28,32 @@ const SidebarItemForm: React.FC<PropsSidebarForm> = ({
       handleCancel();
     }
   };
+  const styleColorInputText = {
+    color: error && !color ? "red" : "",
+    opacity: 0.7,
+  };
   return (
     <S.ModalOverlay onClick={handleCloseModal}>
       <S.FormModal>
         <S.CategoryForm action="" onSubmit={addNewCategory}>
           <S.TitleInput
             value={title}
-            style={{ border: error ? "1px solid red" : "" }}
             type="text"
             maxLength={10}
+            error={error}
+            placeholder={error && !title ? error : "Type category"}
             onChange={(e) => setTitle(e.target.value)}
           />
-          {error && <S.ErrorText>{error}</S.ErrorText>}
           <S.ColorInputWrapper>
             <S.ColorInput
               value={color}
               type="color"
-              style={{ border: error ? "1px solid red" : "" }}
+              error={error}
               onChange={(e) => setColor(e.target.value)}
             />
-            <span>{color ? color : "Choose color"}</span>
+            <span style={styleColorInputText}>
+              {color ? color : "Choose color"}
+            </span>
           </S.ColorInputWrapper>
           <S.BtnWrapper>
             <S.FormBtn type="submit">Add</S.FormBtn>

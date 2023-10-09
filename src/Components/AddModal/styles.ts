@@ -1,6 +1,8 @@
 import { error } from "console";
 import styled, { css } from "styled-components";
-
+interface propInput {
+  error: string;
+}
 export const Background = styled.div`
   width: 100vw;
   height: 100vh;
@@ -65,9 +67,7 @@ export const DeletButton = styled.button`
     background: #eee;
   }
 `;
-interface propInput {
-  error: string;
-}
+
 export const TitleInput = styled.input<propInput>`
   width: 32vw;
   height: 40px;
