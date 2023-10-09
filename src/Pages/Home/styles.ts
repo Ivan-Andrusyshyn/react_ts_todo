@@ -27,7 +27,7 @@ export const Page = styled.div`
 
 export const Sidebar = styled.div`
   height: 100vh;
-  width: 25vw;
+  width: 30vw;
   background-color: white;
   z-index: 9999;
   display: flex;
@@ -36,9 +36,6 @@ export const Sidebar = styled.div`
   justify-content: space-between;
   padding: 8px 0;
   box-sizing: border-box;
-  @media screen and (min-width: 820px) {
-    width: 30vw;
-  }
 `;
 export const Img = styled.img`
   width: 50px;

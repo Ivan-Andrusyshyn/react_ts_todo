@@ -13,7 +13,7 @@ export const Name = styled.h3`
 
 export const Container = styled.div<ContainerProps>`
   height: 50px;
-  width: 15vw;
+  width: 24vw;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -38,8 +38,8 @@ export const Container = styled.div<ContainerProps>`
             background: #fafafa;
           `};
   }
-  @media screen and (min-width: 820px) {
-    width: 24vw;
+  @media screen and (min-width: 920px) {
+    width: 15vw;
   }
 `;
 

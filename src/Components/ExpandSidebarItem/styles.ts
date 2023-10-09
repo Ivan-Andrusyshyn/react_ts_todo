@@ -12,7 +12,7 @@ export const Name = styled.h3`
 `;
 export const OuterContainer = styled.div<ContainerProps>`
   height: 50px;
-  width: 15vw;
+  width: 24vw;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
@@ -31,14 +31,14 @@ export const OuterContainer = styled.div<ContainerProps>`
       height: 200px;
     `};
   margin: 0;
-  @media screen and (min-width: 820px) {
-    width: 24vw;
+  @media screen and (min-width: 920px) {
+    width: 15vw;
   }
 `;
 
 export const Container = styled.div<ContainerProps>`
   height: 40px;
-  width: 15vw;
+  width: 24vw;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -63,8 +63,8 @@ export const Container = styled.div<ContainerProps>`
             background: #fafafa;
           `};
   }
-  @media screen and (min-width: 820px) {
-    width: 24vw;
+  @media screen and (min-width: 920px) {
+    width: 15vw;
   }
 `;
 
@@ -87,7 +87,7 @@ export const Arrow = styled.img<ContainerProps>`
 
 export const CatArea = styled.div<ContainerProps>`
   display: flex;
-  width: 15vw;
+  width: 24vw;
   height: auto;
   border-radius: 8px;
   flex-direction: column;
@@ -117,8 +117,8 @@ export const CatArea = styled.div<ContainerProps>`
       max-height: 0;
       opacity: 0;
     `};
-  @media screen and (min-width: 820px) {
-    width: 24vw;
+  @media screen and (min-width: 920px) {
+    width: 15vw;
   }
 `;
 
