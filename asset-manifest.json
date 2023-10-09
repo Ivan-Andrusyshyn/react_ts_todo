@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.js": "/react_ts_todo/static/js/main.85020769.js",
+    "main.js": "/react_ts_todo/static/js/main.d2a84df9.js",
     "static/js/383.e672c649.chunk.js": "/react_ts_todo/static/js/383.e672c649.chunk.js",
-    "static/js/754.8863b117.chunk.js": "/react_ts_todo/static/js/754.8863b117.chunk.js",
-    "static/js/466.c7e8d8cc.chunk.js": "/react_ts_todo/static/js/466.c7e8d8cc.chunk.js",
+    "static/js/754.03d349c8.chunk.js": "/react_ts_todo/static/js/754.03d349c8.chunk.js",
+    "static/js/466.f6eacb78.chunk.js": "/react_ts_todo/static/js/466.f6eacb78.chunk.js",
     "static/js/777.b582e875.chunk.js": "/react_ts_todo/static/js/777.b582e875.chunk.js",
     "static/js/861.e0ca37e9.chunk.js": "/react_ts_todo/static/js/861.e0ca37e9.chunk.js",
     "static/js/168.d8e0a227.chunk.js": "/react_ts_todo/static/js/168.d8e0a227.chunk.js",
@@ -18,16 +18,16 @@
     "static/media/logout.svg": "/react_ts_todo/static/media/logout.939fc1a552ef6818533f62bb0c4841bc.svg",
     "static/media/edit.svg": "/react_ts_todo/static/media/edit.b0860e7ee9377be4315000ab81ca80d4.svg",
     "static/media/erase.svg": "/react_ts_todo/static/media/erase.5d8cfcdbd79b805755a560ebfa32f149.svg",
-    "main.85020769.js.map": "/react_ts_todo/static/js/main.85020769.js.map",
+    "main.d2a84df9.js.map": "/react_ts_todo/static/js/main.d2a84df9.js.map",
     "383.e672c649.chunk.js.map": "/react_ts_todo/static/js/383.e672c649.chunk.js.map",
-    "754.8863b117.chunk.js.map": "/react_ts_todo/static/js/754.8863b117.chunk.js.map",
-    "466.c7e8d8cc.chunk.js.map": "/react_ts_todo/static/js/466.c7e8d8cc.chunk.js.map",
+    "754.03d349c8.chunk.js.map": "/react_ts_todo/static/js/754.03d349c8.chunk.js.map",
+    "466.f6eacb78.chunk.js.map": "/react_ts_todo/static/js/466.f6eacb78.chunk.js.map",
     "777.b582e875.chunk.js.map": "/react_ts_todo/static/js/777.b582e875.chunk.js.map",
     "861.e0ca37e9.chunk.js.map": "/react_ts_todo/static/js/861.e0ca37e9.chunk.js.map",
     "168.d8e0a227.chunk.js.map": "/react_ts_todo/static/js/168.d8e0a227.chunk.js.map",
     "537.c3c9d25e.chunk.js.map": "/react_ts_todo/static/js/537.c3c9d25e.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.85020769.js"
+    "static/js/main.d2a84df9.js"
   ]
 }
