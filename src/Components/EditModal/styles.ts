@@ -24,6 +24,9 @@ export const Container = styled.div`
   justify-content: space-between;
   padding-top: 32px;
   padding-bottom: 8px;
+  @media screen and (min-width: 920px) {
+    width: 350px;
+  }
 `;
 export const Buttons = styled.div`
   display: flex;

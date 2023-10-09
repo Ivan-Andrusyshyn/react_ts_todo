@@ -27,8 +27,7 @@ export const Container = styled.div`
   padding-top: 32px;
   padding-bottom: 8px;
   @media screen and (min-width: 920px) {
-    width: 120px;
-    font-size: 20px;
+    width: 350px;
   }
 `;
 

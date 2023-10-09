@@ -153,7 +153,7 @@ export const Backdrop = styled.div`
 export const FormModal = styled.div`
   background-color: #fff;
   position: absolute;
-  width: 200px;
+  width: 250px;
   border-radius: 6px;
   z-index: 222;
   left: 180px;
@@ -179,7 +179,7 @@ export const ModalOverlay = styled.div`
 export const CategoryForm = styled.form`
   margin-top: 10px;
   display: flex;
-  gap: 5px;
+  gap: 10px;
   flex-direction: column;
   align-items: flex-start;
   padding: 0 5px;
@@ -216,6 +216,7 @@ export const FormBtn = styled.button`
   width: 100%;
   font-weight: 700;
   color: #777;
+  height: 25px;
   letter-spacing: 0.1em;
   cursor: pointer;
 `;
