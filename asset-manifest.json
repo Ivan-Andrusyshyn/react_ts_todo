@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/react_ts_todo/static/js/main.4075cf53.js",
+    "main.js": "/react_ts_todo/static/js/main.cd7fc72c.js",
     "static/js/383.0d5cf115.chunk.js": "/react_ts_todo/static/js/383.0d5cf115.chunk.js",
     "static/js/754.03d349c8.chunk.js": "/react_ts_todo/static/js/754.03d349c8.chunk.js",
     "static/js/466.f6eacb78.chunk.js": "/react_ts_todo/static/js/466.f6eacb78.chunk.js",
     "static/js/777.b582e875.chunk.js": "/react_ts_todo/static/js/777.b582e875.chunk.js",
     "static/js/861.e0ca37e9.chunk.js": "/react_ts_todo/static/js/861.e0ca37e9.chunk.js",
     "static/js/168.d8e0a227.chunk.js": "/react_ts_todo/static/js/168.d8e0a227.chunk.js",
-    "static/js/537.23755dfb.chunk.js": "/react_ts_todo/static/js/537.23755dfb.chunk.js",
+    "static/js/537.3c53c02e.chunk.js": "/react_ts_todo/static/js/537.3c53c02e.chunk.js",
     "static/media/Logo.png": "/react_ts_todo/static/media/Logo.05e43b7acec6a61f03a8.png",
     "static/media/settings.svg": "/react_ts_todo/static/media/settings.277a42f70ad6194c59548d9cea38d26b.svg",
     "static/media/folder.svg": "/react_ts_todo/static/media/folder.45458411f5135d84197480578297bbe4.svg",
@@ -18,16 +18,16 @@
     "static/media/logout.svg": "/react_ts_todo/static/media/logout.939fc1a552ef6818533f62bb0c4841bc.svg",
     "static/media/edit.svg": "/react_ts_todo/static/media/edit.b0860e7ee9377be4315000ab81ca80d4.svg",
     "static/media/erase.svg": "/react_ts_todo/static/media/erase.5d8cfcdbd79b805755a560ebfa32f149.svg",
-    "main.4075cf53.js.map": "/react_ts_todo/static/js/main.4075cf53.js.map",
+    "main.cd7fc72c.js.map": "/react_ts_todo/static/js/main.cd7fc72c.js.map",
     "383.0d5cf115.chunk.js.map": "/react_ts_todo/static/js/383.0d5cf115.chunk.js.map",
     "754.03d349c8.chunk.js.map": "/react_ts_todo/static/js/754.03d349c8.chunk.js.map",
     "466.f6eacb78.chunk.js.map": "/react_ts_todo/static/js/466.f6eacb78.chunk.js.map",
     "777.b582e875.chunk.js.map": "/react_ts_todo/static/js/777.b582e875.chunk.js.map",
     "861.e0ca37e9.chunk.js.map": "/react_ts_todo/static/js/861.e0ca37e9.chunk.js.map",
     "168.d8e0a227.chunk.js.map": "/react_ts_todo/static/js/168.d8e0a227.chunk.js.map",
-    "537.23755dfb.chunk.js.map": "/react_ts_todo/static/js/537.23755dfb.chunk.js.map"
+    "537.3c53c02e.chunk.js.map": "/react_ts_todo/static/js/537.3c53c02e.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.4075cf53.js"
+    "static/js/main.cd7fc72c.js"
   ]
 }
