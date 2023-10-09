@@ -25,7 +25,15 @@ export const CategoriesContextProvider: React.FC<ChildrenProps> = ({
   }, [categList]);
 
   const addCategory = (newCategory: CategorieProps) => {
-    setCategList([...categList, newCategory]);
+    const isCategoryExists = categList.some(
+      (existingCategory) => existingCategory.name === newCategory.name
+    );
+    if (isCategoryExists) {
+      console.log("You can not create category with this name !");
+      return;
+    } else {
+      setCategList([...categList, newCategory]);
+    }
   };
 
   const editCategory = (

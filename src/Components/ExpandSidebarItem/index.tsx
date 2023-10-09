@@ -37,6 +37,7 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
   }, [error]);
   const addNewCategory = (e: React.FormEvent) => {
     e.preventDefault();
+
     if (!title) {
       setError("Please enter category");
       return;
@@ -54,6 +55,13 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
       name: title,
       color: color,
     };
+    const isCategoryExists = categList.some(
+      (existingCategory) => existingCategory.name === category.name
+    );
+    if (isCategoryExists) {
+      setError(`Category with name ${title} exist !`);
+      return;
+    }
     addCategory(category);
     setTitle("");
     setColor("");
