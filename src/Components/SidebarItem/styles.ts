@@ -38,6 +38,9 @@ export const Container = styled.div<ContainerProps>`
             background: #fafafa;
           `};
   }
+  @media screen and (min-width: 820px) {
+    width: 24vw;
+  }
 `;
 
 export const Icon = styled.img`

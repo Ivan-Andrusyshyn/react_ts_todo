@@ -25,26 +25,27 @@ const CategoryEditForm: React.FC<CategoryEditFormProps> = ({
   };
 
   return (
-    <S.CategoryForm action="" onSubmit={handleSave}>
-      <S.TitleInput
-        value={editedName}
-        type="text"
-        maxLength={10}
-        onChange={(e) => setEditedName(e.target.value)}
-      />
-      <S.ColorInputWrapper>
-        <S.ColorInput
-          value={editedColor}
-          type="color"
-          onChange={(e) => setEditedColor(e.target.value)}
+    <>
+      <S.CategoryForm action="" onSubmit={handleSave}>
+        <S.TitleInput
+          value={editedName}
+          type="text"
+          maxLength={10}
+          onChange={(e) => setEditedName(e.target.value)}
         />
-        <span>{editedColor ? editedColor : "Choose color"}</span>
-      </S.ColorInputWrapper>
-      <S.BtnWrapper>
-        <S.FormBtn type="submit">Edit</S.FormBtn>
-        <S.FormBtn onClick={() => onCancel(!openModal)}>Cancel</S.FormBtn>
-      </S.BtnWrapper>
-    </S.CategoryForm>
+        <S.ColorInputWrapper>
+          <S.ColorInput
+            value={editedColor}
+            type="color"
+            onChange={(e) => setEditedColor(e.target.value)}
+          />
+          <span>{editedColor ? editedColor : "Choose color"}</span>
+        </S.ColorInputWrapper>
+        <S.BtnWrapper>
+          <S.FormBtn type="submit">Edit</S.FormBtn>
+        </S.BtnWrapper>
+      </S.CategoryForm>
+    </>
   );
 };
 

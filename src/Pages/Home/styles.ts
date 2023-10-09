@@ -36,6 +36,9 @@ export const Sidebar = styled.div`
   justify-content: space-between;
   padding: 8px 0;
   box-sizing: border-box;
+  @media screen and (min-width: 820px) {
+    width: 30vw;
+  }
 `;
 export const Img = styled.img`
   width: 50px;

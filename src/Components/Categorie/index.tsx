@@ -25,7 +25,7 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
     CategoriesContext
   ) as CategorieContextType;
   const [editedName, setEditedName] = useState<string>("");
-  const [editedColor, setEditedColor] = useState<string>("");
+  const [editedColor, setEditedColor] = useState<string>("#fff");
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [modalOpenForm, setModalOpenForm] = useState<boolean>(false);
 
@@ -72,6 +72,7 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
     if (e.currentTarget === e.target) {
+      setModalOpenForm(!modalOpenForm);
       setIsOpen(false);
     }
   };

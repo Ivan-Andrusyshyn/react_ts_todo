@@ -60,12 +60,10 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
     setShowForm(false);
   };
 
-  const handleCancel = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    if (e.currentTarget.id === "close") {
-      setTitle("");
-      setShowForm(false);
-      setColor("");
-    }
+  const handleCancel = () => {
+    setTitle("");
+    setShowForm(false);
+    setColor("");
   };
 
   return (

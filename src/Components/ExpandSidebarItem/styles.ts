@@ -31,6 +31,9 @@ export const OuterContainer = styled.div<ContainerProps>`
       height: 200px;
     `};
   margin: 0;
+  @media screen and (min-width: 820px) {
+    width: 24vw;
+  }
 `;
 
 export const Container = styled.div<ContainerProps>`
@@ -59,6 +62,9 @@ export const Container = styled.div<ContainerProps>`
         : css`
             background: #fafafa;
           `};
+  }
+  @media screen and (min-width: 820px) {
+    width: 24vw;
   }
 `;
 
@@ -111,6 +117,9 @@ export const CatArea = styled.div<ContainerProps>`
       max-height: 0;
       opacity: 0;
     `};
+  @media screen and (min-width: 820px) {
+    width: 24vw;
+  }
 `;
 
 export const AddArea = styled.button`
@@ -187,7 +196,10 @@ export const TitleInput = styled.input`
   width: 100%;
 `;
 export const FormBtn = styled.button`
-  width: 75px;
+  width: 100%;
+  font-weight: 700;
+  color: #777;
+  letter-spacing: 0.1em;
   cursor: pointer;
 `;
 export const BtnWrapper = styled.div`

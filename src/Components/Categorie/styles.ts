@@ -10,8 +10,29 @@ export const Categorie = styled.li`
   position: relative;
   align-items: center;
   position: relative;
+  overflow-x: auto;
   gap: 8px;
   transition: transform 0.25s linear;
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb:vertical {
+    display: none;
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
 `;
 export const ColorTag = styled.div<ColorTagProps>`
   height: 14px;
@@ -133,12 +154,16 @@ export const TitleInput = styled.input`
   width: 100%;
 `;
 export const FormBtn = styled.button`
-  width: 75px;
+  width: 100%;
+  font-weight: 700;
+  color: #777;
+  letter-spacing: 0.1em;
   cursor: pointer;
 `;
 export const BtnWrapper = styled.div`
   display: flex;
   width: 100%;
+  color: #777;
   gap: 20px;
   justify-content: center;
 `;

@@ -4,7 +4,7 @@ interface PropsSidebarForm {
   error: string;
   setShowForm: (arg: boolean) => void;
   color: string;
-  handleCancel: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  handleCancel: () => void;
   setColor: (arg: string) => void;
   setTitle: (arg: string) => void;
   title: string;
@@ -25,6 +25,7 @@ const SidebarItemForm: React.FC<PropsSidebarForm> = ({
   ) => {
     if (e.target === e.currentTarget) {
       setShowForm(false);
+      handleCancel();
     }
   };
   return (
@@ -50,9 +51,6 @@ const SidebarItemForm: React.FC<PropsSidebarForm> = ({
           </S.ColorInputWrapper>
           <S.BtnWrapper>
             <S.FormBtn type="submit">Add</S.FormBtn>
-            <S.FormBtn onClick={handleCancel} id="close">
-              Cancel
-            </S.FormBtn>
           </S.BtnWrapper>
         </S.CategoryForm>
       </S.FormModal>
