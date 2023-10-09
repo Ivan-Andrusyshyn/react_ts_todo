@@ -1,5 +1,7 @@
-import styled from "styled-components";
-
+import styled, { css } from "styled-components";
+interface propsInputAuth {
+  error: string;
+}
 export const Img = styled.img`
   width: 30vw;
 `;
@@ -66,7 +68,7 @@ export const FieldName = styled.h2`
   margin-left: 0;
 `;
 
-export const InputField = styled.input`
+export const InputField = styled.input<propsInputAuth>`
   width: 25vw;
   height: 40px;
   border-radius: 8px;
@@ -75,14 +77,25 @@ export const InputField = styled.input`
   font-size: 16px;
   color: #777;
   box-sizing: border-box;
+  &::placeholder {
+    color: #bbb;
+  }
+  &::placeholder {
+    ${(props) =>
+      props.error &&
+      css`
+        color: red;
+      `};
+  }
+  ${(props) =>
+    props.error &&
+    css`
+      border: 1px solid red;
+    `};
 
   &:focus {
     border: 1px solid #999;
     outline: none;
-  }
-
-  &::placeholder {
-    color: #bbb;
   }
 `;
 

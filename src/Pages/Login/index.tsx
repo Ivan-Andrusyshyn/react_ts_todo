@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import * as S from "./styles";
 import Logo from "../../Img/Logo.png";
 import { Link } from "react-router-dom";
@@ -11,13 +11,21 @@ const Login: React.FC = () => {
   const { handleLogin, isLoading, isError, setIsError } = useContext(
     AuthContext
   ) as AuthType;
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
+  useEffect(() => {
+    const newTimeOut = setTimeout(() => {
+      setError("");
+    }, 2000);
+    return () => {
+      clearTimeout(newTimeOut);
+    };
+  }, [error]);
   function handleLoginClick(e: React.MouseEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!email || !password) {
-      setIsError("Please fill in all fields.");
+      setError("Please enter");
       return;
     }
     handleLogin(email, password);
@@ -46,17 +54,19 @@ const Login: React.FC = () => {
           <S.InputField
             autoComplete="username"
             value={email}
+            error={error}
             id="email"
             onChange={handleEmail}
-            placeholder="Insert your email"
+            placeholder={error ? `${error} email.` : "Insert your email"}
           ></S.InputField>
           <S.FieldName>Password</S.FieldName>
           <S.InputField
             value={password}
             id="password"
             onChange={handlePassword}
-            placeholder="Insert your password"
+            placeholder={error ? `${error} password.` : "Insert your password"}
             type="password"
+            error={error}
             autoComplete="current-password"
           ></S.InputField>
           <S.KeepSigned>

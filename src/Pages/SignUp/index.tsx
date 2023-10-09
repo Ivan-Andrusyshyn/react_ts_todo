@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import AuthContext from "../../Contexts/authContext";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Logo from "../../Img/Logo.png";
 import * as S from "./styles";
 import LoaderInButton from "../../Components/AuthLoader/AuthLoader";
@@ -14,7 +14,16 @@ const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState<string>("");
 
+  useEffect(() => {
+    const newTimeOut = setTimeout(() => {
+      setError("");
+    }, 2000);
+    return () => {
+      clearTimeout(newTimeOut);
+    };
+  }, [error]);
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
   };
@@ -30,7 +39,7 @@ const SignUp = () => {
   const handleSignUpClick = (e: React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name || !email || !password) {
-      setIsError("Please fill in all fields.");
+      setError("Please enter");
       return;
     }
     registration(email, password, name);
@@ -51,24 +60,27 @@ const SignUp = () => {
           <S.InputField
             value={name}
             id="name"
+            error={error}
             onChange={handleNameChange}
-            placeholder="Create your name"
+            placeholder={error ? `${error} name.` : "Create your name"}
           ></S.InputField>
           <S.FieldName>Email</S.FieldName>
           <S.InputField
             value={email}
             id="email"
+            error={error}
             autoComplete="username"
             onChange={handleEmailChange}
-            placeholder="Insert your email"
+            placeholder={error ? `${error} email.` : "Insert your email"}
           ></S.InputField>
           <S.FieldName>Password</S.FieldName>
           <S.InputField
             value={password}
             id="password"
+            error={error}
             autoComplete="current-password"
             onChange={handlePasswordChange}
-            placeholder="Insert your password"
+            placeholder={error ? `${error} password.` : "Insert your password"}
             type="password"
           ></S.InputField>
           <S.KeepSigned>
