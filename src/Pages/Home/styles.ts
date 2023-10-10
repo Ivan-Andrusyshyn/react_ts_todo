@@ -112,14 +112,21 @@ export const UserForm = styled.form`
 export const UserInput = styled.input`
   padding: 5px 0 5px 10px;
   border-radius: 6px;
+  transition: border-color 0.3s, outline-color 0.3s;
   border: 1px solid #777;
+  color: #666;
+  &:focus {
+    border-color: #bdbdbd;
+    outline: #bdbdbd;
+  }
 `;
 export const UserBtn = styled.button`
   padding: 5px 10px;
   border: 1px solid #777;
   border-radius: 6px;
+  transition: background-color 0.3s linear;
   cursor: pointer;
-  &:focus {
-    border: 1px solid #777;
+  &:hover {
+    background-color: #bdbdbd;
   }
 `;
