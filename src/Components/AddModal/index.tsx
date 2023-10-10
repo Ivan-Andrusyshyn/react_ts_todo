@@ -6,7 +6,9 @@ import { TaskListContext } from "../../Contexts/taskListContext";
 import { TaskProps, TaskListType } from "../../Contexts/typesContext/taskType";
 import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
-
+import Arrow from "../../Img/arrow.svg";
+import Calendar from "../Calendar/Calendar";
+import { compareAsc, format } from "date-fns";
 const AddModal: React.FC = () => {
   const { addTask } = useContext(TaskListContext) as TaskListType;
   const { categList } = useContext(CategoriesContext) as CategorieContextType;
@@ -15,6 +17,8 @@ const AddModal: React.FC = () => {
   const [taskName, setTaskName] = useState<string>("");
   const [taskCat, setTaskCat] = useState(0);
   const [error, setError] = useState<string>("");
+  const [selectedDate, setSelectedDate] = useState<number | Date>(new Date()); // Инициализируем выбранную дату как null
+  const [showCalendar, setShowCalendar] = useState(false);
   function handleTyping(event: React.ChangeEvent<HTMLInputElement>) {
     setTaskName(event.target.value);
   }
@@ -41,6 +45,7 @@ const AddModal: React.FC = () => {
         categorie: categList[taskCat].name,
         color: categList[taskCat].color,
         done: false,
+        date: selectedDate,
       };
       setShowAdd(false);
       addTask(newTask);
@@ -48,14 +53,24 @@ const AddModal: React.FC = () => {
       console.error("Invalid category selected");
     }
   }
-
+  const closeModalCalendar = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    if (e.target === e.currentTarget) {
+      setShowCalendar(false);
+    }
+  };
   function handleChange(event: React.ChangeEvent<HTMLSelectElement>) {
     const isNumber = Number(event.target.value);
     setTaskCat(isNumber);
   }
-
   return (
     <S.Background>
+      {showCalendar && (
+        <S.ModalOverlay onClick={closeModalCalendar}>
+          <Calendar setSelectedDate={setSelectedDate} />
+        </S.ModalOverlay>
+      )}
       <S.Container>
         <S.Text>Insert name</S.Text>
         <S.TitleInput
@@ -64,6 +79,14 @@ const AddModal: React.FC = () => {
           onChange={handleTyping}
           value={taskName}
         />
+
+        <S.DatePicker
+          isActive={showCalendar}
+          onClick={() => setShowCalendar(true)}
+        >
+          {format(selectedDate, "yyyy-MM-dd")}
+          <S.Arrow isActive={showCalendar} src={Arrow} />
+        </S.DatePicker>
         <S.Text>Select a categorie</S.Text>
         <S.Select id="select" onChange={handleChange}>
           {categList.map((cat, i) => (

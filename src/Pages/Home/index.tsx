@@ -47,7 +47,7 @@ const Home: React.FC = () => {
   };
   useEffect(() => {
     if (categList) {
-      const nameNav = categList[0].name;
+      const nameNav = categList[0]?.name;
       navigate("/categorie/" + nameNav);
     }
   }, []);
@@ -111,6 +111,7 @@ const Home: React.FC = () => {
             list={task.categorie}
             color={task.color}
             done={task.done}
+            date={task.date}
           />
         ))}
         <AddTask></AddTask>

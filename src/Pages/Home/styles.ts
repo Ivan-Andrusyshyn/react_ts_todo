@@ -8,6 +8,7 @@ export const Backdrop = styled.div`
   height: 100%;
   top: 0;
   left: 0;
+  z-index: 999;
   background-color: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(4px);
 `;

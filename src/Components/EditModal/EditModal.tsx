@@ -4,15 +4,18 @@ import { TaskListContext } from "../../Contexts/taskListContext";
 import { TaskProps, TaskListType } from "../../Contexts/typesContext/taskType";
 import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
-import { ActionMeta, InputActionMeta } from "react-select";
-import Select from "react-select/dist/declarations/src/Select";
 import { DeleteContext } from "../../Contexts/delete_edit_Context";
 import { DeleteType } from "../../Contexts/typesContext/delete_edit_Type";
+import Calendar from "../Calendar/Calendar";
+import { format } from "date-fns";
+import Arrow from "../../Img/arrow.svg";
 
 const EditModal: React.FC = () => {
   const { editTask, taskList } = useContext(TaskListContext) as TaskListType;
   const { setShowEdit, id } = useContext(DeleteContext) as DeleteType;
   const { categList } = useContext(CategoriesContext) as CategorieContextType;
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<number | Date>(new Date()); // Инициализируем выбранную дату как null
 
   const [taskName, setTaskName] = useState("");
   const [taskCat, setTaskCat] = useState(
@@ -28,6 +31,7 @@ const EditModal: React.FC = () => {
 
   function handleEdit() {
     taskCat[0].title = taskName;
+    taskCat[0].date = selectedDate;
     editTask(id, taskCat[0]);
     setShowEdit(false);
   }
@@ -35,9 +39,20 @@ const EditModal: React.FC = () => {
     const oldName = taskCat[0].title;
     setTaskName(oldName);
   }, [taskList]);
-
+  const closeModalCalendar = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    if (e.target === e.currentTarget) {
+      setShowCalendar(false);
+    }
+  };
   return (
     <S.Background>
+      {showCalendar && (
+        <S.ModalOverlay onClick={closeModalCalendar}>
+          <Calendar setSelectedDate={setSelectedDate} />
+        </S.ModalOverlay>
+      )}
       <S.Container>
         <S.Text>Edit name</S.Text>
         <S.TitleInput
@@ -45,6 +60,13 @@ const EditModal: React.FC = () => {
           onChange={handleTyping}
           value={taskName}
         />
+        <S.DatePicker
+          isActive={showCalendar}
+          onClick={() => setShowCalendar(true)}
+        >
+          {format(selectedDate, "yyyy-MM-dd")}
+          <S.Arrow isActive={showCalendar} src={Arrow} />
+        </S.DatePicker>
         <S.Text>Category</S.Text>
         <S.Select id="select">
           <option>{taskCat[0].categorie}</option>

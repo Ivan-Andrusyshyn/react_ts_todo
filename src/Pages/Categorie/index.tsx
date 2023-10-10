@@ -3,13 +3,6 @@ import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import * as S from "./styles";
-import Logo from "../../Img/Logo.png";
-import TaskFill from "../../Img/task.png";
-import Settings from "../../Img/settings.svg";
-import Folder from "../../Img/folder.svg";
-import Logout from "../../Img/logout.svg";
-import SidebarItem from "../../Components/SidebarItem";
-import ExpandSidebarItem from "../../Components/ExpandSidebarItem";
 import TaskCard from "../../Components/TaskCard";
 import AddTask from "../../Components/AddTask";
 import { TaskListContext } from "../../Contexts/taskListContext";
@@ -114,6 +107,7 @@ const CategoriePage: React.FC = () => {
             list={task.categorie}
             color={task.color}
             done={task.done}
+            date={task.date}
           />
         ))}
         <AddTask></AddTask>

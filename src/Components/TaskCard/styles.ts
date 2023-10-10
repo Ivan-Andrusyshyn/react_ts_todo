@@ -9,7 +9,7 @@ interface DoneProps {
 }
 
 export const Container = styled.div`
-  height: 60px;
+  height: 65px;
   width: 80vw;
   background: white;
   border-radius: 16px;
@@ -25,6 +25,8 @@ export const Container = styled.div`
 export const Name = styled.h2<DoneProps>`
   font-size: 16px;
   color: #555;
+  display: flex;
+  gap: 10px;
   margin: 8px 16px;
   font-weight: 500;
 
@@ -66,7 +68,9 @@ export const CheckField = styled.div`
 `;
 export const Description = styled.div`
   height: 60px;
-  width: 50vw;
+  width: 55vw;
+  display: flex;
+  flex-direction: column;
   padding: 6px 8px;
   box-sizing: border-box;
   @media screen and (min-width: 920px) {
@@ -136,4 +140,17 @@ export const CheckFill = styled.div<DoneProps>`
     height: 20px;
     width: 20px;
   }
+`;
+export const TermDate = styled.span<DoneProps>`
+  color: #777;
+  font-weight: 600;
+  font-size: 12px;
+  margin-left: 50px;
+  ${(props) =>
+    props.done &&
+    css`
+      color: red;
+      font-weight: 400;
+      opacity: 0.6;
+    `}
 `;

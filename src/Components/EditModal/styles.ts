@@ -1,5 +1,7 @@
-import styled from "styled-components";
-
+import styled, { css } from "styled-components";
+interface ContainerProps {
+  isActive: boolean;
+}
 export const Background = styled.div`
   width: 100vw;
   height: 100vh;
@@ -120,4 +122,45 @@ export const Text = styled.p`
   @media screen and (min-width: 920px) {
     font-size: 20px;
   }
+`;
+export const DatePicker = styled.span<ContainerProps>`
+  display: flex;
+  color: #777;
+  padding: 10px;
+  border: 1px solid #777;
+  width: 240px;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+  align-items: center;
+  transition: color, border 0.3s linear;
+  ${(props) =>
+    props.isActive &&
+    css`
+      color: #bdbdbd;
+      border: 1px solid #bedbb0;
+    `};
+`;
+export const ModalOverlay = styled.div`
+  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+`;
+export const Arrow = styled.img<ContainerProps>`
+  width: 14px;
+  cursor: pointer;
+  transition: transform 0.3s linear;
+  ${(props) =>
+    props.isActive &&
+    css`
+      transform: rotate(180deg);
+    `};
+  margin: 4px 24px;
 `;

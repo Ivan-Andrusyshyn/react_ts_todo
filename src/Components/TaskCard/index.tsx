@@ -6,6 +6,7 @@ import { TaskListContext } from "../../Contexts/taskListContext";
 import { TaskListType } from "../../Contexts/typesContext/taskType";
 import { DeleteContext } from "../../Contexts/delete_edit_Context";
 import { DeleteType } from "../../Contexts/typesContext/delete_edit_Type";
+import { format, isBefore } from "date-fns";
 
 interface TaskCardProps {
   id: number;
@@ -13,9 +14,17 @@ interface TaskCardProps {
   list: string;
   color: string;
   done: boolean;
+  date: number | Date;
 }
 
-const TaskCard: React.FC<TaskCardProps> = ({ id, name, list, color, done }) => {
+const TaskCard: React.FC<TaskCardProps> = ({
+  id,
+  name,
+  list,
+  color,
+  done,
+  date,
+}) => {
   const { setShowDelete, setShowEdit, setId } = useContext(
     DeleteContext
   ) as DeleteType;
@@ -28,10 +37,14 @@ const TaskCard: React.FC<TaskCardProps> = ({ id, name, list, color, done }) => {
     setShowEdit(true);
     setId(id);
   };
-  function handleDelete() {
+  const handleDelete = () => {
     setShowDelete(true);
     setId(id);
-  }
+  };
+  const dateConvertation = (): string => {
+    const dateObject = new Date(date);
+    return format(dateObject, "yyyy-MM-dd");
+  };
   return (
     <S.Container>
       <S.CheckField>
@@ -41,9 +54,13 @@ const TaskCard: React.FC<TaskCardProps> = ({ id, name, list, color, done }) => {
       </S.CheckField>
       <S.Description>
         <S.Name done={done}>{name}</S.Name>
+
         <S.ListBelong>
           <S.ColorTag color={color} />
           <S.ListName>{list}</S.ListName>
+          <S.TermDate done={isBefore(new Date(date), new Date())}>
+            Deadline: {dateConvertation()}
+          </S.TermDate>
         </S.ListBelong>
       </S.Description>
 

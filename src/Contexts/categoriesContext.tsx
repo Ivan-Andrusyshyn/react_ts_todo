@@ -3,6 +3,7 @@ import {
   CategorieProps,
   CategorieContextType,
 } from "./typesContext/categoriesType";
+import { nanoid } from "nanoid";
 
 interface ChildrenProps {
   children: React.ReactNode;
@@ -15,9 +16,16 @@ export const CategoriesContext = createContext<CategorieContextType | null>(
 export const CategoriesContextProvider: React.FC<ChildrenProps> = ({
   children,
 }) => {
+  const category = [
+    {
+      id: nanoid(),
+      name: "testCategory",
+      color: "#BDBDBD",
+    },
+  ];
   const [categList, setCategList] = useState<CategorieProps[]>(() => {
     const savedCategories = localStorage.getItem("categories");
-    return savedCategories ? JSON.parse(savedCategories) : [];
+    return savedCategories ? JSON.parse(savedCategories) : [...category];
   });
 
   useEffect(() => {

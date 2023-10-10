@@ -4,6 +4,7 @@ export interface TaskProps {
   done: boolean;
   categorie: string;
   color: string;
+  date: number | Date;
 }
 export interface UserDataProps {
   email: string | null;
