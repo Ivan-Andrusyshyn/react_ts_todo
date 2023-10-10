@@ -48,7 +48,9 @@ const Home: React.FC = () => {
   useEffect(() => {
     if (categList) {
       const nameNav = categList[0]?.name;
-      navigate("/categorie/" + nameNav);
+      if (nameNav) {
+        navigate("/categorie/" + nameNav);
+      }
     }
   }, []);
   const isTablet = useMediaQuery({ minWidth: 320, maxWidth: 920 });

@@ -23,6 +23,7 @@ export const Page = styled.div`
   height: 100vh;
   display: flex;
   flex: row;
+  justify-content: center;
   background-color: #f5f5f5;
 `;
 
