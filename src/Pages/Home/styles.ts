@@ -101,6 +101,23 @@ export const UserName = styled.p`
   justify-content: center;
   cursor: pointer;
   font-weight: 700;
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0;
+    background-color: #bdbdbd;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
 `;
 export const UserIcon = styled(FontAwesomeIcon)`
   margin-right: 0.5rem;
