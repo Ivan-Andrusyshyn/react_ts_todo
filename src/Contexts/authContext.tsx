@@ -41,6 +41,25 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
     }, 2000);
     return () => clearTimeout(errorTimeout);
   }, [isError]);
+  const changeUserName = async (newName: string) => {
+    setIsLoading(true);
+    try {
+      const user = auth.currentUser;
+      if (user) {
+        const updatedUserData: UserDataProps = {
+          userName: newName,
+          email: userData?.email || null,
+        };
+
+        await updateProfile(user, { displayName: newName });
+        setUserData(updatedUserData);
+      }
+    } catch (error) {
+      setIsError("Error updating user name: " + error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const signInWithGoogle = async () => {
     setIsLoading(true);
@@ -106,6 +125,7 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
         isLoading,
         isError,
         setIsError,
+        changeUserName,
       }}
     >
       {children}

@@ -17,5 +17,6 @@ type AuthType = {
     name: string
   ) => Promise<void>;
   isLoading: boolean;
+  changeUserName: (newName: string) => void;
 };
 export type { AuthType, UserDataProps };

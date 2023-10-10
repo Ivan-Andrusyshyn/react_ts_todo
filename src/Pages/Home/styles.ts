@@ -99,8 +99,27 @@ export const UserName = styled.p`
   color: #777;
   display: flex;
   justify-content: center;
+  cursor: pointer;
   font-weight: 700;
 `;
 export const UserIcon = styled(FontAwesomeIcon)`
   margin-right: 0.5rem;
+`;
+export const UserForm = styled.form`
+  display: flex;
+  gap: 5px;
+`;
+export const UserInput = styled.input`
+  padding: 5px 0 5px 10px;
+  border-radius: 6px;
+  border: 1px solid #777;
+`;
+export const UserBtn = styled.button`
+  padding: 5px 10px;
+  border: 1px solid #777;
+  border-radius: 6px;
+  cursor: pointer;
+  &:focus {
+    border: 1px solid #777;
+  }
 `;
