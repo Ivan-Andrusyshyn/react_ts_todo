@@ -3,8 +3,7 @@ import {
   CategorieProps,
   CategorieContextType,
 } from "./typesContext/categoriesType";
-import { nanoid } from "nanoid";
-
+import { v4 as uuidv4 } from "uuid";
 interface ChildrenProps {
   children: React.ReactNode;
 }
@@ -18,7 +17,7 @@ export const CategoriesContextProvider: React.FC<ChildrenProps> = ({
 }) => {
   const category = [
     {
-      id: nanoid(),
+      id: uuidv4(),
       name: "testCategory",
       color: "#BDBDBD",
     },

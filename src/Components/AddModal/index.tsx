@@ -8,11 +8,14 @@ import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
 import Arrow from "../../Img/arrow.svg";
 import Calendar from "../Calendar/Calendar";
+
 import { compareAsc, format } from "date-fns";
+import { useTranslation } from "react-i18next";
 const AddModal: React.FC = () => {
   const { addTask } = useContext(TaskListContext) as TaskListType;
   const { categList } = useContext(CategoriesContext) as CategorieContextType;
   const { setShowAdd } = useContext(AddContext) as AddType;
+  const { t } = useTranslation();
 
   const [taskName, setTaskName] = useState<string>("");
   const [taskCat, setTaskCat] = useState(0);
@@ -72,10 +75,10 @@ const AddModal: React.FC = () => {
         </S.ModalOverlay>
       )}
       <S.Container>
-        <S.Text>Insert name</S.Text>
+        <S.Text>{t("mdlAdInp")}</S.Text>
         <S.TitleInput
           error={error}
-          placeholder={error ? error : "Task name"}
+          placeholder={error ? error : t("mdlAdInpPlch")}
           onChange={handleTyping}
           value={taskName}
         />
@@ -87,7 +90,7 @@ const AddModal: React.FC = () => {
           {format(selectedDate, "yyyy-MM-dd")}
           <S.Arrow isActive={showCalendar} src={Arrow} />
         </S.DatePicker>
-        <S.Text>Select a categorie</S.Text>
+        <S.Text>{t("mdlAdOpt")}</S.Text>
         <S.Select id="select" onChange={handleChange}>
           {categList.map((cat, i) => (
             <option value={i} key={cat.id}>
@@ -96,8 +99,10 @@ const AddModal: React.FC = () => {
           ))}
         </S.Select>
         <S.Buttons>
-          <S.AddButton onClick={handleAdd}>Add</S.AddButton>
-          <S.CancelButton onClick={handleCancel}>Cancel</S.CancelButton>
+          <S.AddButton onClick={handleAdd}>{t("mdlAdBtnAdd")}</S.AddButton>
+          <S.CancelButton onClick={handleCancel}>
+            {t("mdlAdBtnCanc")}
+          </S.CancelButton>
         </S.Buttons>
       </S.Container>
     </S.Background>

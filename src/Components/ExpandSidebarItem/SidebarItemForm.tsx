@@ -1,5 +1,6 @@
 import React from "react";
 import * as S from "./styles";
+import { useTranslation } from "react-i18next";
 interface PropsSidebarForm {
   error: string;
   setShowForm: (arg: boolean) => void;
@@ -20,6 +21,8 @@ const SidebarItemForm: React.FC<PropsSidebarForm> = ({
   title,
   addNewCategory,
 }) => {
+  const { t } = useTranslation();
+
   const handleCloseModal = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
@@ -41,7 +44,7 @@ const SidebarItemForm: React.FC<PropsSidebarForm> = ({
             type="text"
             maxLength={10}
             error={error}
-            placeholder={error && !title ? error : "Type category"}
+            placeholder={error && !title ? error : t("addCtgMdlPlch")}
             onChange={(e) => setTitle(e.target.value)}
           />
           <S.ColorInputWrapper>
@@ -52,11 +55,11 @@ const SidebarItemForm: React.FC<PropsSidebarForm> = ({
               onChange={(e) => setColor(e.target.value)}
             />
             <span style={styleColorInputText}>
-              {color ? color : "Choose color"}
+              {color ? color : t("inptClr")}
             </span>
           </S.ColorInputWrapper>
           <S.BtnWrapper>
-            <S.FormBtn type="submit">Add</S.FormBtn>
+            <S.FormBtn type="submit">{t("addCtgModal")}</S.FormBtn>
           </S.BtnWrapper>
         </S.CategoryForm>
       </S.FormModal>

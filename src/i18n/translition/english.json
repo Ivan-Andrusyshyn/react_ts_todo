@@ -1,0 +1,39 @@
+{
+  "sbTasks": "Tasks",
+  "sbCategories": "Categories",
+  "sbSettings": "Settings",
+  "sbBtnAdd": "Add new",
+
+  "sbMdlTitle": "Category Actions",
+  "sbMdlBtnEd": "Edit",
+  "sbMdlBtnDl": "Delete",
+  "sbMdlBtnCanc": "Cancel",
+  "sbMdlBtnEdit": "Edit",
+
+  "addCtgMdlPlch": "Type category",
+  "inptClr": "Choose color",
+  "addCtgModal": "Add",
+
+  "upBar": "Tasks",
+  "filterAll": "All",
+  "filterDn": "Done",
+  "filterNDone": "Not done",
+  "btnAdd": "Add a task",
+  "btnAddFirstStart": "First create a category",
+
+  "mdlAdInpPlch": "Task name",
+  "mdlAdInp": "Insert name",
+  "mdlAdOpt": "Select a categorie",
+  "mdlAdBtnCanc": "Cancel",
+  "mdlAdBtnAdd": "Add",
+
+  "mdlEdInp": "Edit name",
+  "mdlEdOpt": "Category",
+  "btnCanc": "Cancel",
+  "btnEd": "Edit",
+
+  "mdlDltTitle": "Are you sure you want to delete this task ?",
+  "mdlDlt": "Delete",
+  "mdlDltCanc": "Cancel",
+  "lgOut": "Logout"
+}

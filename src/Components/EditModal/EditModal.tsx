@@ -9,6 +9,7 @@ import { DeleteType } from "../../Contexts/typesContext/delete_edit_Type";
 import Calendar from "../Calendar/Calendar";
 import { format } from "date-fns";
 import Arrow from "../../Img/arrow.svg";
+import { useTranslation } from "react-i18next";
 
 const EditModal: React.FC = () => {
   const { editTask, taskList } = useContext(TaskListContext) as TaskListType;
@@ -16,6 +17,7 @@ const EditModal: React.FC = () => {
   const { categList } = useContext(CategoriesContext) as CategorieContextType;
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState<number | Date>(new Date()); // Инициализируем выбранную дату как null
+  const { t } = useTranslation();
 
   const [taskName, setTaskName] = useState("");
   const [taskCat, setTaskCat] = useState(
@@ -54,9 +56,9 @@ const EditModal: React.FC = () => {
         </S.ModalOverlay>
       )}
       <S.Container>
-        <S.Text>Edit name</S.Text>
+        <S.Text>{t("mdlEdInp")}</S.Text>
         <S.TitleInput
-          placeholder="Task name"
+          placeholder={t("mdlAdInpPlch")}
           onChange={handleTyping}
           value={taskName}
         />
@@ -67,13 +69,13 @@ const EditModal: React.FC = () => {
           {format(selectedDate, "yyyy-MM-dd")}
           <S.Arrow isActive={showCalendar} src={Arrow} />
         </S.DatePicker>
-        <S.Text>Category</S.Text>
+        <S.Text>{t("mdlEdOpt")}</S.Text>
         <S.Select id="select">
           <option>{taskCat[0].categorie}</option>
         </S.Select>
         <S.Buttons>
-          <S.AddButton onClick={handleEdit}>Edit</S.AddButton>
-          <S.CancelButton onClick={handleCancel}>Cancel</S.CancelButton>
+          <S.AddButton onClick={handleEdit}>{t("btnEd")}</S.AddButton>
+          <S.CancelButton onClick={handleCancel}>{t("btnCanc")}</S.CancelButton>
         </S.Buttons>
       </S.Container>
     </S.Background>

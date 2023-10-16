@@ -3,10 +3,11 @@ import * as S from "./styles";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
-import { nanoid } from "nanoid";
+import { v4 as uuidv4 } from "uuid";
 import CategoryEditForm from "./CategoryEditForm";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslation } from "react-i18next";
 interface CategorieItemProps {
   name: string;
   color: string;
@@ -28,6 +29,7 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
   const [editedColor, setEditedColor] = useState<string>("#fff");
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [modalOpenForm, setModalOpenForm] = useState<boolean>(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setEditedColor(color);
@@ -53,7 +55,7 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
 
   const handleEdit = (editedName: string, editedColor: string) => {
     const editedCategorie = {
-      id: nanoid(),
+      id: uuidv4(),
       name: editedName,
       color: editedColor,
     };
@@ -117,10 +119,10 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
           <S.ModalContent>
             {!modalOpenForm ? (
               <div>
-                <S.EditModalTitle>Category Actions</S.EditModalTitle>
-                <S.Button onClick={showFormForEdit}>Edit</S.Button>
-                <S.Button onClick={handleDelete}>Delete</S.Button>
-                <S.Button onClick={handleCancel}>Cancel</S.Button>
+                <S.EditModalTitle>{t("sbMdlTitle")}</S.EditModalTitle>
+                <S.Button onClick={showFormForEdit}>{t("sbMdlBtnEd")}</S.Button>
+                <S.Button onClick={handleDelete}>{t("sbMdlBtnDl")}</S.Button>
+                <S.Button onClick={handleCancel}>{t("sbMdlBtnCanc")}</S.Button>
               </div>
             ) : (
               <CategoryEditForm

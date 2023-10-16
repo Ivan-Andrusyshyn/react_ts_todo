@@ -12,8 +12,8 @@ import { faSpinner, faUser } from "@fortawesome/free-solid-svg-icons";
 import * as S from "./styles";
 import Settings from "../../Img/settings.svg";
 import SettingsItem from "../../Components/Settings";
-import LoaderInButton from "../../Components/AuthLoader/AuthLoader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslation } from "react-i18next";
 interface propsSidebar {
   toggleSidebar?: () => void;
 }
@@ -21,6 +21,9 @@ const SideBar: React.FC<propsSidebar> = () => {
   const { signOut, changeUserName, userData, isLoading } = useContext(
     AuthContext
   ) as AuthType;
+
+  const { t } = useTranslation();
+
   const [showUserModal, setShowUserModal] = useState(false);
   const [userName, setUserName] = useState<string>(userData?.userName || "");
   const handleLogout = () => {
@@ -66,17 +69,29 @@ const SideBar: React.FC<propsSidebar> = () => {
           )}
         </S.UserName>
       )}
+
       <S.Tabs>
-        <SidebarItem icon={TaskFill} name="Tasks" isActive={true}></SidebarItem>
-        <ExpandSidebarItem icon={Folder} name="Categories"></ExpandSidebarItem>
-        <SettingsItem isActive={false} icon={Settings} name="Settings" />
+        <SidebarItem
+          icon={TaskFill}
+          name={t("sbTasks")}
+          isActive={true}
+        ></SidebarItem>
+        <ExpandSidebarItem
+          icon={Folder}
+          name={t("sbCategories")}
+        ></ExpandSidebarItem>
+        <SettingsItem isActive={false} icon={Settings} name={t("sbSettings")} />
       </S.Tabs>
       <Link
         to="/login"
         style={{ textDecoration: "none" }}
         onClick={handleLogout}
       >
-        <SidebarItem icon={Logout} name="Logout" isActive={false}></SidebarItem>
+        <SidebarItem
+          icon={Logout}
+          name={t("lgOut")}
+          isActive={false}
+        ></SidebarItem>
       </Link>
     </S.Sidebar>
   );

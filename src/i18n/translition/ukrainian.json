@@ -1,0 +1,39 @@
+{
+  "sbTasks": "Завдання",
+  "sbCategories": "Категорії",
+  "sbSettings": "Налаштування",
+  "sbBtnAdd": "Додати нове",
+
+  "sbMdlTitle": "Дії з категорією",
+  "sbMdlBtnEd": "Редагувати",
+  "sbMdlBtnDl": "Видалити",
+  "sbMdlBtnCanc": "Скасувати",
+  "sbMdlBtnEdit": "Редагувати",
+
+  "addCtgMdlPlch": "Категорія",
+  "inptClr": "Обери колір",
+  "addCtgModal": "Додати",
+
+  "upBar": "Завдання",
+  "filterAll": "Всі",
+  "filterDn": "Завершені",
+  "filterNDone": "Не завершені",
+  "btnAdd": "Додати завдання",
+  "btnAddFirstStart": "Створіть категорію",
+
+  "mdlAdInpPlch": "Назва завданя",
+  "mdlAdInp": "Введіть назву",
+  "mdlAdOpt": "Виберіть категорію",
+  "mdlAdBtnCanc": "Скасувати",
+  "mdlAdBtnAdd": "Додати",
+
+  "mdlEdInp": "Редагувати назву",
+  "mdlEdOpt": "Категорія",
+  "btnCanc": "Скасувати",
+  "btnEd": "Редагувати",
+
+  "mdlDltTitle": "Ви впевнені, що хочете видалити це завдання?",
+  "mdlDlt": "Видалити",
+  "mdlDltCanc": "Скасувати",
+  "lgOut": "Вийти"
+}

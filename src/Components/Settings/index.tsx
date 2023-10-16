@@ -7,14 +7,14 @@ interface SidebarItemProps {
   isActive: boolean;
 }
 
-const SettingsItem: React.FC<SidebarItemProps> = ({ isActive, icon }) => {
+const SettingsItem: React.FC<SidebarItemProps> = ({ isActive, icon, name }) => {
   const [show, setShow] = useState(false);
   const handleOpenList = () => {
     setShow(!show);
   };
   return (
     <S.SettingsContainer onClick={handleOpenList} isActive={show}>
-      <SidebarItem icon={icon} name="Settings" isActive={show} />
+      <SidebarItem icon={icon} name={name} isActive={show} />
       <S.ListSettings isActive={show}>
         <S.ListItem>
           <S.Subtitle>Settings 1</S.Subtitle>

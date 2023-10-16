@@ -20,9 +20,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from "react-responsive";
 import EditModal from "../../Components/EditModal/EditModal";
+import { useTranslation } from "react-i18next";
+import LanguageSelector from "../../i18n/LanguageSelector";
 
 const CategoriePage: React.FC = () => {
   const { name } = useParams<string>();
+  const { t } = useTranslation();
 
   const { taskList, doneTasks, notDoneTasks } = useContext(
     TaskListContext
@@ -83,18 +86,19 @@ const CategoriePage: React.FC = () => {
         </S.Backdrop>
       )}
       <S.Main>
+        <LanguageSelector />
         <S.Header>{name}</S.Header>
         <S.TitleAndFilter>
-          <S.Title onClick={handleDone}>Tasks </S.Title>
+          <S.Title onClick={handleDone}>{t("upBar")}</S.Title>
           <S.FilterField>
             <div onClick={handleAll}>
-              <FilterTag name="All" active={allActive} />
+              <FilterTag name={t("filterAll")} active={allActive} />
             </div>
             <div onClick={handleDone}>
-              <FilterTag name="Done" active={doneActive} />
+              <FilterTag name={t("filterDn")} active={doneActive} />
             </div>
             <div onClick={handleNotDone}>
-              <FilterTag name="Not done" active={notDoneActive} />
+              <FilterTag name={t("filterNDone")} active={notDoneActive} />
             </div>
             <S.FilterIcon src={Filter} />
           </S.FilterField>

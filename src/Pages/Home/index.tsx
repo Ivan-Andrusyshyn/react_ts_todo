@@ -23,12 +23,16 @@ import EditModal from "../../Components/EditModal/EditModal";
 import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
 import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 const Home: React.FC = () => {
   const { taskList, doneTasks, notDoneTasks } = useContext(
     TaskListContext
   ) as TaskListType;
   const { userData, isLoading } = useContext(AuthContext) as AuthType;
   const { categList } = useContext(CategoriesContext) as CategorieContextType;
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
 
   const { showDelete, showEdit } = useContext(DeleteContext) as DeleteType;
@@ -91,16 +95,16 @@ const Home: React.FC = () => {
       <S.Main>
         <S.Header>All your tasks</S.Header>
         <S.TitleAndFilter>
-          <S.Title onClick={handleDone}>Tasks </S.Title>
+          <S.Title onClick={handleDone}>{t("upBar")}</S.Title>
           <S.FilterField>
             <div onClick={handleAll}>
-              <FilterTag name="All" active={allActive} />
+              <FilterTag name={t("filterAll")} active={allActive} />
             </div>
             <div onClick={handleDone}>
-              <FilterTag name="Done" active={doneActive} />
+              <FilterTag name={t("filterDn")} active={doneActive} />
             </div>
             <div onClick={handleNotDone}>
-              <FilterTag name="Not done" active={notDoneActive} />
+              <FilterTag name={t("filterNDone")} active={notDoneActive} />
             </div>
             <S.FilterIcon src={Filter} />
           </S.FilterField>
@@ -116,7 +120,7 @@ const Home: React.FC = () => {
             date={task.date}
           />
         ))}
-        <AddTask></AddTask>
+        <AddTask />
       </S.Main>
       {showEdit && <EditModal />}
       {showDelete && <DeleteModal />}

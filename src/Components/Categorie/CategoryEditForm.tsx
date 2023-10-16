@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import * as S from "./styles";
+import { useTranslation } from "react-i18next";
 
 interface CategoryEditFormProps {
   initialName: string;
@@ -18,6 +19,7 @@ const CategoryEditForm: React.FC<CategoryEditFormProps> = ({
 }) => {
   const [editedName, setEditedName] = useState(initialName);
   const [editedColor, setEditedColor] = useState(initialColor);
+  const { t } = useTranslation();
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,10 +41,10 @@ const CategoryEditForm: React.FC<CategoryEditFormProps> = ({
             type="color"
             onChange={(e) => setEditedColor(e.target.value)}
           />
-          <span>{editedColor ? editedColor : "Choose color"}</span>
+          <span>{editedColor ? editedColor : t("inptClr")}</span>
         </S.ColorInputWrapper>
         <S.BtnWrapper>
-          <S.FormBtn type="submit">Edit</S.FormBtn>
+          <S.FormBtn type="submit">{t("sbMdlBtnEd")}</S.FormBtn>
         </S.BtnWrapper>
       </S.CategoryForm>
     </>
