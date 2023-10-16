@@ -149,8 +149,7 @@ export const TermDate = styled.span<DoneProps>`
   ${(props) =>
     props.done &&
     css`
-      color: red;
+      color: rgba(255, 0, 0, 0.5);
       font-weight: 400;
-      opacity: 0.6;
     `}
 `;

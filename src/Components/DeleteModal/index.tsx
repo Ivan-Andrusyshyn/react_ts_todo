@@ -7,7 +7,9 @@ import { TaskListContext } from "../../Contexts/taskListContext";
 import { TaskListType } from "../../Contexts/typesContext/taskType";
 
 const DeleteModal: React.FC = () => {
-  const { setShowDelete, id, setId } = useContext(DeleteContext) as DeleteType;
+  const { showDelete, setShowDelete, id, setId } = useContext(
+    DeleteContext
+  ) as DeleteType;
   const { deleteTask } = useContext(TaskListContext) as TaskListType;
 
   function handleCancel() {
@@ -22,7 +24,7 @@ const DeleteModal: React.FC = () => {
 
   return (
     <S.Background>
-      <S.Container>
+      <S.Container showDelete={showDelete}>
         <S.Text>Are you sure you want to delete this task?</S.Text>
         <S.Buttons>
           <S.DeletButton onClick={handleConfirm}>Delete</S.DeletButton>

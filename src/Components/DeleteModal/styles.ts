@@ -1,5 +1,7 @@
-import styled from "styled-components";
-
+import styled, { css } from "styled-components";
+interface propsShowDel {
+  showDelete: boolean;
+}
 export const Background = styled.div`
   width: 100vw;
   height: 100vh;
@@ -11,16 +13,22 @@ export const Background = styled.div`
   background: rgba(0, 0, 0, 0.6);
 `;
 
-export const Container = styled.div`
+export const Container = styled.div<propsShowDel>`
   width: 25vw;
   background: white;
   border-radius: 16px;
-  opacity: 1;
   display: flex;
   padding: 10px;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  transform: translateY(0);
+  transition: transform 0.3s linear;
+  ${(props) =>
+    props.showDelete &&
+    css`
+      transform: translateY(-100%);
+    `};
 `;
 
 export const Text = styled.p`
@@ -50,6 +58,8 @@ export const CancelButton = styled.button`
   border-radius: 8px;
   font-size: 14px;
   margin: 8px;
+  cursor: pointer;
+  transition: border, background-color, font-weight, 0.25s linear;
 
   &:hover {
     border: 2px solid blue;
@@ -70,11 +80,13 @@ export const DeletButton = styled.button`
   height: 40px;
   border-radius: 8px;
   margin: 8px;
+  cursor: pointer;
   font-size: 14px;
+  transition: border, background-color, font-weight, 0.25s linear;
   &:hover {
     border: 2px solid red;
     font-weight: 500;
-    background: #eee;
+    background-color: #eee;
   }
   @media screen and (min-width: 920px) {
     width: 120px;

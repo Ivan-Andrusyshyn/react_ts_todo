@@ -47,6 +47,8 @@ export const CancelButton = styled.button`
   height: 40px;
   border-radius: 8px;
   margin: 8px;
+  transition: border, background-color, font-weight, 0.25s linear;
+  cursor: pointer;
   width: 90px;
   &:hover {
     border: 2px solid blue;
@@ -68,7 +70,9 @@ export const AddButton = styled.button`
   border-radius: 8px;
   margin: 8px;
   font-size: 14px;
+  transition: border, background-color, font-weight, 0.25s linear;
   width: 90px;
+  cursor: pointer;
   &:hover {
     border: 2px solid green;
     font-weight: 500;
