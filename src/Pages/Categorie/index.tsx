@@ -31,9 +31,9 @@ const CategoriePage: React.FC = () => {
   const { showAdd } = useContext(AddContext) as AddType;
   const [listToDisplay, setListToDisplay] = useState(0);
   const listOfLists = [
-    taskList.filter((task) => task.categorie == name),
-    doneTasks.filter((task) => task.categorie == name),
-    notDoneTasks.filter((task) => task.categorie == name),
+    taskList.filter((task) => task.categorie === name),
+    doneTasks.filter((task) => task.categorie === name),
+    notDoneTasks.filter((task) => task.categorie === name),
   ];
 
   const [allActive, setAllActive] = useState(true);
