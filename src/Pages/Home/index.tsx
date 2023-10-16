@@ -24,6 +24,7 @@ import { CategorieContextType } from "../../Contexts/typesContext/categoriesType
 import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import LanguageSelector from "../../i18n/LanguageSelector";
 
 const Home: React.FC = () => {
   const { taskList, doneTasks, notDoneTasks } = useContext(
@@ -93,7 +94,8 @@ const Home: React.FC = () => {
         </S.Backdrop>
       )}
       <S.Main>
-        <S.Header>All your tasks</S.Header>
+        <LanguageSelector />
+        <S.Header>{t("homeTitle")}</S.Header>
         <S.TitleAndFilter>
           <S.Title onClick={handleDone}>{t("upBar")}</S.Title>
           <S.FilterField>
