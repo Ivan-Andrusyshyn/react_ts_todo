@@ -2,7 +2,8 @@ import styled, { css } from "styled-components";
 
 const CalendarContainer = styled.div`
   position: absolute;
-  top: 30px;
+  top: 50%;
+  left: 50%;
   right: 30px;
   width: 233px;
   height: 254px;
