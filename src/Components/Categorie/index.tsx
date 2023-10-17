@@ -56,7 +56,6 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
     } else {
       navigation("/categorie/");
     }
-    e.preventDefault();
   };
   const showFormForEdit = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -90,7 +89,9 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
     }
   };
   const handleOpenModal = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    setIsOpen(!isOpen);
+    console.log(e.target);
+
+    if (e.target) setIsOpen(!isOpen);
   };
   return (
     <>
@@ -125,6 +126,7 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
           </S.ItemWrapper>
         </S.Categorie>
       </Link>
+
       {isOpen && (
         <S.ModalOverlay onClick={(e) => backdropCloseModal(e)}>
           <S.ModalContent>

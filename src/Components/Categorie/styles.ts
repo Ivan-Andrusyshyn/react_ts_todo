@@ -87,7 +87,7 @@ export const AddIcon = styled.img`
 `;
 export const ItemWrapper = styled.div`
   width: 100%;
-
+  z-index: 999;
   display: flex;
   justify-content: space-between;
 `;
