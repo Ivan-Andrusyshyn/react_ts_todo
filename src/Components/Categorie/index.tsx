@@ -53,6 +53,8 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
       remainingCategories[remainingCategories.length - 1]?.name;
     if (nameCategorie) {
       navigation("/categorie/" + nameCategorie);
+    } else {
+      navigation("/categorie/");
     }
     e.preventDefault();
   };
