@@ -8,6 +8,8 @@ import CategoryEditForm from "./CategoryEditForm";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "react-i18next";
+import { TaskListContext } from "../../Contexts/taskListContext";
+import { TaskListType } from "../../Contexts/typesContext/taskType";
 interface CategorieItemProps {
   name: string;
   color: string;
@@ -25,6 +27,11 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
   const { categList, deleteCategory, editCategory } = useContext(
     CategoriesContext
   ) as CategorieContextType;
+  const { deleteCategoryTasks, taskList } = useContext(
+    TaskListContext
+  ) as TaskListType;
+  console.log(taskList);
+
   const [editedName, setEditedName] = useState<string>("");
   const [editedColor, setEditedColor] = useState<string>("#fff");
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -35,11 +42,13 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
     setEditedColor(color);
     setEditedName(name);
   }, [name, color]);
+
   const handleDelete = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     deleteCategory(categoryId);
     const remainingCategories = categList.filter(
       (cat) => cat.id !== categoryId
     );
+    deleteCategoryTasks(name);
     const nameCategorie =
       remainingCategories[remainingCategories.length - 1]?.name;
     if (nameCategorie) {

@@ -57,7 +57,12 @@ export const TaskListContextProvider: React.FC<ChildrenProps> = ({
     );
     setTaskList(updatedTaskList);
   };
-
+  const deleteCategoryTasks = (categoryName: string) => {
+    const updatedTaskList = taskList.filter(
+      (task) => task.categorie !== categoryName
+    );
+    setTaskList(updatedTaskList);
+  };
   return (
     <TaskListContext.Provider
       value={{
@@ -65,6 +70,7 @@ export const TaskListContextProvider: React.FC<ChildrenProps> = ({
         doneTasks,
         notDoneTasks,
         addTask,
+        deleteCategoryTasks,
         checkTask,
         deleteTask,
         editTask,

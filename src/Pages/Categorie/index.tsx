@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import * as S from "./styles";
 import TaskCard from "../../Components/TaskCard";
@@ -22,10 +22,14 @@ import { useMediaQuery } from "react-responsive";
 import EditModal from "../../Components/EditModal/EditModal";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "../../i18n/LanguageSelector";
+import { CategoriesContext } from "../../Contexts/categoriesContext";
+import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
 
 const CategoriePage: React.FC = () => {
   const { name } = useParams<string>();
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { categList } = useContext(CategoriesContext) as CategorieContextType;
 
   const { taskList, doneTasks, notDoneTasks } = useContext(
     TaskListContext
@@ -38,7 +42,16 @@ const CategoriePage: React.FC = () => {
     doneTasks.filter((task) => task.categorie === name),
     notDoneTasks.filter((task) => task.categorie === name),
   ];
-
+  useEffect(() => {
+    if (categList) {
+      const nameNav = categList[0]?.name;
+      if (nameNav) {
+        navigate("/categorie/" + nameNav);
+      } else if (categList.length <= 0) {
+        navigate("/categorie/");
+      }
+    }
+  }, []);
   const [allActive, setAllActive] = useState(true);
   const [doneActive, setDoneActive] = useState(false);
   const [notDoneActive, setNotDoneActive] = useState(false);

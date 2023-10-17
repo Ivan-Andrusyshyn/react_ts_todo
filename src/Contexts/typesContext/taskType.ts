@@ -14,6 +14,7 @@ export interface UserDataProps {
 export type TaskListType = {
   taskList: TaskProps[];
   doneTasks: TaskProps[];
+  deleteCategoryTasks: (categoryName: string) => void;
   notDoneTasks: TaskProps[];
   editTask: (id: number, newTask: TaskProps) => void;
   addTask: (task: TaskProps) => void;
