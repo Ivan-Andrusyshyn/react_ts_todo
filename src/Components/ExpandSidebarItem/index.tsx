@@ -91,6 +91,7 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
             categoryId={cat.id}
             name={cat.name}
             color={cat.color}
+            onNavigate={navigate}
           />
         ))}
         {showForm && (

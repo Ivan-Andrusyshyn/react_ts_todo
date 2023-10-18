@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import * as S from "./styles";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
 import { v4 as uuidv4 } from "uuid";
@@ -14,16 +14,17 @@ interface CategorieItemProps {
   name: string;
   color: string;
   categoryId: string;
+  onNavigate: (path: string) => void;
 }
 
 const CategorieItem: React.FC<CategorieItemProps> = ({
   name,
   color,
   categoryId,
+  onNavigate,
 }) => {
   const params = useParams();
   const [isChecked, setIsChecked] = useState<boolean>(false);
-  const navigation = useNavigate();
   const { categList, deleteCategory, editCategory } = useContext(
     CategoriesContext
   ) as CategorieContextType;
@@ -52,9 +53,9 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
     const nameCategorie =
       remainingCategories[remainingCategories.length - 1]?.name;
     if (nameCategorie) {
-      navigation("/categorie/" + nameCategorie);
+      onNavigate("/categorie/" + nameCategorie);
     } else {
-      navigation("/categorie/");
+      onNavigate("/categorie/");
     }
   };
   const showFormForEdit = (
@@ -70,7 +71,7 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
       color: editedColor,
     };
     editCategory(categoryId, editedCategorie);
-    navigation("/categorie/" + editedName);
+    onNavigate("/categorie/" + editedName);
   };
 
   const handleCancel = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

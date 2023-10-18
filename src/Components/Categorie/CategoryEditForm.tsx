@@ -44,7 +44,9 @@ const CategoryEditForm: React.FC<CategoryEditFormProps> = ({
           <span>{editedColor ? editedColor : t("inptClr")}</span>
         </S.ColorInputWrapper>
         <S.BtnWrapper>
-          <S.FormBtn type="submit">{t("sbMdlBtnEd")}</S.FormBtn>
+          <S.FormBtn type="submit" data-testid="addBtn">
+            {t("sbMdlBtnEd")}
+          </S.FormBtn>
         </S.BtnWrapper>
       </S.CategoryForm>
     </>
