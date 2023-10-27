@@ -104,7 +104,7 @@ export const SignIn = styled.button`
   height: 40px;
   border-radius: 8px;
   background: #7f56da;
-  color: white;
+  color: #fff;
   font-size: 16px;
   border: 0px;
   font-weight: 400;
@@ -128,4 +128,10 @@ export const KeepSigned = styled.div`
   justify-content: left;
   align-items: center;
   margin-top: 16px;
+`;
+export const IconsPasswordWrapper = styled.span`
+  position: absolute;
+  top: 12px;
+  transform: translateX(-150%);
+  cursor: pointer;
 `;

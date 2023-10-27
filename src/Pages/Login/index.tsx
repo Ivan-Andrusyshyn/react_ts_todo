@@ -6,6 +6,8 @@ import AuthContext from "../../Contexts/authContext";
 import LoaderInButton from "../../Components/AuthLoader/AuthLoader";
 import { AuthType } from "../../Contexts/typesContext/authType";
 import ErrorMessageAuth from "../../Components/ErrorComponent";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Login: React.FC = () => {
   const { handleLogin, isLoading, isError, setIsError } = useContext(
@@ -14,6 +16,7 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const [showPassword, setShowPassword] = useState(false);
   useEffect(() => {
     const newTimeOut = setTimeout(() => {
       setError("");
@@ -60,15 +63,27 @@ const Login: React.FC = () => {
             placeholder={error ? `${error} email.` : "Insert your email"}
           ></S.InputField>
           <S.FieldName>Password</S.FieldName>
-          <S.InputField
-            value={password}
-            id="password"
-            onChange={handlePassword}
-            placeholder={error ? `${error} password.` : "Insert your password"}
-            type="password"
-            error={error}
-            autoComplete="current-password"
-          ></S.InputField>
+          <div style={{ position: "relative" }}>
+            <S.InputField
+              value={password}
+              id="password"
+              onChange={handlePassword}
+              placeholder={
+                error ? `${error} password.` : "Insert your password"
+              }
+              type={showPassword ? "text" : "password"}
+              error={error}
+              autoComplete="current-password"
+            />
+            <S.IconsPasswordWrapper
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              <FontAwesomeIcon
+                icon={!showPassword ? faEye : faEyeSlash}
+                style={{ color: "#777" }}
+              />
+            </S.IconsPasswordWrapper>
+          </div>
           <S.KeepSigned>
             <S.Checkbox />
             <S.Subtitle>Remember me</S.Subtitle>

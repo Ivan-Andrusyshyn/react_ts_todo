@@ -32,7 +32,6 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
   const { deleteCategoryTasks, taskList } = useContext(
     TaskListContext
   ) as TaskListType;
-  console.log(taskList);
 
   const [editedName, setEditedName] = useState<string>("");
   const [editedColor, setEditedColor] = useState<string>("#fff");
