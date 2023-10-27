@@ -15,7 +15,7 @@ import DeleteModal from "../../Components/DeleteModal";
 import AddModal from "../../Components/AddModal";
 import { AddContext } from "../../Contexts/addContext";
 import { AddType } from "../../Contexts/typesContext/addType";
-import SideBar from "../Home/SideBar";
+import SideBar from "../Home/SideBar/SideBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from "react-responsive";

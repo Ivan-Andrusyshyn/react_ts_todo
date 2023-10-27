@@ -21,8 +21,7 @@ import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "../../i18n/LanguageSelector";
-import AdaptiveSideBar from "./AdaptiveSidebar";
-import { motion } from "framer-motion";
+import AdaptiveSideBar from "./SideBar/AdaptiveSidebar";
 
 const Home: React.FC = () => {
   const { taskList, doneTasks, notDoneTasks } = useContext(

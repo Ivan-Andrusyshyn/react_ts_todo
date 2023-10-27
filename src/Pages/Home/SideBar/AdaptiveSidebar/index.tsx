@@ -1,6 +1,6 @@
 import { useMediaQuery } from "react-responsive";
 import SideBar from "../SideBar";
-import * as S from "../styles";
+import * as S from "../../styles";
 import { SidebarProps } from "./types";
 const AdaptiveSideBar: React.FC<SidebarProps> = ({
   isSidebarOpen,
