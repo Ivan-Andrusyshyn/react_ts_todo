@@ -1,20 +1,11 @@
 import React, { useState } from "react";
-import * as S from "./styles";
+import * as S from "../styles";
 import { useTranslation } from "react-i18next";
-
-interface CategoryEditFormProps {
-  initialName: string;
-  initialColor: string;
-  onCancel: (prev: boolean) => void;
-  openModal: boolean;
-  onSave: (editedName: string, editedColor: string) => void;
-}
+import { CategoryEditFormProps } from "../types/types";
 
 const CategoryEditForm: React.FC<CategoryEditFormProps> = ({
   initialName,
   initialColor,
-  onCancel,
-  openModal,
   onSave,
 }) => {
   const [editedName, setEditedName] = useState(initialName);

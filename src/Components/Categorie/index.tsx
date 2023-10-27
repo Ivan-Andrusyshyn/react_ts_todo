@@ -4,12 +4,13 @@ import { Link, useParams } from "react-router-dom";
 import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
 import { v4 as uuidv4 } from "uuid";
-import CategoryEditForm from "./CategoryEditForm";
+import CategoryEditForm from "./Modal/CategorieEditForm";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "react-i18next";
 import { TaskListContext } from "../../Contexts/taskListContext";
 import { TaskListType } from "../../Contexts/typesContext/taskType";
+import Modal from "./Modal/Modal";
 interface CategorieItemProps {
   name: string;
   color: string;
@@ -90,8 +91,6 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
     }
   };
   const handleOpenModal = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    console.log(e.target);
-
     if (e.target) setIsOpen(!isOpen);
   };
   return (
@@ -129,26 +128,17 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
       </Link>
 
       {isOpen && (
-        <S.ModalOverlay onClick={(e) => backdropCloseModal(e)}>
-          <S.ModalContent>
-            {!modalOpenForm ? (
-              <div>
-                <S.EditModalTitle>{t("sbMdlTitle")}</S.EditModalTitle>
-                <S.Button onClick={showFormForEdit}>{t("sbMdlBtnEd")}</S.Button>
-                <S.Button onClick={handleDelete}>{t("sbMdlBtnDl")}</S.Button>
-                <S.Button onClick={handleCancel}>{t("sbMdlBtnCanc")}</S.Button>
-              </div>
-            ) : (
-              <CategoryEditForm
-                initialName={editedName}
-                initialColor={editedColor}
-                onCancel={setModalOpenForm}
-                onSave={handleEdit}
-                openModal={modalOpenForm}
-              />
-            )}
-          </S.ModalContent>
-        </S.ModalOverlay>
+        <Modal
+          modalOpenForm={modalOpenForm}
+          editedName={editedName}
+          editedColor={editedColor}
+          handleEdit={handleEdit}
+          handleDelete={handleDelete}
+          handleCancel={handleCancel}
+          backdropCloseModal={backdropCloseModal}
+          showFormForEdit={showFormForEdit}
+          setModalOpenForm={setModalOpenForm}
+        />
       )}
     </>
   );

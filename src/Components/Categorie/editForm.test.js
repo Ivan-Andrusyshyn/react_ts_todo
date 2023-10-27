@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import CategoryEditForm from "./CategoryEditForm";
+import CategoryEditForm from "./Modal/CategorieEditForm";
 
 test("CategoryEditForm зберігає зміни", () => {
   const onSaveMock = jest.fn();

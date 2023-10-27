@@ -5,9 +5,7 @@ import { css } from "styled-components";
 interface ContainerProps {
   isActive: boolean;
 }
-interface propInput {
-  error: string;
-}
+
 export const Name = styled.h3`
   font-size: 16px;
   font-weight: 500;
@@ -23,7 +21,7 @@ export const OuterContainer = styled.div<ContainerProps>`
   color: #777;
   font-weight: 100;
   margin: 4px 0;
-  transition: height 0.2s linear;
+  transition: height 0.3s linear;
 
   border-radius: 8px;
   ${(props) =>
@@ -122,123 +120,4 @@ export const CatArea = styled.div<ContainerProps>`
   @media screen and (min-width: 920px) {
     width: 15vw;
   }
-`;
-
-export const AddArea = styled.button`
-  height: 20px;
-  margin: 4px 0 4px 15px;
-  display: flex;
-  align-items: center;
-  border: none;
-  background-color: transparent;
-  outline: none;
-  cursor: pointer;
-  position: relative;
-`;
-export const ColorInputWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-`;
-
-// ---=======================
-export const Backdrop = styled.div`
-  background-color: transparent;
-  z-index: 999999;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vh;
-  height: 100vh;
-`;
-export const FormModal = styled.div`
-  background-color: #fff;
-  position: absolute;
-  width: 250px;
-  border-radius: 6px;
-  z-index: 222;
-  left: 180px;
-  top: 330px;
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  box-sizing: border-box;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-`;
-export const ModalOverlay = styled.div`
-  background: transparent;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-`;
-export const CategoryForm = styled.form`
-  margin-top: 10px;
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0 5px;
-  width: 100%;
-`;
-export const ErrorText = styled.p`
-  font-size: 12px;
-  color: red;
-`;
-export const ColorInput = styled.input<propInput>`
-  border-radius: 4px;
-  ${(props) =>
-    props.error &&
-    css`
-      border: 1px solid red;
-    `};
-`;
-export const TitleInput = styled.input<propInput>`
-  padding: 5px;
-  box-sizing: border-box;
-  width: 100%;
-  ${(props) =>
-    props.error &&
-    css`
-      border: 1px solid red;
-    `};
-  &::placeholder {
-    color: #bbb;
-    opacity: 0.6;
-    color: ${(props) => (props.error ? "red" : "#bbb")};
-  }
-`;
-export const FormBtn = styled.button`
-  width: 100%;
-  font-weight: 700;
-  color: #777;
-  height: 25px;
-  letter-spacing: 0.1em;
-  cursor: pointer;
-`;
-export const BtnWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  gap: 20px;
-  justify-content: center;
-`;
-export const AddText = styled.p`
-  font-size: 16px;
-  color: #ccc;
-  margin-left: 8px;
-  font-weight: 400;
-  transition: color 0.25s linear;
-  &:hover {
-    color: #bdbdbd;
-  }
-`;
-
-export const AddIcon = styled.img`
-  height: 16px;
 `;

@@ -2,13 +2,13 @@ import React, { useState, useContext, useEffect } from "react";
 import * as S from "./styles";
 import Arrow from "../../Img/arrow.svg";
 import CategorieItem from "../Categorie";
-import Add from "../../Img/add.svg";
 import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
-import SidebarItemForm from "./SidebarItemForm";
 import { useTranslation } from "react-i18next";
+import SidebarItemForm from "./SideBarForm";
+import AddButton from "./AddButton";
 
 interface SidebarItemProps {
   name: string;
@@ -106,10 +106,7 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
             addNewCategory={addNewCategory}
           />
         )}
-        <S.AddArea onClick={() => setShowForm(true)}>
-          <S.AddIcon src={Add} />
-          <S.AddText>{t("sbBtnAdd")}</S.AddText>
-        </S.AddArea>
+        <AddButton setShowForm={setShowForm} />
       </S.CatArea>
     </S.OuterContainer>
   );
