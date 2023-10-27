@@ -3,14 +3,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 interface propLoader {
   isLoading: boolean;
+  loaderColor: string;
 }
-const LoaderInButton: React.FC<propLoader> = ({ isLoading }) => (
+const LoaderInButton: React.FC<propLoader> = ({ isLoading, loaderColor }) => (
   <>
     {isLoading && (
       <FontAwesomeIcon
         icon={faSpinner}
         size="sm"
-        color="#fff"
+        color={loaderColor}
         style={{ marginLeft: 10 }}
         className="fa-spin-pulse fa-spin-reverse"
       />

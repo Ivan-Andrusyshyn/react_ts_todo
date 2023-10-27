@@ -15,6 +15,7 @@ import SettingsItem from "../../../Components/Settings";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
+import LoaderInButton from "../../../Components/AuthLoader/AuthLoader";
 
 interface propsSidebar {
   toggleSidebar?: () => void;
@@ -66,13 +67,7 @@ const SideBar: React.FC<propsSidebar> = () => {
         <S.UserName onClick={() => setShowUserModal(true)}>
           <S.UserIcon icon={faUser} />
           {isLoading ? (
-            <FontAwesomeIcon
-              icon={faSpinner}
-              size="sm"
-              color="#777"
-              style={{ marginLeft: 10 }}
-              className="fa-spin-pulse fa-spin-reverse"
-            />
+            <LoaderInButton isLoading={isLoading} loaderColor={"#777"} />
           ) : (
             userData?.userName
           )}

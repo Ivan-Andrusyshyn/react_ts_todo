@@ -16,6 +16,8 @@ const AuthContext = createContext<AuthType | null>(null);
 export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
   const [userData, setUserData] = useState<UserDataProps | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingGoogle, setIsLoadingGoogle] = useState(false);
+
   const [isError, setIsError] = useState<string | null>(null);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -62,14 +64,14 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
   };
 
   const signInWithGoogle = async () => {
-    setIsLoading(true);
+    setIsLoadingGoogle(true);
     const provider = new GoogleAuthProvider();
     try {
       await signInWithRedirect(auth, provider);
     } catch (error) {
       throw error;
     } finally {
-      setIsLoading(false);
+      setIsLoadingGoogle(false);
     }
   };
 
@@ -126,6 +128,7 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
         isError,
         setIsError,
         changeUserName,
+        isLoadingGoogle,
       }}
     >
       {children}

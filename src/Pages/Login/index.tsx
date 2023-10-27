@@ -101,7 +101,8 @@ const Login: React.FC = () => {
             </S.KeepSigned>
             {isError && <ErrorMessageAuth isError={isError} />}
             <S.SignIn type="submit">
-              Sign In <LoaderInButton isLoading={isLoading} />
+              Sign In{" "}
+              <LoaderInButton loaderColor={"#fff"} isLoading={isLoading} />
             </S.SignIn>
           </form>
           <S.Subtitle>

@@ -6,11 +6,16 @@ import * as S from "./styles";
 import LoaderInButton from "../../Components/AuthLoader/AuthLoader";
 import { AuthType } from "../../Contexts/typesContext/authType";
 import ErrorMessageAuth from "../../Components/ErrorComponent";
-import { Loader } from "../../Components/Loader/styles";
+import { motion } from "framer-motion";
 
 const SignUp = () => {
-  const { registration, signInWithGoogle, isLoading, setIsError, isError } =
-    useContext(AuthContext) as AuthType;
+  const {
+    registration,
+    signInWithGoogle,
+    isLoading,
+    isLoadingGoogle,
+    isError,
+  } = useContext(AuthContext) as AuthType;
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -47,60 +52,81 @@ const SignUp = () => {
 
   return (
     <S.Page>
-      <S.LeftSide>
-        <S.Img src={Logo}></S.Img>
-      </S.LeftSide>
-      <S.RightSide>
-        <S.Title>Welcome to Tasker</S.Title>
-        <S.Subtitle>
-          Please, insert your information to access your tasks.
-        </S.Subtitle>
-        <form action="" onSubmit={handleSignUpClick}>
-          <S.FieldName>Name</S.FieldName>
-          <S.InputField
-            value={name}
-            id="name"
-            error={error}
-            onChange={handleNameChange}
-            placeholder={error ? `${error} name.` : "Create your name"}
-          ></S.InputField>
-          <S.FieldName>Email</S.FieldName>
-          <S.InputField
-            value={email}
-            id="email"
-            error={error}
-            autoComplete="username"
-            onChange={handleEmailChange}
-            placeholder={error ? `${error} email.` : "Insert your email"}
-          ></S.InputField>
-          <S.FieldName>Password</S.FieldName>
-          <S.InputField
-            value={password}
-            id="password"
-            error={error}
-            autoComplete="current-password"
-            onChange={handlePasswordChange}
-            placeholder={error ? `${error} password.` : "Insert your password"}
-            type="password"
-          ></S.InputField>
-          <S.KeepSigned>
-            <S.Checkbox />
-            <S.Subtitle>Remember me</S.Subtitle>
-          </S.KeepSigned>
-          {isError && <ErrorMessageAuth isError={isError} />}
-          <S.SignIn type="submit" disabled={isLoading}>
-            Sign Up
-            <LoaderInButton isLoading={isLoading} />
-          </S.SignIn>
-        </form>
-        <S.Subtitle>
-          Already have an account? <Link to="/login">Sign In</Link>
-          <br />
-          <S.Google_Btn onClick={signInWithGoogle}>
-            Sign Up with Google
-          </S.Google_Btn>
-        </S.Subtitle>
-      </S.RightSide>
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <S.LeftSide>
+          <S.Img src={Logo}></S.Img>
+        </S.LeftSide>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: -100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <S.RightSide>
+          <S.Title>Welcome to Tasker</S.Title>
+          <S.Subtitle>
+            Please, insert your information to access your tasks.
+          </S.Subtitle>
+          <form action="" onSubmit={handleSignUpClick}>
+            <S.FieldName>Name</S.FieldName>
+            <S.InputField
+              value={name}
+              id="name"
+              error={error}
+              onChange={handleNameChange}
+              placeholder={error ? `${error} name.` : "Create your name"}
+            ></S.InputField>
+            <S.FieldName>Email</S.FieldName>
+            <S.InputField
+              value={email}
+              id="email"
+              error={error}
+              autoComplete="username"
+              onChange={handleEmailChange}
+              placeholder={error ? `${error} email.` : "Insert your email"}
+            ></S.InputField>
+            <S.FieldName>Password</S.FieldName>
+            <S.InputField
+              value={password}
+              id="password"
+              error={error}
+              autoComplete="current-password"
+              onChange={handlePasswordChange}
+              placeholder={
+                error ? `${error} password.` : "Insert your password"
+              }
+              type="password"
+            ></S.InputField>
+            <S.KeepSigned>
+              <S.Checkbox />
+              <S.Subtitle>Remember me</S.Subtitle>
+            </S.KeepSigned>
+            {isError && <ErrorMessageAuth isError={isError} />}
+            <S.SignIn type="submit" disabled={isLoading}>
+              Sign Up
+              <LoaderInButton loaderColor={"#fff"} isLoading={isLoading} />
+            </S.SignIn>
+          </form>
+          <S.Subtitle>
+            Already have an account? <Link to="/login">Sign In</Link>
+            <br />
+            <S.Google_Btn onClick={signInWithGoogle}>
+              {isLoadingGoogle ? (
+                <LoaderInButton
+                  loaderColor={"#000"}
+                  isLoading={isLoadingGoogle}
+                />
+              ) : (
+                "Sign Up with Google"
+              )}
+            </S.Google_Btn>
+          </S.Subtitle>
+        </S.RightSide>
+      </motion.div>
     </S.Page>
   );
 };
