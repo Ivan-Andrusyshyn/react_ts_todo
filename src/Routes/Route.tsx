@@ -24,6 +24,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, priv }) => {
         to={{
           pathname: priv ? "/login" : "/",
         }}
+        replace={true}
       />
     );
   }
