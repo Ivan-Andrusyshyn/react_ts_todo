@@ -13,24 +13,21 @@ import DeleteModal from "../../Components/DeleteModal";
 import AddModal from "../../Components/AddModal";
 import { AddContext } from "../../Contexts/addContext";
 import { AddType } from "../../Contexts/typesContext/addType";
-import AuthContext from "../../Contexts/authContext";
-import { faBars, faUser } from "@fortawesome/free-solid-svg-icons";
-import { AuthType } from "../../Contexts/typesContext/authType";
-import { useMediaQuery } from "react-responsive";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import SideBar from "./SideBar";
 import EditModal from "../../Components/EditModal/EditModal";
 import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
 import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "../../i18n/LanguageSelector";
+import AdaptiveSideBar from "./AdaptiveSidebar";
+import { motion } from "framer-motion";
 
 const Home: React.FC = () => {
   const { taskList, doneTasks, notDoneTasks } = useContext(
     TaskListContext
   ) as TaskListType;
-  const { userData, isLoading } = useContext(AuthContext) as AuthType;
   const { categList } = useContext(CategoriesContext) as CategorieContextType;
   const { t } = useTranslation();
 
@@ -58,7 +55,6 @@ const Home: React.FC = () => {
       }
     }
   }, []);
-  const isTablet = useMediaQuery({ minWidth: 320, maxWidth: 920 });
   function handleAll() {
     setListToDisplay(0);
     setAllActive(true);
@@ -87,12 +83,11 @@ const Home: React.FC = () => {
       >
         <FontAwesomeIcon icon={faBars} size="xl" />
       </S.BurgerWrapper>
-      {!isTablet && <SideBar />}
-      {isSidebarOpen && (
-        <S.Backdrop onClick={toggleSidebar} id="backdrop">
-          <SideBar />
-        </S.Backdrop>
-      )}
+      <AdaptiveSideBar
+        isSidebarOpen={isSidebarOpen}
+        toggleSidebar={toggleSidebar}
+      />
+
       <S.Main>
         <LanguageSelector />
         <S.Header>{t("homeTitle")}</S.Header>

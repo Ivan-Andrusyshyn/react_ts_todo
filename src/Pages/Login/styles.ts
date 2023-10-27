@@ -2,9 +2,6 @@ import styled, { css } from "styled-components";
 interface propsInputAuth {
   error: string;
 }
-export const Img = styled.img`
-  width: 30vw;
-`;
 
 export const Page = styled.div`
   width: 100vw;
@@ -12,7 +9,9 @@ export const Page = styled.div`
   display: flex;
   flex: row;
 `;
-
+export const Img = styled.img`
+  width: 30vw;
+`;
 export const LeftSide = styled.div`
   width: 50vw;
   height: 100vh;
@@ -21,7 +20,6 @@ export const LeftSide = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
 export const RightSide = styled.div`
   width: 50vw;
   height: 100vh;
@@ -32,7 +30,15 @@ export const RightSide = styled.div`
   padding-left: 12.5vw;
   box-sizing: border-box;
 `;
-
+export const AnimatedRightSide = styled(LeftSide)`
+  animation: slideIn 1s ease-in-out forwards;
+  @keyframes slideIn {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+`;
 export const Title = styled.h1`
   color: #333;
   font-family: Roboto, Arial;

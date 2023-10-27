@@ -8,9 +8,9 @@ import { AuthType } from "../../Contexts/typesContext/authType";
 import ErrorMessageAuth from "../../Components/ErrorComponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-
+import { motion } from "framer-motion";
 const Login: React.FC = () => {
-  const { handleLogin, isLoading, isError, setIsError } = useContext(
+  const { handleLogin, isLoading, isError } = useContext(
     AuthContext
   ) as AuthType;
   const [email, setEmail] = useState<string>("");
@@ -44,59 +44,71 @@ const Login: React.FC = () => {
 
   return (
     <S.Page>
-      <S.LeftSide>
-        <S.Img src={Logo}></S.Img>
-      </S.LeftSide>
-      <S.RightSide>
-        <S.Title>Welcome to Tasker</S.Title>
-        <S.Subtitle>
-          Please, insert your information to access your tasks.
-        </S.Subtitle>
-        <form action="" onSubmit={handleLoginClick}>
-          <S.FieldName>Email</S.FieldName>
-          <S.InputField
-            autoComplete="username"
-            value={email}
-            error={error}
-            id="email"
-            onChange={handleEmail}
-            placeholder={error ? `${error} email.` : "Insert your email"}
-          ></S.InputField>
-          <S.FieldName>Password</S.FieldName>
-          <div style={{ position: "relative" }}>
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <S.LeftSide>
+          <S.Img src={Logo} />
+        </S.LeftSide>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: -100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <S.RightSide>
+          <S.Title>Welcome to Tasker</S.Title>
+          <S.Subtitle>
+            Please, insert your information to access your tasks.
+          </S.Subtitle>
+          <form action="" onSubmit={handleLoginClick}>
+            <S.FieldName>Email</S.FieldName>
             <S.InputField
-              value={password}
-              id="password"
-              onChange={handlePassword}
-              placeholder={
-                error ? `${error} password.` : "Insert your password"
-              }
-              type={showPassword ? "text" : "password"}
+              autoComplete="username"
+              value={email}
               error={error}
-              autoComplete="current-password"
-            />
-            <S.IconsPasswordWrapper
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              <FontAwesomeIcon
-                icon={!showPassword ? faEye : faEyeSlash}
-                style={{ color: "#777" }}
+              id="email"
+              onChange={handleEmail}
+              placeholder={error ? `${error} email.` : "Insert your email"}
+            ></S.InputField>
+            <S.FieldName>Password</S.FieldName>
+            <div style={{ position: "relative" }}>
+              <S.InputField
+                value={password}
+                id="password"
+                onChange={handlePassword}
+                placeholder={
+                  error ? `${error} password.` : "Insert your password"
+                }
+                type={showPassword ? "text" : "password"}
+                error={error}
+                autoComplete="current-password"
               />
-            </S.IconsPasswordWrapper>
-          </div>
-          <S.KeepSigned>
-            <S.Checkbox />
-            <S.Subtitle>Remember me</S.Subtitle>
-          </S.KeepSigned>
-          {isError && <ErrorMessageAuth isError={isError} />}
-          <S.SignIn type="submit">
-            Sign In <LoaderInButton isLoading={isLoading} />
-          </S.SignIn>
-        </form>
-        <S.Subtitle>
-          Don't have an account? <Link to="/signup">Sign Up</Link>
-        </S.Subtitle>
-      </S.RightSide>
+              <S.IconsPasswordWrapper
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                <FontAwesomeIcon
+                  icon={!showPassword ? faEye : faEyeSlash}
+                  style={{ color: "#777" }}
+                />
+              </S.IconsPasswordWrapper>
+            </div>
+            <S.KeepSigned>
+              <S.Checkbox />
+              <S.Subtitle>Remember me</S.Subtitle>
+            </S.KeepSigned>
+            {isError && <ErrorMessageAuth isError={isError} />}
+            <S.SignIn type="submit">
+              Sign In <LoaderInButton isLoading={isLoading} />
+            </S.SignIn>
+          </form>
+          <S.Subtitle>
+            Don't have an account? <Link to="/signup">Sign Up</Link>
+          </S.Subtitle>
+        </S.RightSide>
+      </motion.div>
     </S.Page>
   );
 };

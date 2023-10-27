@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../Contexts/authContext";
 import { AuthType } from "../../Contexts/typesContext/authType";
@@ -14,6 +14,8 @@ import Settings from "../../Img/settings.svg";
 import SettingsItem from "../../Components/Settings";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+
 interface propsSidebar {
   toggleSidebar?: () => void;
 }
@@ -42,16 +44,23 @@ const SideBar: React.FC<propsSidebar> = () => {
   return (
     <S.Sidebar>
       <S.Img src={Logo} />
+
       {showUserModal ? (
         <S.UserForm action="" onSubmit={handleChangeUser}>
-          <S.UserInput
-            type="text"
-            name=""
-            id=""
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-          />
-          <S.UserBtn type="submit">Edit</S.UserBtn>
+          <motion.div
+            initial={{ opacity: 0, y: -100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+          >
+            <S.UserInput
+              type="text"
+              name=""
+              id=""
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+            />
+            <S.UserBtn type="submit">Edit</S.UserBtn>
+          </motion.div>
         </S.UserForm>
       ) : (
         <S.UserName onClick={() => setShowUserModal(true)}>
@@ -69,30 +78,35 @@ const SideBar: React.FC<propsSidebar> = () => {
           )}
         </S.UserName>
       )}
-
-      <S.Tabs>
-        <SidebarItem
-          icon={TaskFill}
-          name={t("sbTasks")}
-          isActive={true}
-        ></SidebarItem>
-        <ExpandSidebarItem
-          icon={Folder}
-          name={t("sbCategories")}
-        ></ExpandSidebarItem>
-        <SettingsItem isActive={false} icon={Settings} name={t("sbSettings")} />
-      </S.Tabs>
-      <Link
-        to="/login"
-        style={{ textDecoration: "none" }}
-        onClick={handleLogout}
+      <motion.div
+        initial={{ opacity: 0, y: -100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
       >
-        <SidebarItem
-          icon={Logout}
-          name={t("lgOut")}
-          isActive={false}
-        ></SidebarItem>
-      </Link>
+        <S.Tabs>
+          <SidebarItem
+            icon={TaskFill}
+            name={t("sbTasks")}
+            isActive={true}
+          ></SidebarItem>
+          <ExpandSidebarItem
+            icon={Folder}
+            name={t("sbCategories")}
+          ></ExpandSidebarItem>
+          <SettingsItem
+            isActive={false}
+            icon={Settings}
+            name={t("sbSettings")}
+          />
+        </S.Tabs>
+        <Link
+          to="/login"
+          style={{ textDecoration: "none" }}
+          onClick={handleLogout}
+        >
+          <SidebarItem icon={Logout} name={t("lgOut")} isActive={false} />
+        </Link>
+      </motion.div>
     </S.Sidebar>
   );
 };
