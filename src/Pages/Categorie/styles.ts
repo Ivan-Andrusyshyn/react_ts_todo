@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 export const Backdrop = styled.div`
   position: fixed;
@@ -22,13 +23,15 @@ export const Page = styled.div`
   height: 100vh;
   display: flex;
   flex: row;
+  justify-content: center;
   background-color: #f5f5f5;
 `;
 
 export const Sidebar = styled.div`
   height: 100vh;
-  width: 18vw;
+  width: 30vw;
   background-color: white;
+  z-index: 9999;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,7 +58,7 @@ export const Main = styled.div`
   align-items: center;
   justify-content: start;
   overflow-y: scroll;
-  @media screen and (min-width: 820px) {
+  @media screen and (min-width: 920px) {
     width: 100vw;
   }
 `;
@@ -91,4 +94,56 @@ export const FilterField = styled.div`
 export const FilterIcon = styled.img`
   height: 20px;
   margin: 0 8px;
+`;
+export const UserName = styled.p`
+  color: #777;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 700;
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0;
+    background-color: #bdbdbd;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+`;
+export const UserIcon = styled(FontAwesomeIcon)`
+  margin-right: 0.5rem;
+`;
+export const UserForm = styled.form`
+  display: flex;
+  gap: 5px;
+`;
+export const UserInput = styled.input`
+  padding: 5px 0 5px 10px;
+  border-radius: 6px;
+  transition: border-color 0.3s, outline-color 0.3s;
+  border: 1px solid #777;
+  color: #666;
+  &:focus {
+    border-color: #bdbdbd;
+    outline: #bdbdbd;
+  }
+`;
+export const UserBtn = styled.button`
+  padding: 5px 10px;
+  border: 1px solid #777;
+  border-radius: 6px;
+  transition: background-color 0.3s linear;
+  cursor: pointer;
+  &:hover {
+    background-color: #bdbdbd;
+  }
 `;

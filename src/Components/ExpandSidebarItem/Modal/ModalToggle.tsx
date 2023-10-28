@@ -1,9 +1,10 @@
 import { t } from "i18next";
-import CategoryEditForm from "./CategorieEditForm";
 import * as S from "./styles";
 import React from "react";
 import { ModalProp } from "./types/types";
-const Modal: React.FC<ModalProp> = ({
+
+import CategoryEditForm from "./CategorieEditForm";
+const ModalToggle: React.FC<ModalProp> = ({
   modalOpenForm,
   editedName,
   editedColor,
@@ -37,4 +38,4 @@ const Modal: React.FC<ModalProp> = ({
     </S.ModalOverlay>
   );
 };
-export default Modal;
+export default ModalToggle;

@@ -3,10 +3,11 @@ import GlobalStyle from "./global";
 import ContextProviders from "./contextProviders";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ProtectedRoute from "./Routes/Route";
-const Home = lazy(() => import("./Pages/Home"));
 const Login = lazy(() => import("./Pages/Login"));
 const SignUp = lazy(() => import("./Pages/SignUp"));
 const CategoriePage = lazy(() => import("./Pages/Categorie"));
+const Home = lazy(() => import("./Pages/Home"));
+
 function App() {
   return (
     <ContextProviders>
@@ -44,7 +45,8 @@ function App() {
                   <CategoriePage />
                 </ProtectedRoute>
               }
-            ></Route>
+            />
+
             <Route path="*" element={<Navigate to="/login" replace={true} />} />
           </Routes>
         </Suspense>

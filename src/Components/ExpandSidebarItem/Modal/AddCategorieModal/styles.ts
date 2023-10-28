@@ -18,7 +18,7 @@ export const FormModal = styled.div`
   border-radius: 6px;
   z-index: 222;
   left: 180px;
-  top: 330px;
+  top: 130px;
   display: flex;
   justify-content: center;
   padding: 10px;

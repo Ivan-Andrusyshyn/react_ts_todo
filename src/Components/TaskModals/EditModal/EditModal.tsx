@@ -1,20 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import * as S from "./styles";
-import { TaskListContext } from "../../Contexts/taskListContext";
-import { TaskProps, TaskListType } from "../../Contexts/typesContext/taskType";
-import { CategoriesContext } from "../../Contexts/categoriesContext";
-import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
-import { DeleteContext } from "../../Contexts/delete_edit_Context";
-import { DeleteType } from "../../Contexts/typesContext/delete_edit_Type";
-import Calendar from "../Calendar/Calendar";
+import { TaskListContext } from "../../../Contexts/taskListContext";
+import { TaskListType } from "../../../Contexts/typesContext/taskType";
+import { DeleteContext } from "../../../Contexts/delete_edit_Context";
+import { DeleteType } from "../../../Contexts/typesContext/delete_edit_Type";
+import Calendar from "../../Calendar/Calendar";
 import { format } from "date-fns";
-import Arrow from "../../Img/arrow.svg";
 import { useTranslation } from "react-i18next";
-
+import { Arrow } from "..";
 const EditModal: React.FC = () => {
   const { editTask, taskList } = useContext(TaskListContext) as TaskListType;
   const { setShowEdit, id } = useContext(DeleteContext) as DeleteType;
-  const { categList } = useContext(CategoriesContext) as CategorieContextType;
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState<number | Date>(new Date()); // Инициализируем выбранную дату как null
   const { t } = useTranslation();

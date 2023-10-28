@@ -1,26 +1,20 @@
 import React, { useState, useContext, useEffect } from "react";
 import * as S from "./styles";
-import Arrow from "../../Img/arrow.svg";
-import CategorieItem from "../Categorie";
 import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import SidebarItemForm from "./SideBarForm";
 import AddButton from "./AddButton";
-
-interface SidebarItemProps {
-  name: string;
-  icon: string;
-}
+import { SidebarItemProps } from "./types/types";
+import CategorieItem from "./CategorieItem";
+import AddCategorieModal from "./Modal/AddCategorieModal";
+import { Arrow } from "../TaskModals";
 
 const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
   const [active, setActive] = useState(false);
   const { categList, addCategory } = useContext(
     CategoriesContext
   ) as CategorieContextType;
-  const { t } = useTranslation();
 
   const [title, setTitle] = useState<string>("");
   const [color, setColor] = useState<string>("");
@@ -45,6 +39,7 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
       setError("Please enter category");
       return;
     }
+
     if (!color) {
       setError("Please select a category color");
       return;
@@ -95,7 +90,7 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
           />
         ))}
         {showForm && (
-          <SidebarItemForm
+          <AddCategorieModal
             error={error}
             setShowForm={setShowForm}
             color={color}

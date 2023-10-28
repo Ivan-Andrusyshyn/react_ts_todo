@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-// ===================MODAL
 export const ModalOverlay = styled.div`
   background: transparent;
   position: fixed;
@@ -19,7 +18,7 @@ export const ModalContent = styled.div`
   border-radius: 8px;
   padding: 20px;
   left: 170px;
-  top: 350px;
+  top: 150px;
   position: absolute;
   width: 250px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

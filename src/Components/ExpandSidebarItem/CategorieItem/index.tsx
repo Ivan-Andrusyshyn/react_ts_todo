@@ -1,22 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import * as S from "./styles";
 import { Link, useParams } from "react-router-dom";
-import { CategoriesContext } from "../../Contexts/categoriesContext";
-import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
 import { v4 as uuidv4 } from "uuid";
-import CategoryEditForm from "./Modal/CategorieEditForm";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useTranslation } from "react-i18next";
-import { TaskListContext } from "../../Contexts/taskListContext";
-import { TaskListType } from "../../Contexts/typesContext/taskType";
-import Modal from "./Modal/Modal";
-interface CategorieItemProps {
-  name: string;
-  color: string;
-  categoryId: string;
-  onNavigate: (path: string) => void;
-}
+import { TaskListContext } from "../../../Contexts/taskListContext";
+import { TaskListType } from "../../../Contexts/typesContext/taskType";
+import { CategorieContextType } from "../../../Contexts/typesContext/categoriesType";
+import { CategoriesContext } from "../../../Contexts/categoriesContext";
+import { CategorieItemProps } from "./types/types";
+import ModalToggle from "../Modal/ModalToggle";
 
 const CategorieItem: React.FC<CategorieItemProps> = ({
   name,
@@ -29,15 +22,12 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
   const { categList, deleteCategory, editCategory } = useContext(
     CategoriesContext
   ) as CategorieContextType;
-  const { deleteCategoryTasks, taskList } = useContext(
-    TaskListContext
-  ) as TaskListType;
+  const { deleteCategoryTasks } = useContext(TaskListContext) as TaskListType;
 
   const [editedName, setEditedName] = useState<string>("");
   const [editedColor, setEditedColor] = useState<string>("#fff");
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [modalOpenForm, setModalOpenForm] = useState<boolean>(false);
-  const { t } = useTranslation();
 
   useEffect(() => {
     setEditedColor(color);
@@ -127,7 +117,7 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
       </Link>
 
       {isOpen && (
-        <Modal
+        <ModalToggle
           modalOpenForm={modalOpenForm}
           editedName={editedName}
           editedColor={editedColor}

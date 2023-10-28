@@ -17,7 +17,7 @@ import LoaderInButton from "../../../Components/AuthLoader/AuthLoader";
 import AnimatedContainer from "../../AnimationsPages/toBottom";
 
 interface propsSidebar {
-  toggleSidebar?: () => void;
+  toggleSidebar?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 const SideBar: React.FC<propsSidebar> = () => {
   const { signOut, changeUserName, userData, isLoading } = useContext(

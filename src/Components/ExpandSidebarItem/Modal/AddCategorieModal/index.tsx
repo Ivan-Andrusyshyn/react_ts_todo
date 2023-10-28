@@ -1,17 +1,9 @@
 import React from "react";
 import * as S from "./styles";
 import { useTranslation } from "react-i18next";
-interface PropsSidebarForm {
-  error: string;
-  setShowForm: (arg: boolean) => void;
-  color: string;
-  handleCancel: () => void;
-  setColor: (arg: string) => void;
-  setTitle: (arg: string) => void;
-  title: string;
-  addNewCategory: (e: React.FormEvent) => void;
-}
-const SidebarItemForm: React.FC<PropsSidebarForm> = ({
+import { PropsSidebarForm } from "../../types/types";
+
+const AddCategorieModal: React.FC<PropsSidebarForm> = ({
   error,
   setShowForm,
   color,
@@ -66,4 +58,4 @@ const SidebarItemForm: React.FC<PropsSidebarForm> = ({
     </S.ModalOverlay>
   );
 };
-export default SidebarItemForm;
+export default AddCategorieModal;

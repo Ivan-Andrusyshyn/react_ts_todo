@@ -1,16 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import * as S from "./styles";
-import { AddContext } from "../../Contexts/addContext";
-import { AddType } from "../../Contexts/typesContext/addType";
-import { TaskListContext } from "../../Contexts/taskListContext";
-import { TaskProps, TaskListType } from "../../Contexts/typesContext/taskType";
-import { CategoriesContext } from "../../Contexts/categoriesContext";
-import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
-import Arrow from "../../Img/arrow.svg";
-import Calendar from "../Calendar/Calendar";
+import { AddContext } from "../../../Contexts/addContext";
+import { AddType } from "../../../Contexts/typesContext/addType";
+import { TaskListContext } from "../../../Contexts/taskListContext";
+import {
+  TaskProps,
+  TaskListType,
+} from "../../../Contexts/typesContext/taskType";
+import { CategoriesContext } from "../../../Contexts/categoriesContext";
+import { CategorieContextType } from "../../../Contexts/typesContext/categoriesType";
+import Calendar from "../../Calendar/Calendar";
 
 import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
+import { Arrow } from "..";
 const AddModal: React.FC = () => {
   const { addTask } = useContext(TaskListContext) as TaskListType;
   const { categList } = useContext(CategoriesContext) as CategorieContextType;
