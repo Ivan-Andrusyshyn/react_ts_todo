@@ -8,14 +8,13 @@ import Folder from "../../../Img/folder.svg";
 import Logout from "../../../Img/logout.svg";
 import SidebarItem from "../../../Components/SidebarItem";
 import ExpandSidebarItem from "../../../Components/ExpandSidebarItem";
-import { faSpinner, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import * as S from "../styles";
 import Settings from "../../../Img/settings.svg";
 import SettingsItem from "../../../Components/Settings";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
 import LoaderInButton from "../../../Components/AuthLoader/AuthLoader";
+import AnimatedContainer from "../../AnimationsPages/toBottom";
 
 interface propsSidebar {
   toggleSidebar?: () => void;
@@ -48,11 +47,7 @@ const SideBar: React.FC<propsSidebar> = () => {
 
       {showUserModal ? (
         <S.UserForm action="" onSubmit={handleChangeUser}>
-          <motion.div
-            initial={{ opacity: 0, y: -100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
+          <AnimatedContainer>
             <S.UserInput
               type="text"
               name=""
@@ -61,7 +56,7 @@ const SideBar: React.FC<propsSidebar> = () => {
               onChange={(e) => setUserName(e.target.value)}
             />
             <S.UserBtn type="submit">Edit</S.UserBtn>
-          </motion.div>
+          </AnimatedContainer>
         </S.UserForm>
       ) : (
         <S.UserName onClick={() => setShowUserModal(true)}>
@@ -73,11 +68,8 @@ const SideBar: React.FC<propsSidebar> = () => {
           )}
         </S.UserName>
       )}
-      <motion.div
-        initial={{ opacity: 0, y: -100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
+
+      <AnimatedContainer>
         <S.Tabs>
           <SidebarItem
             icon={TaskFill}
@@ -101,7 +93,7 @@ const SideBar: React.FC<propsSidebar> = () => {
         >
           <SidebarItem icon={Logout} name={t("lgOut")} isActive={false} />
         </Link>
-      </motion.div>
+      </AnimatedContainer>
     </S.Sidebar>
   );
 };

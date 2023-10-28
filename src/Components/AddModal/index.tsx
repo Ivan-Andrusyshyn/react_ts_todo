@@ -9,7 +9,7 @@ import { CategorieContextType } from "../../Contexts/typesContext/categoriesType
 import Arrow from "../../Img/arrow.svg";
 import Calendar from "../Calendar/Calendar";
 
-import { compareAsc, format } from "date-fns";
+import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
 const AddModal: React.FC = () => {
   const { addTask } = useContext(TaskListContext) as TaskListType;

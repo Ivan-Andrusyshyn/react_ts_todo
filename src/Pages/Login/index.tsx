@@ -8,7 +8,8 @@ import { AuthType } from "../../Contexts/typesContext/authType";
 import ErrorMessageAuth from "../../Components/ErrorComponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { motion } from "framer-motion";
+import AnimatedContainerTop from "../AnimationsPages/toTop";
+import AnimatedContainerBottom from "../AnimationsPages/toBottom";
 const Login: React.FC = () => {
   const { handleLogin, isLoading, isError } = useContext(
     AuthContext
@@ -44,20 +45,12 @@ const Login: React.FC = () => {
 
   return (
     <S.Page>
-      <motion.div
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
+      <AnimatedContainerBottom>
         <S.LeftSide>
           <S.Img src={Logo} />
         </S.LeftSide>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: -100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
+      </AnimatedContainerBottom>
+      <AnimatedContainerTop>
         <S.RightSide>
           <S.Title>Welcome to Tasker</S.Title>
           <S.Subtitle>
@@ -109,7 +102,7 @@ const Login: React.FC = () => {
             Don't have an account? <Link to="/signup">Sign Up</Link>
           </S.Subtitle>
         </S.RightSide>
-      </motion.div>
+      </AnimatedContainerTop>
     </S.Page>
   );
 };

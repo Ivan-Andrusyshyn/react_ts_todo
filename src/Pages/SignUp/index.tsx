@@ -7,6 +7,8 @@ import LoaderInButton from "../../Components/AuthLoader/AuthLoader";
 import { AuthType } from "../../Contexts/typesContext/authType";
 import ErrorMessageAuth from "../../Components/ErrorComponent";
 import { motion } from "framer-motion";
+import AnimatedContainerBottom from "../AnimationsPages/toBottom";
+import AnimatedContainerTop from "../AnimationsPages/toTop";
 
 const SignUp = () => {
   const {
@@ -52,20 +54,13 @@ const SignUp = () => {
 
   return (
     <S.Page>
-      <motion.div
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
+      <AnimatedContainerBottom>
         <S.LeftSide>
           <S.Img src={Logo}></S.Img>
         </S.LeftSide>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: -100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
+      </AnimatedContainerBottom>
+
+      <AnimatedContainerTop>
         <S.RightSide>
           <S.Title>Welcome to Tasker</S.Title>
           <S.Subtitle>
@@ -126,7 +121,7 @@ const SignUp = () => {
             </S.Google_Btn>
           </S.Subtitle>
         </S.RightSide>
-      </motion.div>
+      </AnimatedContainerTop>
     </S.Page>
   );
 };
