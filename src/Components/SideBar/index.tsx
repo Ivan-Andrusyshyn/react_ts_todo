@@ -9,8 +9,8 @@ import * as S from "../../Pages/Categorie/styles";
 import SettingsItem from "../Settings";
 import { useTranslation } from "react-i18next";
 import LoaderInButton from "../AuthLoader/AuthLoader";
-import AnimatedContainer from "../../Pages/AnimationsPages/toBottom";
 import { Folder, Logo, Logout, Settings, TaskFill } from "..";
+import AnimatedContainer from "../Animations/AnimationsComponents";
 
 interface propsSidebar {
   toggleSidebar?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;

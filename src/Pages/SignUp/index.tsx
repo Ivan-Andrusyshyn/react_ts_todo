@@ -6,9 +6,8 @@ import * as S from "./styles";
 import LoaderInButton from "../../Components/AuthLoader/AuthLoader";
 import { AuthType } from "../../Contexts/typesContext/authType";
 import ErrorMessageAuth from "../../Components/ErrorComponent";
-import { motion } from "framer-motion";
-import AnimatedContainerBottom from "../AnimationsPages/toBottom";
-import AnimatedContainerTop from "../AnimationsPages/toTop";
+import AnimatedContainerBottom from "../../Components/Animations/AnimationsPages/toBottom";
+import AnimatedContainerTop from "../../Components/Animations/AnimationsPages/toTop";
 
 const SignUp = () => {
   const {

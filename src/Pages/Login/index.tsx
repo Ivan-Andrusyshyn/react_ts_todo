@@ -8,8 +8,8 @@ import { AuthType } from "../../Contexts/typesContext/authType";
 import ErrorMessageAuth from "../../Components/ErrorComponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import AnimatedContainerTop from "../AnimationsPages/toTop";
-import AnimatedContainerBottom from "../AnimationsPages/toBottom";
+import AnimatedContainerBottom from "../../Components/Animations/AnimationsPages/toBottom";
+import AnimatedContainerTop from "../../Components/Animations/AnimationsPages/toTop";
 const Login: React.FC = () => {
   const { handleLogin, isLoading, isError } = useContext(
     AuthContext
