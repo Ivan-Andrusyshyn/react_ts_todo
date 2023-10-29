@@ -8,7 +8,7 @@ import AddButton from "./AddButton";
 import { SidebarItemProps } from "./types/types";
 import CategorieItem from "./CategorieItem";
 import AddCategorieModal from "./Modal/AddCategorieModal";
-import { Arrow } from "../TaskModals";
+import { Arrow } from "..";
 
 const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
   const [active, setActive] = useState(false);

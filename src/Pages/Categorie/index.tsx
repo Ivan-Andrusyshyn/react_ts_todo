@@ -18,7 +18,7 @@ import EditModal from "../../Components/TaskModals/EditModal/EditModal";
 import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
 import CategorieMain from "./CategorieMain";
-import SideBar from "./SideBar";
+import SideBar from "../../Components/SideBar";
 
 const CategoriePage: React.FC = () => {
   const { name } = useParams<string>();

@@ -13,7 +13,7 @@ import Calendar from "../../Calendar/Calendar";
 
 import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
-import { Arrow } from "..";
+import { Arrow } from "../..";
 const AddModal: React.FC = () => {
   const { addTask } = useContext(TaskListContext) as TaskListType;
   const { categList } = useContext(CategoriesContext) as CategorieContextType;

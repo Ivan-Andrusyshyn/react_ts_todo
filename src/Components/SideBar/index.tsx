@@ -1,20 +1,16 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import AuthContext from "../../../Contexts/authContext";
-import { AuthType } from "../../../Contexts/typesContext/authType";
-import Logo from "../../../Img/Logo.png";
-import TaskFill from "../../../Img/taskFill.png";
-import Folder from "../../../Img/folder.svg";
-import Logout from "../../../Img/logout.svg";
-import SidebarItem from "../../../Components/SidebarItem";
-import ExpandSidebarItem from "../../../Components/ExpandSidebarItem";
+import AuthContext from "../../Contexts/authContext";
+import { AuthType } from "../../Contexts/typesContext/authType";
+import SidebarItem from "../SidebarItem";
+import ExpandSidebarItem from "../ExpandSidebarItem";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import * as S from "../styles";
-import Settings from "../../../Img/settings.svg";
-import SettingsItem from "../../../Components/Settings";
+import * as S from "../../Pages/Categorie/styles";
+import SettingsItem from "../Settings";
 import { useTranslation } from "react-i18next";
-import LoaderInButton from "../../../Components/AuthLoader/AuthLoader";
-import AnimatedContainer from "../../AnimationsPages/toBottom";
+import LoaderInButton from "../AuthLoader/AuthLoader";
+import AnimatedContainer from "../../Pages/AnimationsPages/toBottom";
+import { Folder, Logo, Logout, Settings, TaskFill } from "..";
 
 interface propsSidebar {
   toggleSidebar?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;

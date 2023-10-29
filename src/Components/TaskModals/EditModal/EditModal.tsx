@@ -7,7 +7,7 @@ import { DeleteType } from "../../../Contexts/typesContext/delete_edit_Type";
 import Calendar from "../../Calendar/Calendar";
 import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
-import { Arrow } from "..";
+import { Arrow } from "../..";
 const EditModal: React.FC = () => {
   const { editTask, taskList } = useContext(TaskListContext) as TaskListType;
   const { setShowEdit, id } = useContext(DeleteContext) as DeleteType;
