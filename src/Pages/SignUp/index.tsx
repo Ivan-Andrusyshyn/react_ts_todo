@@ -8,6 +8,8 @@ import { AuthType } from "../../Contexts/typesContext/authType";
 import ErrorMessageAuth from "../../Components/ErrorComponent";
 import AnimatedContainerBottom from "../../Components/Animations/AnimationsPages/toBottom";
 import AnimatedContainerTop from "../../Components/Animations/AnimationsPages/toTop";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const SignUp = () => {
   const {
@@ -17,11 +19,11 @@ const SignUp = () => {
     isLoadingGoogle,
     isError,
   } = useContext(AuthContext) as AuthType;
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
-
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   useEffect(() => {
     const newTimeOut = setTimeout(() => {
       setError("");
@@ -52,7 +54,7 @@ const SignUp = () => {
   };
 
   return (
-    <S.Page>
+    <S.Page data-testid="signUpPage">
       <AnimatedContainerBottom>
         <S.LeftSide>
           <S.Img src={Logo}></S.Img>
@@ -68,6 +70,7 @@ const SignUp = () => {
           <form action="" onSubmit={handleSignUpClick}>
             <S.FieldName>Name</S.FieldName>
             <S.InputField
+              data-testid="inputName"
               value={name}
               id="name"
               error={error}
@@ -76,15 +79,17 @@ const SignUp = () => {
             ></S.InputField>
             <S.FieldName>Email</S.FieldName>
             <S.InputField
+              data-testid="inputEmail"
               value={email}
               id="email"
               error={error}
               autoComplete="username"
               onChange={handleEmailChange}
               placeholder={error ? `${error} email.` : "Insert your email"}
-            ></S.InputField>
+            />
             <S.FieldName>Password</S.FieldName>
             <S.InputField
+              data-testid="inputPassword"
               value={password}
               id="password"
               error={error}
@@ -93,14 +98,21 @@ const SignUp = () => {
               placeholder={
                 error ? `${error} password.` : "Insert your password"
               }
-              type="password"
-            ></S.InputField>
+              type={"password"}
+            />
+
             <S.KeepSigned>
               <S.Checkbox />
               <S.Subtitle>Remember me</S.Subtitle>
             </S.KeepSigned>
-            {isError && <ErrorMessageAuth isError={isError} />}
-            <S.SignIn type="submit" disabled={isLoading}>
+            {isError && (
+              <ErrorMessageAuth isError={isError} data-testid="error-message" />
+            )}
+            <S.SignIn
+              data-testid="btnRegister"
+              type="submit"
+              disabled={isLoading}
+            >
               Sign Up
               <LoaderInButton loaderColor={"#fff"} isLoading={isLoading} />
             </S.SignIn>

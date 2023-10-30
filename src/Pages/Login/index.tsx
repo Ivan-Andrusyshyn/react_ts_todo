@@ -44,7 +44,7 @@ const Login: React.FC = () => {
   }
 
   return (
-    <S.Page>
+    <S.Page data-testid="loginPage">
       <AnimatedContainerBottom>
         <S.LeftSide>
           <S.Img src={Logo} />
@@ -59,16 +59,18 @@ const Login: React.FC = () => {
           <form action="" onSubmit={handleLoginClick}>
             <S.FieldName>Email</S.FieldName>
             <S.InputField
+              data-testid="inputEmail"
               autoComplete="username"
               value={email}
               error={error}
               id="email"
               onChange={handleEmail}
               placeholder={error ? `${error} email.` : "Insert your email"}
-            ></S.InputField>
+            />
             <S.FieldName>Password</S.FieldName>
             <div style={{ position: "relative" }}>
               <S.InputField
+                data-testid="inputPassword"
                 value={password}
                 id="password"
                 onChange={handlePassword}
@@ -81,6 +83,7 @@ const Login: React.FC = () => {
               />
               <S.IconsPasswordWrapper
                 onClick={() => setShowPassword(!showPassword)}
+                data-testid="passwordToggle"
               >
                 <FontAwesomeIcon
                   icon={!showPassword ? faEye : faEyeSlash}
@@ -93,8 +96,8 @@ const Login: React.FC = () => {
               <S.Subtitle>Remember me</S.Subtitle>
             </S.KeepSigned>
             {isError && <ErrorMessageAuth isError={isError} />}
-            <S.SignIn type="submit">
-              Sign In{" "}
+            <S.SignIn type="submit" data-testid="btnLogin">
+              Sign In
               <LoaderInButton loaderColor={"#fff"} isLoading={isLoading} />
             </S.SignIn>
           </form>

@@ -65,13 +65,14 @@ export const FieldName = styled.h2`
   font-family: Roboto, Arial;
   font-size: 16px;
   margin: 8px;
+  position: relative;
   margin-left: 0;
 `;
 
 export const InputField = styled.input<propsInputAuth>`
-  width: 25vw;
   height: 40px;
   border-radius: 8px;
+  position: relative;
   border: 1px solid #999;
   padding-left: 8px;
   font-size: 16px;
@@ -110,7 +111,6 @@ export const SignIn = styled.button`
   font-weight: 400;
   gap: 10px;
   margin: 16px 0px;
-
   &:hover {
     background: #613db7;
     cursor: pointer;
