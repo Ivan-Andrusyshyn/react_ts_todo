@@ -1,21 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import * as S from "./styles";
 
-import TaskCard from "../../Components/TaskCard";
-import AddTask from "../../Components/AddTask";
+import AddTaskBtn from "../../Components/AddTask-Btn";
 import { TaskListContext } from "../../Contexts/taskListContext";
 import { TaskListType } from "../../Contexts/typesContext/taskType";
 import FilterTag from "../../Components/FilterTag";
-import Filter from "../../Img/filter.svg";
+import Filter from "../../assets/svg/filter.svg";
 import { DeleteContext } from "../../Contexts/delete_edit_Context";
 import { DeleteType } from "../../Contexts/typesContext/delete_edit_Type";
-import DeleteModal from "../../Components/TaskModals/DeleteModal";
-import AddModal from "../../Components/TaskModals/AddModal";
 import { AddContext } from "../../Contexts/addContext";
 import { AddType } from "../../Contexts/typesContext/addType";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import EditModal from "../../Components/TaskModals/EditModal/EditModal";
 import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
 import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { useNavigate } from "react-router-dom";
@@ -110,7 +106,7 @@ const Home: React.FC = () => {
           </S.FilterField>
         </S.TitleAndFilter>
 
-        <AddTask />
+        <AddTaskBtn />
       </S.Main>
     </S.Page>
   );

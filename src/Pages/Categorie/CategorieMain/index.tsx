@@ -1,12 +1,11 @@
 import { useTranslation } from "react-i18next";
-import AddTask from "../../../Components/AddTask";
+import AddTaskBtn from "../../../Components/AddTask-Btn";
 import FilterTag from "../../../Components/FilterTag";
-import TaskCard from "../../../Components/TaskCard";
+import TaskItem from "../../../Components/TaskItem";
 import LanguageSelector from "../../../i18n/LanguageSelector";
 import * as S from "../styles";
 import { CategorieMainProps, listCategoriesType } from "../types/types";
-import Filter from "../../../Img/filter.svg";
-import { Key } from "react";
+import Filter from "../../../assets/svg/filter.svg";
 const CategorieMain: React.FC<CategorieMainProps> = ({
   name,
   handleDone,
@@ -40,7 +39,7 @@ const CategorieMain: React.FC<CategorieMainProps> = ({
         </S.FilterField>
       </S.TitleAndFilter>
       {listOfLists[listToDisplay].map((task: listCategoriesType) => (
-        <TaskCard
+        <TaskItem
           key={task.id}
           id={task.id}
           name={task.title}
@@ -50,7 +49,7 @@ const CategorieMain: React.FC<CategorieMainProps> = ({
           date={task.date}
         />
       ))}
-      <AddTask />
+      <AddTaskBtn />
     </S.Main>
   );
 };

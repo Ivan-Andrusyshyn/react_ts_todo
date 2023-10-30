@@ -3,6 +3,7 @@ import Login from "./index";
 import AuthContext from "../../Contexts/authContext";
 import { AuthType } from "../../Contexts/typesContext/authType";
 import { MemoryRouter } from "react-router-dom";
+import { JSX } from "react/jsx-runtime";
 const handleLogin: AuthType = {
   handleLogin: jest.fn((email, password) => Promise.resolve()),
   isLoading: false,
@@ -17,25 +18,24 @@ const handleLogin: AuthType = {
   isLoadingGoogle: false,
 };
 describe("Login Component", () => {
-  test("Renders Login component", () => {
-    render(
+  let loginComponent: JSX.Element;
+
+  beforeEach(() => {
+    loginComponent = (
       <MemoryRouter initialEntries={["/react_ts_todo/login"]}>
         <AuthContext.Provider value={handleLogin}>
           <Login />
         </AuthContext.Provider>
       </MemoryRouter>
     );
+  });
+  test("Renders Login component", () => {
+    render(loginComponent);
     screen.getByTestId("loginPage");
   });
 
   test("Handles form submission with valid input", () => {
-    render(
-      <MemoryRouter initialEntries={["/react_ts_todo/login"]}>
-        <AuthContext.Provider value={handleLogin}>
-          <Login />
-        </AuthContext.Provider>
-      </MemoryRouter>
-    );
+    render(loginComponent);
     const emailInput = screen.getByTestId("inputEmail");
     const passwordInput = screen.getByTestId("inputPassword");
     const submitButton = screen.getByTestId("btnLogin");
@@ -51,13 +51,7 @@ describe("Login Component", () => {
   });
 
   test("Shows an error message for empty input", () => {
-    render(
-      <MemoryRouter initialEntries={["/react_ts_todo/login"]}>
-        <AuthContext.Provider value={handleLogin}>
-          <Login />
-        </AuthContext.Provider>
-      </MemoryRouter>
-    );
+    render(loginComponent);
     const submitButton = screen.getByTestId("btnLogin");
 
     fireEvent.click(submitButton);
@@ -68,13 +62,7 @@ describe("Login Component", () => {
   });
 
   test("Toggles password visibility", () => {
-    render(
-      <MemoryRouter initialEntries={["/react_ts_todo/login"]}>
-        <AuthContext.Provider value={handleLogin}>
-          <Login />
-        </AuthContext.Provider>
-      </MemoryRouter>
-    );
+    render(loginComponent);
     const passwordInput = screen.getByTestId("inputPassword");
     const toggleButton = screen.getByTestId("passwordToggle");
     expect(passwordInput.getAttribute("type")).toBe("password");

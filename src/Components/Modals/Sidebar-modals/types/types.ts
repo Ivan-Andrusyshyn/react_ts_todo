@@ -1,3 +1,9 @@
+interface CategorieItemProps {
+  name: string;
+  color: string;
+  categoryId: string;
+  onNavigate: (path: string) => void;
+}
 interface CategoryEditFormProps {
   initialName: string;
   initialColor: string;
@@ -5,7 +11,16 @@ interface CategoryEditFormProps {
   openModal: boolean;
   onSave: (editedName: string, editedColor: string) => void;
 }
-
+interface PropsSidebarForm {
+  error: string;
+  setShowForm: (arg: boolean) => void;
+  color: string;
+  handleCancel: () => void;
+  setColor: (arg: string) => void;
+  setTitle: (arg: string) => void;
+  title: string;
+  addNewCategory: (e: React.FormEvent) => void;
+}
 interface ModalProp {
   modalOpenForm: boolean;
   editedName: string;
@@ -18,4 +33,9 @@ interface ModalProp {
   setModalOpenForm: (value: boolean) => void;
 }
 
-export type { CategoryEditFormProps, ModalProp };
+export type {
+  PropsSidebarForm,
+  CategorieItemProps,
+  CategoryEditFormProps,
+  ModalProp,
+};

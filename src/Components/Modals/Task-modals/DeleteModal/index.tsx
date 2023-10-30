@@ -1,10 +1,10 @@
 import React from "react";
 import * as S from "./styles";
-import { DeleteType } from "../../../Contexts/typesContext/delete_edit_Type";
-import { DeleteContext } from "../../../Contexts/delete_edit_Context";
+import { DeleteType } from "../../../../Contexts/typesContext/delete_edit_Type";
+import { DeleteContext } from "../../../../Contexts/delete_edit_Context";
 import { useContext } from "react";
-import { TaskListContext } from "../../../Contexts/taskListContext";
-import { TaskListType } from "../../../Contexts/typesContext/taskType";
+import { TaskListContext } from "../../../../Contexts/taskListContext";
+import { TaskListType } from "../../../../Contexts/typesContext/taskType";
 import { useTranslation } from "react-i18next";
 
 const DeleteModal: React.FC = () => {

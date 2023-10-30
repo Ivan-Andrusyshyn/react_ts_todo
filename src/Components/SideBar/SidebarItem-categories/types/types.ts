@@ -12,4 +12,11 @@ interface PropsSidebarForm {
   title: string;
   addNewCategory: (e: React.FormEvent) => void;
 }
-export type { SidebarItemProps, PropsSidebarForm };
+interface CategorieItemProps {
+  name: string;
+  color: string;
+  categoryId: string;
+  onNavigate: (path: string) => void;
+}
+
+export type { SidebarItemProps, PropsSidebarForm, CategorieItemProps };

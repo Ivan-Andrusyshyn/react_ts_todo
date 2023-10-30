@@ -6,11 +6,11 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import * as S from "../../Pages/Categorie/styles";
 import SettingsItem from "../Settings";
 import { useTranslation } from "react-i18next";
-import LoaderInButton from "../AuthLoader/AuthLoader";
+import LoaderInButton from "../Loader/AuthLoader";
 import { Folder, Logo, Logout, Settings, TaskFill } from "..";
 import AnimatedContainer from "../Animations/AnimationsComponents";
 import SidebarItem from "./SidebarItem";
-import ExpandSidebarItem from "./ExpandSidebarItem";
+import ExpandSidebarItem from "./SidebarItem-categories";
 
 interface propsSidebar {
   toggleSidebar?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;

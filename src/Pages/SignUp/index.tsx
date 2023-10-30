@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 import AuthContext from "../../Contexts/authContext";
 import { useContext, useEffect, useState } from "react";
-import Logo from "../../Img/Logo.png";
+import Logo from "../../assets/images/Logo.png";
 import * as S from "./styles";
-import LoaderInButton from "../../Components/AuthLoader/AuthLoader";
+import LoaderInButton from "../../Components/Loader/AuthLoader";
 import { AuthType } from "../../Contexts/typesContext/authType";
 import ErrorMessageAuth from "../../Components/ErrorComponent";
 import AnimatedContainerBottom from "../../Components/Animations/AnimationsPages/toBottom";
 import AnimatedContainerTop from "../../Components/Animations/AnimationsPages/toTop";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const SignUp = () => {
   const {

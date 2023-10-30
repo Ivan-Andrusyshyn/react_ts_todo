@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import AddButton from "./AddButton";
 import { SidebarItemProps } from "./types/types";
 import CategorieItem from "./CategorieItem";
-import AddCategorieModal from "./Modal/AddCategorieModal";
+import AddCategorieModal from "../../Modals/Sidebar-modals/AddCategorieModal";
 import { Arrow } from "../..";
 import { CategorieContextType } from "../../../Contexts/typesContext/categoriesType";
 import { CategoriesContext } from "../../../Contexts/categoriesContext";

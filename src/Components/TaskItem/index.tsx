@@ -1,12 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import * as S from "./styles";
-import Edit from "../../Img/edit.svg";
-import Erase from "../../Img/erase.svg";
 import { TaskListContext } from "../../Contexts/taskListContext";
 import { TaskListType } from "../../Contexts/typesContext/taskType";
 import { DeleteContext } from "../../Contexts/delete_edit_Context";
 import { DeleteType } from "../../Contexts/typesContext/delete_edit_Type";
 import { format, isBefore } from "date-fns";
+import { Edit, Erase } from "..";
 
 interface TaskCardProps {
   id: number;
@@ -17,7 +16,7 @@ interface TaskCardProps {
   date: number | Date;
 }
 
-const TaskCard: React.FC<TaskCardProps> = ({
+const TaskItem: React.FC<TaskCardProps> = ({
   id,
   name,
   list,
@@ -70,4 +69,4 @@ const TaskCard: React.FC<TaskCardProps> = ({
   );
 };
 
-export default TaskCard;
+export default TaskItem;

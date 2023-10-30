@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./styles";
 import { useTranslation } from "react-i18next";
-import { PropsSidebarForm } from "../../types/types";
+import { PropsSidebarForm } from "../types/types";
 
 const AddCategorieModal: React.FC<PropsSidebarForm> = ({
   error,

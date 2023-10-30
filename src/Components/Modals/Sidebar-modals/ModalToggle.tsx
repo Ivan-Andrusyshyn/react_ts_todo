@@ -1,9 +1,9 @@
 import { t } from "i18next";
 import * as S from "./styles";
 import React from "react";
-import { ModalProp } from "./types/types";
 
 import CategoryEditForm from "./CategorieEditForm";
+import { ModalProp } from "./types/types";
 const ModalToggle: React.FC<ModalProp> = ({
   modalOpenForm,
   editedName,

@@ -3,6 +3,7 @@ import SignUp from "./index";
 import AuthContext from "../../Contexts/authContext";
 import { AuthType } from "../../Contexts/typesContext/authType";
 import { MemoryRouter } from "react-router-dom";
+import { JSX } from "react/jsx-runtime";
 const currentUser: AuthType = {
   handleLogin: (email, password) => Promise.resolve(),
   isLoading: false,
@@ -17,25 +18,24 @@ const currentUser: AuthType = {
   isLoadingGoogle: false,
 };
 describe("Login Component", () => {
-  test("Renders Login component", () => {
-    render(
-      <MemoryRouter initialEntries={["/react_ts_todo/signup"]}>
+  let registrationComponent: JSX.Element;
+  beforeEach(() => {
+    registrationComponent = (
+      <MemoryRouter initialEntries={["/react_ts_todo/login"]}>
         <AuthContext.Provider value={currentUser}>
           <SignUp />
         </AuthContext.Provider>
       </MemoryRouter>
     );
+  });
+  test("Renders Login component", () => {
+    render(registrationComponent);
     screen.getByTestId("signUpPage");
   });
 
   test("Handles form submission with valid input", () => {
-    render(
-      <MemoryRouter initialEntries={["/react_ts_todo/signup"]}>
-        <AuthContext.Provider value={currentUser}>
-          <SignUp />
-        </AuthContext.Provider>
-      </MemoryRouter>
-    );
+    render(registrationComponent);
+
     const nameInput = screen.getByTestId("inputName");
     const emailInput = screen.getByTestId("inputEmail");
     const passwordInput = screen.getByTestId("inputPassword");
@@ -53,13 +53,7 @@ describe("Login Component", () => {
   });
 
   test("Shows an error message for empty input", () => {
-    render(
-      <MemoryRouter initialEntries={["/react_ts_todo/signup"]}>
-        <AuthContext.Provider value={currentUser}>
-          <SignUp />
-        </AuthContext.Provider>
-      </MemoryRouter>
-    );
+    render(registrationComponent);
     const submitButton = screen.getByTestId("btnRegister");
 
     fireEvent.click(submitButton);

@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import * as S from "./styles";
-import Add from "../../Img/add.svg";
 import { AddType } from "../../Contexts/typesContext/addType";
 import { AddContext } from "../../Contexts/addContext";
 import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
 import { useTranslation } from "react-i18next";
+import { Add } from "..";
 
-const AddTask: React.FC = () => {
+const AddTaskBtn: React.FC = () => {
   const { setShowAdd } = useContext(AddContext) as AddType;
   const { categList } = useContext(CategoriesContext) as CategorieContextType;
   const [isDisable, setIsDisable] = useState(false);
@@ -32,4 +32,4 @@ const AddTask: React.FC = () => {
   );
 };
 
-export default AddTask;
+export default AddTaskBtn;

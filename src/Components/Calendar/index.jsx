@@ -9,12 +9,12 @@ import {
   CalendarWeekName,
   CalendarTitle,
   ButtonIcon,
-} from "./CalendarStyled/Calendar.styled";
+} from "./Calendar.styled";
 import {
   generateCalendar,
   handleNextMonth,
   handlePrevMonth,
-} from "./Calendar-js/generateCalendar";
+} from "./generateCalendar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
