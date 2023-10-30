@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
-import AddTaskBtn from "../../../Components/AddTask-Btn";
-import FilterTag from "../../../Components/FilterTag";
-import TaskItem from "../../../Components/TaskItem";
+import AddTaskBtn from "../../../Components/Task-Components/AddTask-Btn";
+import FilterTag from "../../../Components/Task-Components/FilterTag";
+import TaskItem from "../../../Components/Task-Components/TaskItem";
 import LanguageSelector from "../../../i18n/LanguageSelector";
 import * as S from "../styles";
 import { CategorieMainProps, listCategoriesType } from "../types/types";

@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import * as S from "./styles";
-import { TaskListContext } from "../../Contexts/taskListContext";
-import { TaskListType } from "../../Contexts/typesContext/taskType";
-import { DeleteContext } from "../../Contexts/delete_edit_Context";
-import { DeleteType } from "../../Contexts/typesContext/delete_edit_Type";
+import { TaskListContext } from "../../../Contexts/taskListContext";
+import { TaskListType } from "../../../Contexts/typesContext/taskType";
+import { DeleteContext } from "../../../Contexts/delete_edit_Context";
+import { DeleteType } from "../../../Contexts/typesContext/delete_edit_Type";
 import { format, isBefore } from "date-fns";
-import { Edit, Erase } from "..";
+import { Edit, Erase } from "../..";
 
 interface TaskCardProps {
   id: number;

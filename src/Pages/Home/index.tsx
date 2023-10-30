@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import * as S from "./styles";
 
-import AddTaskBtn from "../../Components/AddTask-Btn";
+import AddTaskBtn from "../../Components/Task-Components/AddTask-Btn";
 import { TaskListContext } from "../../Contexts/taskListContext";
 import { TaskListType } from "../../Contexts/typesContext/taskType";
-import FilterTag from "../../Components/FilterTag";
+import FilterTag from "../../Components/Task-Components/FilterTag";
 import Filter from "../../assets/svg/filter.svg";
 import { DeleteContext } from "../../Contexts/delete_edit_Context";
 import { DeleteType } from "../../Contexts/typesContext/delete_edit_Type";

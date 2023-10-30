@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import * as S from "./styles";
-import { AddType } from "../../Contexts/typesContext/addType";
-import { AddContext } from "../../Contexts/addContext";
-import { CategoriesContext } from "../../Contexts/categoriesContext";
-import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
+import { AddType } from "../../../Contexts/typesContext/addType";
+import { AddContext } from "../../../Contexts/addContext";
+import { CategoriesContext } from "../../../Contexts/categoriesContext";
+import { CategorieContextType } from "../../../Contexts/typesContext/categoriesType";
 import { useTranslation } from "react-i18next";
-import { Add } from "..";
+import { Add } from "../..";
 
 const AddTaskBtn: React.FC = () => {
   const { setShowAdd } = useContext(AddContext) as AddType;
