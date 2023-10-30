@@ -1,7 +1,7 @@
 import { t } from "i18next";
-import Add from "../../../Img/add.svg";
 import * as S from "./styles";
 import React from "react";
+import { Add } from "../../..";
 interface PropAddBtn {
   setShowForm: (arg: boolean) => void;
 }

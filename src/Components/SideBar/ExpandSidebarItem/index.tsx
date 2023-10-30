@@ -1,14 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
 import * as S from "./styles";
-import { CategoriesContext } from "../../Contexts/categoriesContext";
-import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import AddButton from "./AddButton";
 import { SidebarItemProps } from "./types/types";
 import CategorieItem from "./CategorieItem";
 import AddCategorieModal from "./Modal/AddCategorieModal";
-import { Arrow } from "..";
+import { Arrow } from "../..";
+import { CategorieContextType } from "../../../Contexts/typesContext/categoriesType";
+import { CategoriesContext } from "../../../Contexts/categoriesContext";
 
 const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
   const [active, setActive] = useState(false);

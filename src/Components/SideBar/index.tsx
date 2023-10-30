@@ -2,8 +2,6 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../Contexts/authContext";
 import { AuthType } from "../../Contexts/typesContext/authType";
-import SidebarItem from "../SidebarItem";
-import ExpandSidebarItem from "../ExpandSidebarItem";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import * as S from "../../Pages/Categorie/styles";
 import SettingsItem from "../Settings";
@@ -11,6 +9,8 @@ import { useTranslation } from "react-i18next";
 import LoaderInButton from "../AuthLoader/AuthLoader";
 import { Folder, Logo, Logout, Settings, TaskFill } from "..";
 import AnimatedContainer from "../Animations/AnimationsComponents";
+import SidebarItem from "./SidebarItem";
+import ExpandSidebarItem from "./ExpandSidebarItem";
 
 interface propsSidebar {
   toggleSidebar?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;

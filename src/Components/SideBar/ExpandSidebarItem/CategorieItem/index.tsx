@@ -4,10 +4,10 @@ import { Link, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { TaskListContext } from "../../../Contexts/taskListContext";
-import { TaskListType } from "../../../Contexts/typesContext/taskType";
-import { CategorieContextType } from "../../../Contexts/typesContext/categoriesType";
-import { CategoriesContext } from "../../../Contexts/categoriesContext";
+import { TaskListContext } from "../../../../Contexts/taskListContext";
+import { TaskListType } from "../../../../Contexts/typesContext/taskType";
+import { CategorieContextType } from "../../../../Contexts/typesContext/categoriesType";
+import { CategoriesContext } from "../../../../Contexts/categoriesContext";
 import { CategorieItemProps } from "./types/types";
 import ModalToggle from "../Modal/ModalToggle";
 
