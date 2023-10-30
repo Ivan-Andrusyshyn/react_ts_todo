@@ -19,6 +19,7 @@ import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
 import CategorieMain from "./CategorieMain";
 import SideBar from "../../Components/SideBar";
+import AnimatedContainer from "../../Components/Animations/AnimationsComponents";
 
 const CategoriePage: React.FC = () => {
   const { name } = useParams<string>();
@@ -51,7 +52,7 @@ const CategoriePage: React.FC = () => {
   const [notDoneActive, setNotDoneActive] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const isTablet = useMediaQuery({ minWidth: 320, maxWidth: 920 });
+  const isTablet = useMediaQuery({ minWidth: 320, maxWidth: 960 });
 
   function handleAll() {
     setListToDisplay(0);
@@ -92,17 +93,21 @@ const CategoriePage: React.FC = () => {
           <SideBar />
         </S.Backdrop>
       )}
-      <CategorieMain
-        name={name}
-        handleDone={handleDone}
-        handleAll={handleAll}
-        handleNotDone={handleNotDone}
-        allActive={allActive}
-        doneActive={doneActive}
-        notDoneActive={notDoneActive}
-        listOfLists={listOfLists}
-        listToDisplay={listToDisplay}
-      />
+      <S.MainWrapper>
+        <AnimatedContainer>
+          <CategorieMain
+            name={name}
+            handleDone={handleDone}
+            handleAll={handleAll}
+            handleNotDone={handleNotDone}
+            allActive={allActive}
+            doneActive={doneActive}
+            notDoneActive={notDoneActive}
+            listOfLists={listOfLists}
+            listToDisplay={listToDisplay}
+          />
+        </AnimatedContainer>
+      </S.MainWrapper>
 
       {showEdit && <EditModal />}
       {showDelete && <DeleteModal />}

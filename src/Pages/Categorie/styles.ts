@@ -51,18 +51,17 @@ export const Tabs = styled.div`
   height: 60vh;
 `;
 export const Main = styled.div`
-  height: 100vh;
-  width: 82vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: start;
+  overflow-x: hidden;
   overflow-y: scroll;
-  @media screen and (min-width: 920px) {
-    width: 100vw;
-  }
 `;
-
+export const MainWrapper = styled.div`
+  height: 100vh;
+  width: 82vw;
+`;
 export const Header = styled.h1`
   font-size: 40px;
   font-weight: 400;
