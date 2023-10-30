@@ -1,10 +1,6 @@
 import React from "react";
 import * as S from "./styles";
-
-interface tagProps {
-  name: string;
-  active: boolean;
-}
+import tagProps from "./type";
 
 const FilterTag: React.FC<tagProps> = ({ name, active }) => {
   return (

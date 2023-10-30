@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as S from "./styles";
-import SidebarItem from "../SideBar/SidebarItem";
+import SidebarItem from "../SidebarItem";
 interface SidebarItemProps {
   name: string;
   icon: string;

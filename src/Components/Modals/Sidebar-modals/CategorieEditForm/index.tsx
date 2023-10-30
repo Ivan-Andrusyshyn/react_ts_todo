@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as S from "../styles";
+import * as S from "./styles";
 import { useTranslation } from "react-i18next";
 import { CategoryEditFormProps } from "../types/types";
 

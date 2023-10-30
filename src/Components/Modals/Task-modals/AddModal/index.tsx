@@ -9,7 +9,7 @@ import {
 } from "../../../../Contexts/typesContext/taskType";
 import { CategoriesContext } from "../../../../Contexts/categoriesContext";
 import { CategorieContextType } from "../../../../Contexts/typesContext/categoriesType";
-import Calendar from "../../../Calendar";
+import Calendar from "../../Calendar";
 
 import { format } from "date-fns";
 import { useTranslation } from "react-i18next";

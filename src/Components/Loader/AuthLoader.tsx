@@ -1,10 +1,8 @@
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-interface propLoader {
-  isLoading: boolean;
-  loaderColor: string;
-}
+import propLoader from "./type";
+
 const LoaderInButton: React.FC<propLoader> = ({ isLoading, loaderColor }) => (
   <>
     {isLoading && (

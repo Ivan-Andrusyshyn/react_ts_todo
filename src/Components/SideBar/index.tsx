@@ -4,7 +4,7 @@ import AuthContext from "../../Contexts/authContext";
 import { AuthType } from "../../Contexts/typesContext/authType";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import * as S from "../../Pages/Categorie/styles";
-import SettingsItem from "../Settings";
+import SettingsItem from "./Settings";
 import { useTranslation } from "react-i18next";
 import LoaderInButton from "../Loader/AuthLoader";
 import { Folder, Logo, Logout, Settings, TaskFill } from "..";
