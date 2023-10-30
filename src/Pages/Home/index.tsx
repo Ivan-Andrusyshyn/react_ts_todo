@@ -17,7 +17,7 @@ import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LanguageSelector from "../../i18n/LanguageSelector";
-import SideBar from "../../Components/SideBar";
+import SideBar from "../../Components/SideBar/SideBar";
 import { useMediaQuery } from "react-responsive";
 
 const Home: React.FC = () => {

@@ -1,16 +1,16 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import AuthContext from "../../Contexts/authContext";
-import { AuthType } from "../../Contexts/typesContext/authType";
+import AuthContext from "../../../Contexts/authContext";
+import { AuthType } from "../../../Contexts/typesContext/authType";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import * as S from "../../Pages/Categorie/styles";
-import SettingsItem from "./Settings";
+import * as S from "../../../Pages/Categorie/styles";
+import SettingsItem from "../Settings";
 import { useTranslation } from "react-i18next";
-import LoaderInButton from "../Loader/AuthLoader";
-import { Folder, Logo, Logout, Settings, TaskFill } from "..";
-import AnimatedContainer from "../Animations/AnimationsComponents";
-import SidebarItem from "./SidebarItem";
-import ExpandSidebarItem from "./SidebarItem-categories";
+import LoaderInButton from "../../Loader/AuthLoader";
+import { Folder, Logo, Logout, Settings, TaskFill } from "../..";
+import AnimatedContainer from "../../Animations/AnimationsComponents";
+import SidebarItem from "../SidebarItem";
+import ExpandSidebarItem from "../SidebarItem-categories";
 
 interface propsSidebar {
   toggleSidebar?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;

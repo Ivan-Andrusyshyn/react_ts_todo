@@ -18,7 +18,7 @@ import EditModal from "../../Components/Modals/Task-modals/EditModal/EditModal";
 import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
 import CategorieMain from "./CategorieMain";
-import SideBar from "../../Components/SideBar";
+import SideBar from "../../Components/SideBar/SideBar";
 import AnimatedContainer from "../../Components/Animations/AnimationsComponents";
 
 const CategoriePage: React.FC = () => {
