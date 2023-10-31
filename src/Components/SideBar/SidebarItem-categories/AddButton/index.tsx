@@ -6,7 +6,7 @@ interface PropAddBtn {
   setShowForm: (arg: boolean) => void;
 }
 const AddButton: React.FC<PropAddBtn> = ({ setShowForm }) => (
-  <S.AddArea onClick={() => setShowForm(true)}>
+  <S.AddArea onClick={() => setShowForm(true)} data-testid="AddBtn">
     <S.AddIcon src={Add} />
     <S.AddText>{t("sbBtnAdd")}</S.AddText>
   </S.AddArea>

@@ -20,10 +20,18 @@ const ModalToggle: React.FC<ModalProp> = ({
       <S.ModalContent>
         {!modalOpenForm ? (
           <div>
-            <S.EditModalTitle>{t("sbMdlTitle")}</S.EditModalTitle>
-            <S.Button onClick={showFormForEdit}>{t("sbMdlBtnEd")}</S.Button>
-            <S.Button onClick={handleDelete}>{t("sbMdlBtnDl")}</S.Button>
-            <S.Button onClick={handleCancel}>{t("sbMdlBtnCanc")}</S.Button>
+            <S.EditModalTitle data-testid="modal-title">
+              {t("sbMdlTitle")}
+            </S.EditModalTitle>
+            <S.Button onClick={showFormForEdit} data-testid="edit-button">
+              {t("sbMdlBtnEd")}
+            </S.Button>
+            <S.Button onClick={handleDelete} data-testid="delete-button">
+              {t("sbMdlBtnDl")}
+            </S.Button>
+            <S.Button onClick={handleCancel} data-testid="cancel-button">
+              {t("sbMdlBtnCanc")}
+            </S.Button>
           </div>
         ) : (
           <CategoryEditForm

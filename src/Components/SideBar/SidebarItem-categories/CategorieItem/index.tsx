@@ -85,6 +85,7 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
   return (
     <>
       <Link
+        data-testid="categorieItem"
         to={"/categorie/" + name}
         style={{
           textDecoration: "none",
@@ -106,7 +107,11 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
 
           <S.ItemWrapper>
             <S.ListName>{name}</S.ListName>
-            <div onClick={handleOpenModal} style={{ marginLeft: 40 }}>
+            <div
+              onClick={handleOpenModal}
+              style={{ marginLeft: 40 }}
+              data-testid="modal-button"
+            >
               <FontAwesomeIcon
                 icon={faPenToSquare}
                 style={{ color: "#828ea6" }}
@@ -118,6 +123,7 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
 
       {isOpen && (
         <ModalToggle
+          data-testid="modal-form"
           modalOpenForm={modalOpenForm}
           editedName={editedName}
           editedColor={editedColor}
