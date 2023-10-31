@@ -5,10 +5,7 @@ describe("Renders an error message", () => {
   test("Renders an error message", () => {
     const errorMessage = "Something went wrong";
     render(<ErrorMessageAuth isError={errorMessage} />);
-
-    const errorElement = screen.getByText(errorMessage);
-    expect(errorElement).toBeInTheDocument();
-
+    screen.getByText(errorMessage);
     screen.getByTestId("error-message");
   });
 });
