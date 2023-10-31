@@ -1,9 +1,6 @@
-import React, { useState, createContext, ReactNode, useEffect } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import { TaskProps, TaskListType } from "./typesContext/taskType";
-
-interface ChildrenProps {
-  children: React.ReactNode;
-}
+import ChildrenProps from "./typesContext/typeChildren";
 
 export const TaskListContext = createContext<TaskListType | null>(null);
 

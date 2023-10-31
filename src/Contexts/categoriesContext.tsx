@@ -1,12 +1,10 @@
-import React, { createContext, useState, ReactNode, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import {
   CategorieProps,
   CategorieContextType,
 } from "./typesContext/categoriesType";
 import { v4 as uuidv4 } from "uuid";
-interface ChildrenProps {
-  children: React.ReactNode;
-}
+import ChildrenProps from "./typesContext/typeChildren";
 
 export const CategoriesContext = createContext<CategorieContextType | null>(
   null

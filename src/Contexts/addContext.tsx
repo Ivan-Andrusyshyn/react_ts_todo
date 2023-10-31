@@ -1,9 +1,6 @@
-import React, { useState, createContext, ReactNode } from "react";
+import React, { useState, createContext } from "react";
 import { AddType } from "./typesContext/addType";
-
-export interface ChildrenProps {
-  children: React.ReactNode;
-}
+import ChildrenProps from "./typesContext/typeChildren";
 
 export const AddContext = createContext<AddType | null>(null);
 

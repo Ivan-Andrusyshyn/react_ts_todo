@@ -1,5 +1,4 @@
 import React, { useState, createContext, useEffect } from "react";
-import { ChildrenProps } from "./delete_edit_Context";
 import {
   createUserWithEmailAndPassword as firebaseCreateUser,
   signInWithEmailAndPassword,
@@ -11,6 +10,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import { AuthType, UserDataProps } from "./typesContext/authType";
+import ChildrenProps from "./typesContext/typeChildren";
 
 const AuthContext = createContext<AuthType | null>(null);
 export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {

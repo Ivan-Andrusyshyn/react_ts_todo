@@ -3,11 +3,7 @@ import { Navigate } from "react-router-dom";
 
 import AuthContext from "../Contexts/authContext";
 import { AuthType } from "../Contexts/typesContext/authType";
-
-interface ProtectedRouteProps {
-  children: React.ReactNode;
-  priv: boolean;
-}
+import ProtectedRouteProps from "./types";
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, priv }) => {
   const { userData } = useContext(AuthContext) as AuthType;
