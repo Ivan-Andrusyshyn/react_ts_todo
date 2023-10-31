@@ -1,23 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
-export const Backdrop = styled.div`
-  position: fixed;
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  background-color: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(4px);
-`;
-export const BurgerWrapper = styled.div`
-  position: fixed;
-  left: 50px;
-  top: 30px;
-  cursor: pointer;
-`;
+
 export const Page = styled.div`
   width: 100vw;
   height: 100vh;

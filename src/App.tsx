@@ -1,12 +1,8 @@
-import React, { Suspense, lazy } from "react";
 import GlobalStyle from "./global";
 import ContextProviders from "./contextProviders";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import ProtectedRoute from "./Routes/Route";
-const Login = lazy(() => import("./Pages/Login"));
-const SignUp = lazy(() => import("./Pages/SignUp"));
-const CategoriePage = lazy(() => import("./Pages/Categorie"));
-const Home = lazy(() => import("./Pages/Home"));
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import routes from "./routes";
+import { Suspense } from "react";
 
 function App() {
   return (
@@ -14,40 +10,9 @@ function App() {
       <BrowserRouter basename="react_ts_todo">
         <Suspense>
           <Routes>
-            <Route
-              path="/"
-              element={
-                <ProtectedRoute priv={true}>
-                  <Home />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <ProtectedRoute priv={false}>
-                  <Login />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/signup"
-              element={
-                <ProtectedRoute priv={false}>
-                  <SignUp />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/categorie/:name"
-              element={
-                <ProtectedRoute priv={true}>
-                  <CategoriePage />
-                </ProtectedRoute>
-              }
-            />
-
-            <Route path="*" element={<Navigate to="/login" replace={true} />} />
+            {routes.map((route, index) => (
+              <Route key={index} path={route.path} element={route.element} />
+            ))}
           </Routes>
         </Suspense>
       </BrowserRouter>

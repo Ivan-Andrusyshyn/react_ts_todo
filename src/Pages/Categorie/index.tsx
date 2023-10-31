@@ -2,24 +2,24 @@ import React, { useContext, useEffect, useState } from "react";
 
 import { useNavigate, useParams } from "react-router-dom";
 
+import DeleteModal from "../../Components/Modals/Task-modals/DeleteModal";
+import AddModal from "../../Components/Modals/Task-modals/AddModal";
+import EditModal from "../../Components/Modals/Task-modals/EditModal/EditModal";
+
 import * as S from "./styles";
 import { TaskListContext } from "../../Contexts/taskListContext";
 import { TaskListType } from "../../Contexts/typesContext/taskType";
 import { DeleteContext } from "../../Contexts/delete_edit_Context";
 import { DeleteType } from "../../Contexts/typesContext/delete_edit_Type";
-import DeleteModal from "../../Components/Modals/Task-modals/DeleteModal";
-import AddModal from "../../Components/Modals/Task-modals/AddModal";
 import { AddContext } from "../../Contexts/addContext";
 import { AddType } from "../../Contexts/typesContext/addType";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from "react-responsive";
-import EditModal from "../../Components/Modals/Task-modals/EditModal/EditModal";
 import { CategoriesContext } from "../../Contexts/categoriesContext";
 import { CategorieContextType } from "../../Contexts/typesContext/categoriesType";
-import CategorieMain from "./CategorieMain";
+import CategorieMain from "../../Components/CategorieMain/CategorieList";
 import SideBar from "../../Components/SideBar/SideBar";
-import AnimatedContainer from "../../Components/Animations/AnimationsComponents";
+import SidebarTablet from "../../Components/SideBar/Sidebar-Tablet";
+import BurgerMenu from "../../Components/SideBar/BurgerMenu";
 
 const CategoriePage: React.FC = () => {
   const { name } = useParams<string>();
@@ -81,33 +81,27 @@ const CategoriePage: React.FC = () => {
   };
   return (
     <S.Page>
-      <S.BurgerWrapper
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        id="burger_menu"
-      >
-        <FontAwesomeIcon icon={faBars} size="xl" />
-      </S.BurgerWrapper>
+      <BurgerMenu
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
+      />
+      <SidebarTablet
+        isSidebarOpen={isSidebarOpen}
+        toggleSidebar={toggleSidebar}
+      />
       {!isTablet && <SideBar />}
-      {isSidebarOpen && (
-        <S.Backdrop onClick={toggleSidebar} id="backdrop">
-          <SideBar />
-        </S.Backdrop>
-      )}
-      <S.MainWrapper>
-        <AnimatedContainer>
-          <CategorieMain
-            name={name}
-            handleDone={handleDone}
-            handleAll={handleAll}
-            handleNotDone={handleNotDone}
-            allActive={allActive}
-            doneActive={doneActive}
-            notDoneActive={notDoneActive}
-            listOfLists={listOfLists}
-            listToDisplay={listToDisplay}
-          />
-        </AnimatedContainer>
-      </S.MainWrapper>
+
+      <CategorieMain
+        name={name}
+        handleDone={handleDone}
+        handleAll={handleAll}
+        handleNotDone={handleNotDone}
+        allActive={allActive}
+        doneActive={doneActive}
+        notDoneActive={notDoneActive}
+        listOfLists={listOfLists}
+        listToDisplay={listToDisplay}
+      />
 
       {showEdit && <EditModal />}
       {showDelete && <DeleteModal />}
