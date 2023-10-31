@@ -7,6 +7,7 @@ const LoaderInButton: React.FC<propLoader> = ({ isLoading, loaderColor }) => (
   <>
     {isLoading && (
       <FontAwesomeIcon
+        data-testid="loaderBtn"
         icon={faSpinner}
         size="sm"
         color={loaderColor}
