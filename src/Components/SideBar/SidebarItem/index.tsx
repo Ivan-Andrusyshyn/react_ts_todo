@@ -1,16 +1,14 @@
 import React from "react";
 import * as S from "./styles";
+import { TypesPropsSideBarItem } from "../types/types";
 
-interface SidebarItemProps {
-  name: string;
-  icon: string;
-  isActive: boolean;
-  children?: React.ReactNode;
-}
-
-const SidebarItem: React.FC<SidebarItemProps> = ({ name, icon, isActive }) => {
+const SidebarItem: React.FC<TypesPropsSideBarItem> = ({
+  name,
+  icon,
+  isActive,
+}) => {
   return (
-    <S.Container isActive={isActive}>
+    <S.Container isActive={isActive} data-testid="SidebarItem">
       <S.Icon src={icon} />
       <S.Name>{name}</S.Name>
     </S.Container>

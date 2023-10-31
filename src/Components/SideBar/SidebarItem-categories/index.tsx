@@ -3,7 +3,7 @@ import * as S from "./styles";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import AddButton from "./AddButton";
-import { SidebarItemProps } from "./types/types";
+import { SidebarItemProps } from "../types/types";
 import CategorieItem from "./CategorieItem";
 import AddCategorieModal from "../../Modals/Sidebar-modals/AddCategorieModal";
 import { Arrow } from "../..";

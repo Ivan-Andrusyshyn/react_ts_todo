@@ -2,7 +2,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as S from "./styles";
 import React from "react";
-import PropsBurgerMenu from "./types";
+import { PropsBurgerMenu } from "../types/types";
 
 const BurgerMenu: React.FC<PropsBurgerMenu> = ({
   setIsSidebarOpen,
@@ -12,6 +12,7 @@ const BurgerMenu: React.FC<PropsBurgerMenu> = ({
     <S.BurgerWrapper
       onClick={() => setIsSidebarOpen(!isSidebarOpen)}
       id="burger_menu"
+      data-testid="burger_menu"
     >
       <FontAwesomeIcon icon={faBars} size="xl" />
     </S.BurgerWrapper>

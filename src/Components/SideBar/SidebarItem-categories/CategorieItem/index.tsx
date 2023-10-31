@@ -9,7 +9,7 @@ import { TaskListType } from "../../../../Contexts/typesContext/taskType";
 import { CategorieContextType } from "../../../../Contexts/typesContext/categoriesType";
 import { CategoriesContext } from "../../../../Contexts/categoriesContext";
 import ModalToggle from "../../../Modals/Sidebar-modals/ModalToggle/ModalToggle";
-import { CategorieItemProps } from "../types/types";
+import { CategorieItemProps } from "../../types/types";
 
 const CategorieItem: React.FC<CategorieItemProps> = ({
   name,

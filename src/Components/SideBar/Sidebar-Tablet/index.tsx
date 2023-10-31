@@ -1,7 +1,7 @@
 import React from "react";
 import SideBar from "../SideBar";
 import * as S from "./styles";
-import PropsSidebarTablet from "./types";
+import { PropsSidebarTablet } from "../types/types";
 const SidebarTablet: React.FC<PropsSidebarTablet> = ({
   isSidebarOpen,
   toggleSidebar,
@@ -9,7 +9,7 @@ const SidebarTablet: React.FC<PropsSidebarTablet> = ({
   return (
     <>
       {isSidebarOpen && (
-        <S.Backdrop onClick={toggleSidebar} id="backdrop">
+        <S.Backdrop onClick={toggleSidebar} id="backdrop" data-testid="sidebar">
           <SideBar />
         </S.Backdrop>
       )}
