@@ -59,6 +59,7 @@ const EditModal: React.FC = () => {
           value={taskName}
         />
         <S.DatePicker
+          data-testid="datepicker"
           isActive={showCalendar}
           onClick={() => setShowCalendar(true)}
         >
@@ -70,8 +71,12 @@ const EditModal: React.FC = () => {
           <option>{taskCat[0].categorie}</option>
         </S.Select>
         <S.Buttons>
-          <S.AddButton onClick={handleEdit}>{t("btnEd")}</S.AddButton>
-          <S.CancelButton onClick={handleCancel}>{t("btnCanc")}</S.CancelButton>
+          <S.AddButton data-testid="edit_btn" onClick={handleEdit}>
+            {t("btnEd")}
+          </S.AddButton>
+          <S.CancelButton data-testid="cancel_btn" onClick={handleCancel}>
+            {t("btnCanc")}
+          </S.CancelButton>
         </S.Buttons>
       </S.Container>
     </S.Background>

@@ -71,7 +71,7 @@ const AddModal: React.FC = () => {
     setTaskCat(isNumber);
   }
   return (
-    <S.Background>
+    <S.Background data-testid="backdropModal">
       {showCalendar && (
         <S.ModalOverlay onClick={closeModalCalendar}>
           <Calendar setSelectedDate={setSelectedDate} />
@@ -80,6 +80,7 @@ const AddModal: React.FC = () => {
       <S.Container>
         <S.Text>{t("mdlAdInp")}</S.Text>
         <S.TitleInput
+          data-testid="input"
           error={error}
           placeholder={error ? error : t("mdlAdInpPlch")}
           onChange={handleTyping}
@@ -102,8 +103,10 @@ const AddModal: React.FC = () => {
           ))}
         </S.Select>
         <S.Buttons>
-          <S.AddButton onClick={handleAdd}>{t("mdlAdBtnAdd")}</S.AddButton>
-          <S.CancelButton onClick={handleCancel}>
+          <S.AddButton onClick={handleAdd} data-testid="btnAdd">
+            {t("mdlAdBtnAdd")}
+          </S.AddButton>
+          <S.CancelButton onClick={handleCancel} data-testid="btnCancel">
             {t("mdlAdBtnCanc")}
           </S.CancelButton>
         </S.Buttons>

@@ -31,9 +31,10 @@ const Calendar = ({ setSelectedDate }) => {
     setSelectedDate(selectedDate);
   };
   return (
-    <CalendarContainer>
+    <CalendarContainer data-testid="calendar-container">
       <CalendarHeader>
         <ButtonIcon
+          data-textid="prevBtn"
           onClick={() => handlePrevMonth(setYear, setMonth, month, year)}
         >
           <FontAwesomeIcon icon={faArrowLeft} />
@@ -55,6 +56,7 @@ const Calendar = ({ setSelectedDate }) => {
         </CalendarTitle>
 
         <ButtonIcon
+          data-textid="nextBtn"
           onClick={() => handleNextMonth(setYear, setMonth, month, year)}
         >
           <FontAwesomeIcon icon={faArrowRight} />

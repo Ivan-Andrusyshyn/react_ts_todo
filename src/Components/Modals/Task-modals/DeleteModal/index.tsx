@@ -27,10 +27,12 @@ const DeleteModal: React.FC = () => {
   return (
     <S.Background>
       <S.Container showDelete={showDelete}>
-        <S.Text>{t("mdlDltTitle")}</S.Text>
+        <S.Text data-testid="deleteModal_title">{t("mdlDltTitle")}</S.Text>
         <S.Buttons>
-          <S.DeletButton onClick={handleConfirm}>{t("mdlDlt")}</S.DeletButton>
-          <S.CancelButton onClick={handleCancel}>
+          <S.DeletButton data-testid="delete_btn" onClick={handleConfirm}>
+            {t("mdlDlt")}
+          </S.DeletButton>
+          <S.CancelButton data-testid="cancel_btn" onClick={handleCancel}>
             {t("mdlDltCanc")}
           </S.CancelButton>
         </S.Buttons>

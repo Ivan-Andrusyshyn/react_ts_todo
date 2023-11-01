@@ -1,5 +1,3 @@
-import React from "react";
-
 export type DeleteType = {
   showDelete: boolean;
   showEdit: boolean;

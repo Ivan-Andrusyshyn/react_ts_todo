@@ -4,7 +4,6 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import DeleteModal from "../../Components/Modals/Task-modals/DeleteModal";
 import AddModal from "../../Components/Modals/Task-modals/AddModal";
-import EditModal from "../../Components/Modals/Task-modals/EditModal/EditModal";
 
 import * as S from "./styles";
 import { TaskListContext } from "../../Contexts/taskListContext";
@@ -20,6 +19,7 @@ import CategorieMain from "../../Components/CategorieMain/CategorieList";
 import SideBar from "../../Components/SideBar/SideBar";
 import SidebarTablet from "../../Components/SideBar/Sidebar-Tablet";
 import BurgerMenu from "../../Components/SideBar/BurgerMenu";
+import EditModal from "../../Components/Modals/Task-modals/EditModal";
 
 const CategoriePage: React.FC = () => {
   const { name } = useParams<string>();

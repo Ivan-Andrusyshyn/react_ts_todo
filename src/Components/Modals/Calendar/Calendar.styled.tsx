@@ -73,8 +73,12 @@ const CalendarDay = styled.th`
   letter-spacing: -0.28px;
   text-align: center;
 `;
-
-const CalendarCell = styled.td`
+interface CalendarProps {
+  prevMonth: boolean;
+  today: boolean;
+  current: boolean;
+}
+const CalendarCell = styled.td<CalendarProps>`
   text-align: center;
   cursor: pointer;
   color: ${(props) => (props.prevMonth ? "rgba(22, 22, 22, 0.20)" : "#161616")};
