@@ -6,8 +6,7 @@ interface CategorieMainProps {
   allActive: boolean;
   doneActive: boolean;
   notDoneActive: boolean;
-  listToDisplay: number;
-  listOfLists: any;
+  listOfTasks: any;
 }
 interface listCategoriesType {
   id: number;
@@ -17,4 +16,8 @@ interface listCategoriesType {
   done: boolean;
   date: number | Date;
 }
-export type { CategorieMainProps, listCategoriesType };
+interface tagProps {
+  name: string;
+  active: boolean;
+}
+export type { CategorieMainProps, listCategoriesType, tagProps };

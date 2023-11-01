@@ -25,7 +25,11 @@ const AddTaskBtn: React.FC = () => {
     }
   }, [categList]);
   return (
-    <S.Container onClick={handleClick} disabled={isDisable}>
+    <S.Container
+      onClick={handleClick}
+      disabled={isDisable}
+      data-testid="addTaskBtn"
+    >
       <S.Icon src={Add} />
       <S.Text>{isDisable ? t("btnAddFirstStart") : t("btnAdd")}</S.Text>
     </S.Container>

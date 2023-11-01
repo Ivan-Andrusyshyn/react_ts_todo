@@ -15,33 +15,34 @@ const CategorieMain: React.FC<CategorieMainProps> = ({
   allActive,
   doneActive,
   notDoneActive,
-  listOfLists,
-  listToDisplay,
+  listOfTasks,
 }) => {
   const { t } = useTranslation();
 
   return (
-    <S.MainWrapper>
+    <S.MainWrapper data-testid="categoryContainer">
       <AnimatedContainer>
         <S.Main>
           <LanguageSelector />
           <S.Header>{name}</S.Header>
-          <S.TitleAndFilter>
-            <S.Title onClick={handleDone}>{t("upBar")}</S.Title>
+          <S.TitleAndFilter data-testid="categoryPage_filter">
+            <S.Title onClick={handleDone} data-testid="filterBtnDoneTasks">
+              {t("upBar")}
+            </S.Title>
             <S.FilterField>
-              <div onClick={handleAll}>
+              <div onClick={handleAll} data-testid="filterBtnAllTasks">
                 <FilterTag name={t("filterAll")} active={allActive} />
               </div>
               <div onClick={handleDone}>
                 <FilterTag name={t("filterDn")} active={doneActive} />
               </div>
-              <div onClick={handleNotDone}>
+              <div onClick={handleNotDone} data-testid="filterBtnNotDoneTasks">
                 <FilterTag name={t("filterNDone")} active={notDoneActive} />
               </div>
               <S.FilterIcon src={Filter} />
             </S.FilterField>
           </S.TitleAndFilter>
-          {listOfLists[listToDisplay].map((task: listCategoriesType) => (
+          {listOfTasks.map((task: listCategoriesType) => (
             <TaskItem
               key={task.id}
               id={task.id}

@@ -99,8 +99,7 @@ const CategoriePage: React.FC = () => {
         allActive={allActive}
         doneActive={doneActive}
         notDoneActive={notDoneActive}
-        listOfLists={listOfLists}
-        listToDisplay={listToDisplay}
+        listOfTasks={listOfLists[listToDisplay]}
       />
 
       {showEdit && <EditModal />}
