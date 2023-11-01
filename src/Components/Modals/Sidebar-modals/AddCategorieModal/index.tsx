@@ -28,9 +28,13 @@ const AddCategorieModal: React.FC<PropsSidebarForm> = ({
     opacity: 0.7,
   };
   return (
-    <S.ModalOverlay onClick={handleCloseModal}>
+    <S.ModalOverlay onClick={handleCloseModal} data-testid="modal-overlay">
       <S.FormModal>
-        <S.CategoryForm action="" onSubmit={addNewCategory}>
+        <S.CategoryForm
+          action=""
+          onSubmit={addNewCategory}
+          data-testid="category-form"
+        >
           <S.TitleInput
             value={title}
             type="text"
@@ -38,6 +42,7 @@ const AddCategorieModal: React.FC<PropsSidebarForm> = ({
             error={error}
             placeholder={error && !title ? error : t("addCtgMdlPlch")}
             onChange={(e) => setTitle(e.target.value)}
+            data-testid="title-input"
           />
           <S.ColorInputWrapper>
             <S.ColorInput
@@ -45,13 +50,16 @@ const AddCategorieModal: React.FC<PropsSidebarForm> = ({
               type="color"
               error={error}
               onChange={(e) => setColor(e.target.value)}
+              data-testid="color-input"
             />
             <span style={styleColorInputText}>
               {color ? color : t("inptClr")}
             </span>
           </S.ColorInputWrapper>
           <S.BtnWrapper>
-            <S.FormBtn type="submit">{t("addCtgModal")}</S.FormBtn>
+            <S.FormBtn data-testid="add-categorie-modal" type="submit">
+              {t("addCtgModal")}
+            </S.FormBtn>
           </S.BtnWrapper>
         </S.CategoryForm>
       </S.FormModal>

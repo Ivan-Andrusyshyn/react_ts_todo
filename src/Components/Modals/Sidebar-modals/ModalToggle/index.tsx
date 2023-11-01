@@ -29,7 +29,7 @@ const ModalToggle: React.FC<ModalProp> = ({
             <S.Button onClick={handleDelete} data-testid="delete-button">
               {t("sbMdlBtnDl")}
             </S.Button>
-            <S.Button onClick={handleCancel} data-testid="cancel-button">
+            <S.Button data-testid="cancel-button" onClick={handleCancel}>
               {t("sbMdlBtnCanc")}
             </S.Button>
           </div>

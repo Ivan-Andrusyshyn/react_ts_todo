@@ -19,8 +19,13 @@ const CategoryEditForm: React.FC<CategoryEditFormProps> = ({
 
   return (
     <>
-      <S.CategoryForm action="" onSubmit={handleSave}>
+      <S.CategoryForm
+        action=""
+        onSubmit={handleSave}
+        data-testid="category-edit-form"
+      >
         <S.TitleInput
+          data-testid="title-input"
           value={editedName}
           type="text"
           maxLength={10}
@@ -28,6 +33,7 @@ const CategoryEditForm: React.FC<CategoryEditFormProps> = ({
         />
         <S.ColorInputWrapper>
           <S.ColorInput
+            data-testid="color-input"
             value={editedColor}
             type="color"
             onChange={(e) => setEditedColor(e.target.value)}
