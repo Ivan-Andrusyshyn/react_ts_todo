@@ -3,29 +3,7 @@ import CategorieItem from ".";
 import { MemoryRouter } from "react-router-dom";
 import { CategoriesContext } from "../../../../Contexts/categoriesContext";
 import { TaskListContext } from "../../../../Contexts/taskListContext";
-import { CategorieContextType } from "../../../../Contexts/typesContext/categoriesType";
-import {
-  TaskListType,
-  TaskProps,
-} from "../../../../Contexts/typesContext/taskType";
-
-const CategorieContext: CategorieContextType = {
-  categList: [],
-  deleteCategory: (itemId: string) => {},
-  editCategory: () => {},
-  addCategory: () => {},
-};
-
-const ListContext: TaskListType = {
-  taskList: [],
-  doneTasks: [],
-  notDoneTasks: [],
-  deleteCategoryTasks: (categoryName: string) => {},
-  editTask: (id: number, newTask: TaskProps) => {},
-  addTask: (task: TaskProps) => {},
-  checkTask: (id: number) => {},
-  deleteTask: (id: number) => {},
-};
+import { CategorieContext, ListContext } from "../../../../jestMock/mockValue";
 
 describe("CategorieItem testing", () => {
   const onNavigate = jest.fn();

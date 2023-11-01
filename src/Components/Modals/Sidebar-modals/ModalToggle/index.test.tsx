@@ -1,22 +1,11 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import ModalToggle from ".";
+import { mockPropsModalToggle } from "../../../../jestMock/mockValue";
 
 describe("ModalToggle Component", () => {
-  const mockProps = {
-    modalOpenForm: false,
-    editedName: "Category 1",
-    editedColor: "#FF5733",
-    handleEdit: jest.fn(),
-    handleDelete: jest.fn(),
-    handleCancel: jest.fn(),
-    backdropCloseModal: jest.fn(),
-    showFormForEdit: jest.fn(),
-    setModalOpenForm: jest.fn(),
-  };
-
   test("should render the modal content", () => {
-    render(<ModalToggle {...mockProps} />);
+    render(<ModalToggle {...mockPropsModalToggle} />);
     screen.getByTestId("modal-title");
     screen.getByTestId("edit-button");
     screen.getByTestId("delete-button");
@@ -24,29 +13,29 @@ describe("ModalToggle Component", () => {
   });
 
   test("should call showFormForEdit when 'Edit' button is clicked", () => {
-    render(<ModalToggle {...mockProps} />);
+    render(<ModalToggle {...mockPropsModalToggle} />);
     const editButton = screen.getByTestId("edit-button");
     fireEvent.click(editButton);
-    expect(mockProps.showFormForEdit).toHaveBeenCalled();
+    expect(mockPropsModalToggle.showFormForEdit).toHaveBeenCalled();
   });
 
   test("should call handleDelete when 'Delete' button is clicked", () => {
-    render(<ModalToggle {...mockProps} />);
+    render(<ModalToggle {...mockPropsModalToggle} />);
     const deleteButton = screen.getByTestId("delete-button");
     fireEvent.click(deleteButton);
-    expect(mockProps.handleDelete).toHaveBeenCalled();
+    expect(mockPropsModalToggle.handleDelete).toHaveBeenCalled();
   });
 
   test("should call handleCancel when 'Cancel' button is clicked", () => {
-    render(<ModalToggle {...mockProps} />);
+    render(<ModalToggle {...mockPropsModalToggle} />);
     const cancelButton = screen.getByTestId("cancel-button");
     fireEvent.click(cancelButton);
-    expect(mockProps.handleCancel).toHaveBeenCalled();
+    expect(mockPropsModalToggle.handleCancel).toHaveBeenCalled();
   });
 
   test("should render CategoryEditForm when modalOpenForm is true", () => {
     const updatedProps = {
-      ...mockProps,
+      ...mockPropsModalToggle,
       modalOpenForm: true,
     };
     render(<ModalToggle {...updatedProps} />);

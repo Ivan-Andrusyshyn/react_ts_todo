@@ -1,22 +1,10 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import SignUp from "./index";
 import AuthContext from "../../Contexts/authContext";
-import { AuthType } from "../../Contexts/typesContext/authType";
 import { MemoryRouter } from "react-router-dom";
 import { JSX } from "react/jsx-runtime";
-const currentUser: AuthType = {
-  handleLogin: (email, password) => Promise.resolve(),
-  isLoading: false,
-  isError: null,
-  changeUserName: (newName) => {},
-  userData: null,
-  setUserData: (data) => {},
-  signInWithGoogle: () => Promise.resolve(),
-  signOut: () => Promise.resolve(),
-  setIsError: (arg) => {},
-  registration: jest.fn((email, password, name) => Promise.resolve()),
-  isLoadingGoogle: false,
-};
+import { currentUser } from "../../jestMock/mockValue";
+
 describe("Login Component", () => {
   let registrationComponent: JSX.Element;
   beforeEach(() => {

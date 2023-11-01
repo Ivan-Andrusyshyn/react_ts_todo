@@ -1,4 +1,3 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
 import ErrorMessageAuth from ".";
 describe("Renders an error message", () => {

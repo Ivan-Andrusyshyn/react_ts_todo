@@ -1,30 +1,11 @@
-import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { DeleteContext } from "../../../../Contexts/delete_edit_Context";
 import { TaskListContext } from "../../../../Contexts/taskListContext";
 import DeleteModal from ".";
-import { DeleteType } from "../../../../Contexts/typesContext/delete_edit_Type";
-import { TaskListType } from "../../../../Contexts/typesContext/taskType";
-
-const DeleteContextMock: DeleteType = {
-  showDelete: true,
-  showEdit: false,
-  setShowDelete: jest.fn(),
-  id: 42,
-  setShowEdit: jest.fn(),
-  setId: jest.fn(),
-};
-
-const TaskListContextMock: TaskListType = {
-  taskList: [],
-  doneTasks: [],
-  notDoneTasks: [],
-  deleteCategoryTasks: jest.fn(),
-  editTask: jest.fn(),
-  addTask: jest.fn(),
-  checkTask: jest.fn(),
-  deleteTask: jest.fn(),
-};
+import {
+  DeleteContextMock,
+  TaskListContextMock,
+} from "../../../../jestMock/mockValue";
 
 describe("DeleteModal", () => {
   let deleteModalComponent: JSX.Element;

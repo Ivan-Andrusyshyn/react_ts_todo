@@ -1,29 +1,10 @@
 import { screen, render, fireEvent } from "@testing-library/react";
 import SidebarTablet from ".";
 import { MemoryRouter } from "react-router-dom";
-import { AuthType } from "../../../Contexts/typesContext/authType";
 import AuthContext from "../../../Contexts/authContext";
-import { CategorieContextType } from "../../../Contexts/typesContext/categoriesType";
 import { CategoriesContext } from "../../../Contexts/categoriesContext";
-const CategorieContext: CategorieContextType = {
-  categList: [],
-  deleteCategory: (itemId: string) => {},
-  editCategory: () => {},
-  addCategory: () => {},
-};
-const handleLogin: AuthType = {
-  handleLogin: jest.fn((email, password) => Promise.resolve()),
-  isLoading: false,
-  isError: null,
-  changeUserName: (newName) => {},
-  userData: null,
-  setUserData: (data) => {},
-  signInWithGoogle: () => Promise.resolve(),
-  signOut: () => Promise.resolve(),
-  setIsError: (arg) => {},
-  registration: (email, password, name) => Promise.resolve(),
-  isLoadingGoogle: false,
-};
+import { CategorieContext, handleLogin } from "../../../jestMock/mockValue";
+
 describe("SidebarTablet Component", () => {
   const toggleSidebar = jest.fn();
   let SidebarTabletTrue: JSX.Element;

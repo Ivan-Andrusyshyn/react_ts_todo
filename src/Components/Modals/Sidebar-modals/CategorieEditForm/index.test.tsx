@@ -1,15 +1,8 @@
-import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import CategoryEditForm from ".";
 
 describe("CategoryEditForm Component", () => {
-  interface MockProps {
-    initialName: string;
-    initialColor: string;
-    onSave: (name: string, color: string) => void;
-  }
-
-  const mockProps: MockProps = {
+  const mockProps = {
     initialName: "Category 1",
     initialColor: "#FF5733",
     onSave: jest.fn(),

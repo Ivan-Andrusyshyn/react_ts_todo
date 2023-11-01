@@ -54,6 +54,7 @@ const EditModal: React.FC = () => {
       <S.Container>
         <S.Text>{t("mdlEdInp")}</S.Text>
         <S.TitleInput
+          data-testid="inputTitle"
           placeholder={t("mdlAdInpPlch")}
           onChange={handleTyping}
           value={taskName}
