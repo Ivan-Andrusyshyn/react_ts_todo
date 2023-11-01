@@ -21,13 +21,6 @@ Whether you need to manage personal tasks or collaborate on a team project, this
 - Date-fns: A date utility library for JavaScript.
 - React-i18next: A powerful internationalization library for React.
 
-## Usage
-
-- Create a new task: Click the "Add Task" button, enter task details, and click "Save."
-- Edit a task: Click the "Edit" button on a task card, make changes, and click "Save."
-- Mark a task as completed: Click the checkbox on a task card.
-- Filter tasks: Use the filter options to view tasks by category or completion status.
-
  
 ## Contact
 
