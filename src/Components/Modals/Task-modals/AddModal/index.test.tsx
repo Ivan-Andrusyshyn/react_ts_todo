@@ -1,14 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import AddModal from ".";
 import { MemoryRouter } from "react-router-dom";
-import { TaskListContext } from "../../../../Contexts/taskListContext";
-import { CategoriesContext } from "../../../../Contexts/categoriesContext";
-import { AddContext } from "../../../../Contexts/addContext";
-import {
-  AddItems,
-  CategorieContext,
-  TaskListContextMock,
-} from "../../../../jestMock/mockValue";
+import ContextMockWrapper from "../../../../jestMock";
 const categList = [{ id: "8", name: "test 1", color: "#000" }];
 
 describe("AddModal all", () => {
@@ -18,13 +11,9 @@ describe("AddModal all", () => {
   beforeEach(() => {
     addModalComponent = (
       <MemoryRouter initialEntries={["/react_ts_todo/categorie/w"]}>
-        <TaskListContext.Provider value={TaskListContextMock}>
-          <CategoriesContext.Provider value={CategorieContext}>
-            <AddContext.Provider value={AddItems}>
-              <AddModal />
-            </AddContext.Provider>
-          </CategoriesContext.Provider>
-        </TaskListContext.Provider>
+        <ContextMockWrapper>
+          <AddModal />
+        </ContextMockWrapper>
       </MemoryRouter>
     );
   });

@@ -1,9 +1,7 @@
 import { screen, render, fireEvent } from "@testing-library/react";
 import SidebarTablet from ".";
 import { MemoryRouter } from "react-router-dom";
-import AuthContext from "../../../Contexts/authContext";
-import { CategoriesContext } from "../../../Contexts/categoriesContext";
-import { CategorieContext, handleLogin } from "../../../jestMock/mockValue";
+import ContextMockWrapper from "../../../jestMock";
 
 describe("SidebarTablet Component", () => {
   const toggleSidebar = jest.fn();
@@ -13,23 +11,16 @@ describe("SidebarTablet Component", () => {
   beforeEach(() => {
     SidebarTabletTrue = (
       <MemoryRouter initialEntries={["/react_ts_todo/categorie/w"]}>
-        <CategoriesContext.Provider value={CategorieContext}>
-          <AuthContext.Provider value={handleLogin}>
-            <SidebarTablet isSidebarOpen={true} toggleSidebar={toggleSidebar} />
-          </AuthContext.Provider>
-        </CategoriesContext.Provider>
+        <ContextMockWrapper>
+          <SidebarTablet isSidebarOpen={true} toggleSidebar={toggleSidebar} />
+        </ContextMockWrapper>
       </MemoryRouter>
     );
     SidebarTabletFalse = (
       <MemoryRouter initialEntries={["/react_ts_todo/categorie/w"]}>
-        <CategoriesContext.Provider value={CategorieContext}>
-          <AuthContext.Provider value={handleLogin}>
-            <SidebarTablet
-              isSidebarOpen={false}
-              toggleSidebar={toggleSidebar}
-            />
-          </AuthContext.Provider>
-        </CategoriesContext.Provider>
+        <ContextMockWrapper>
+          <SidebarTablet isSidebarOpen={false} toggleSidebar={toggleSidebar} />
+        </ContextMockWrapper>
       </MemoryRouter>
     );
   });

@@ -1,22 +1,19 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { DeleteContext } from "../../../../Contexts/delete_edit_Context";
-import { TaskListContext } from "../../../../Contexts/taskListContext";
 import DeleteModal from ".";
 import {
   DeleteContextMock,
   TaskListContextMock,
 } from "../../../../jestMock/mockValue";
+import ContextMockWrapper from "../../../../jestMock";
 
 describe("DeleteModal", () => {
   let deleteModalComponent: JSX.Element;
 
   beforeEach(() => {
     deleteModalComponent = (
-      <DeleteContext.Provider value={DeleteContextMock}>
-        <TaskListContext.Provider value={TaskListContextMock}>
-          <DeleteModal />
-        </TaskListContext.Provider>
-      </DeleteContext.Provider>
+      <ContextMockWrapper>
+        <DeleteModal />
+      </ContextMockWrapper>
     );
   });
 

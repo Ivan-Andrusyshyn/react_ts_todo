@@ -1,18 +1,18 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import SignUp from "./index";
-import AuthContext from "../../Contexts/authContext";
 import { MemoryRouter } from "react-router-dom";
 import { JSX } from "react/jsx-runtime";
 import { currentUser } from "../../jestMock/mockValue";
+import ContextMockWrapper from "../../jestMock";
 
 describe("Login Component", () => {
   let registrationComponent: JSX.Element;
   beforeEach(() => {
     registrationComponent = (
       <MemoryRouter initialEntries={["/react_ts_todo/login"]}>
-        <AuthContext.Provider value={currentUser}>
+        <ContextMockWrapper>
           <SignUp />
-        </AuthContext.Provider>
+        </ContextMockWrapper>
       </MemoryRouter>
     );
   });

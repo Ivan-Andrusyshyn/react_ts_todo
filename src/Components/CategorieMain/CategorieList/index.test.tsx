@@ -1,30 +1,15 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import CategorieMain from ".";
-import { DeleteContext } from "../../../Contexts/delete_edit_Context";
-import { TaskListContext } from "../../../Contexts/taskListContext";
-import { AddContext } from "../../../Contexts/addContext";
-import { CategoriesContext } from "../../../Contexts/categoriesContext";
-import {
-  AddItems,
-  CategorieContext,
-  DeleteContextMock,
-  TaskListContextMock,
-  mockCategoryListProps,
-} from "../../../jestMock/mockValue";
+import { mockCategoryListProps } from "../../../jestMock/mockValue";
+import ContextMockWrapper from "../../../jestMock";
 
 describe("CategorieMain Component", () => {
   let CatagoryListMock: JSX.Element;
   beforeEach(() => {
     CatagoryListMock = (
-      <TaskListContext.Provider value={TaskListContextMock}>
-        <DeleteContext.Provider value={DeleteContextMock}>
-          <AddContext.Provider value={AddItems}>
-            <CategoriesContext.Provider value={CategorieContext}>
-              <CategorieMain {...mockCategoryListProps} />
-            </CategoriesContext.Provider>
-          </AddContext.Provider>
-        </DeleteContext.Provider>
-      </TaskListContext.Provider>
+      <ContextMockWrapper>
+        <CategorieMain {...mockCategoryListProps} />
+      </ContextMockWrapper>
     );
   });
 

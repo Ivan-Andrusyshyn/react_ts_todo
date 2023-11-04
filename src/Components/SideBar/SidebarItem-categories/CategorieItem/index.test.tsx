@@ -1,9 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import CategorieItem from ".";
 import { MemoryRouter } from "react-router-dom";
-import { CategoriesContext } from "../../../../Contexts/categoriesContext";
-import { TaskListContext } from "../../../../Contexts/taskListContext";
-import { CategorieContext, ListContext } from "../../../../jestMock/mockValue";
+import ContextMockWrapper from "../../../../jestMock";
 
 describe("CategorieItem testing", () => {
   const onNavigate = jest.fn();
@@ -14,16 +12,14 @@ describe("CategorieItem testing", () => {
   beforeEach(() => {
     CategorieItemComponent = (
       <MemoryRouter initialEntries={["/react_ts_todo/categorie/w"]}>
-        <TaskListContext.Provider value={ListContext}>
-          <CategoriesContext.Provider value={CategorieContext}>
-            <CategorieItem
-              name="TestCategory"
-              color="#ff0000"
-              categoryId="12345"
-              onNavigate={onNavigate}
-            />
-          </CategoriesContext.Provider>
-        </TaskListContext.Provider>
+        <ContextMockWrapper>
+          <CategorieItem
+            name="TestCategory"
+            color="#ff0000"
+            categoryId="12345"
+            onNavigate={onNavigate}
+          />
+        </ContextMockWrapper>
       </MemoryRouter>
     );
 

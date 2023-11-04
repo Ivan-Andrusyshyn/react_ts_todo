@@ -3,8 +3,7 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import AddTaskBtn from ".";
 import { CategorieContextType } from "../../../Contexts/typesContext/categoriesType";
-import { AddContext } from "../../../Contexts/addContext";
-import { CategoriesContext } from "../../../Contexts/categoriesContext";
+import ContextMockWrapper from "../../../jestMock";
 
 const CategorieContext: CategorieContextType = {
   categList: [
@@ -27,11 +26,9 @@ describe("AddTaskBtn Component", () => {
   let AddTaskBtnMock: JSX.Element;
   beforeEach(() => {
     AddTaskBtnMock = (
-      <CategoriesContext.Provider value={CategorieContext}>
-        <AddContext.Provider value={AddItems}>
-          <AddTaskBtn />
-        </AddContext.Provider>
-      </CategoriesContext.Provider>
+      <ContextMockWrapper>
+        <AddTaskBtn />
+      </ContextMockWrapper>
     );
   });
 
