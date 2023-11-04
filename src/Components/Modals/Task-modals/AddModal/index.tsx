@@ -95,7 +95,7 @@ const AddModal: React.FC = () => {
           <S.Arrow isActive={showCalendar} src={Arrow} />
         </S.DatePicker>
         <S.Text>{t("mdlAdOpt")}</S.Text>
-        <S.Select id="select" onChange={handleChange}>
+        <S.Select id="select" onChange={handleChange} data-testid="combobox">
           {categList.map((cat, i) => (
             <option value={i} key={cat.id}>
               {cat.name}

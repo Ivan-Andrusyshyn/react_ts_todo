@@ -1,12 +1,6 @@
 import { AuthType } from "../Contexts/typesContext/authType";
 import { CategorieContextType } from "../Contexts/typesContext/categoriesType";
 import { TaskListType, TaskProps } from "../Contexts/typesContext/taskType";
-import { TaskListContext } from "../Contexts/taskListContext";
-import { CategoriesContext } from "../Contexts/categoriesContext";
-import React, { ReactNode } from "react";
-import { DeleteContext } from "../Contexts/delete_edit_Context";
-import { AddContext } from "../Contexts/addContext";
-import AuthContext from "../Contexts/authContext";
 
 const DeleteContextMock = {
   showDelete: false,

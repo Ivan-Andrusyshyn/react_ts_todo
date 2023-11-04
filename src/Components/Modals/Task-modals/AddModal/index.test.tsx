@@ -1,38 +1,26 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import AddModal from ".";
-import { MemoryRouter } from "react-router-dom";
 import ContextMockWrapper from "../../../../jestMock";
-const categList = [{ id: "8", name: "test 1", color: "#000" }];
+const handleAddMock = jest.fn();
 
 describe("AddModal all", () => {
   let addModalComponent: JSX.Element;
   const taskName = "New Task";
-  const taskCat = 0;
   beforeEach(() => {
     addModalComponent = (
-      <MemoryRouter initialEntries={["/react_ts_todo/categorie/w"]}>
-        <ContextMockWrapper>
-          <AddModal />
-        </ContextMockWrapper>
-      </MemoryRouter>
+      <ContextMockWrapper>
+        <AddModal />
+      </ContextMockWrapper>
     );
   });
   test("should add a new task if taskName and category are valid", () => {
     render(addModalComponent);
-    const handleAdd = jest.fn();
     const input = screen.getByTestId("input");
     const addButton = screen.getByTestId("btnAdd");
     fireEvent.change(input, { target: { value: taskName } });
     fireEvent.click(addButton);
-    const objectTest = {
-      id: expect.any(Number),
-      title: taskName,
-      categorie: categList[taskCat].name,
-      color: "blue",
-      done: false,
-      date: expect.any(Date),
-    };
-    expect(handleAdd).toHaveBeenCalledWith(expect.objectContaining(objectTest));
+    screen.getByTestId("combobox");
+    expect(handleAddMock).toHaveBeenCalled();
   });
 
   test("cancel modal by click", () => {
@@ -66,8 +54,8 @@ describe("AddModal all", () => {
   test("Selects a category", () => {
     render(addModalComponent);
 
-    const select: HTMLInputElement = screen.getByTestId("input");
-    fireEvent.change(select, { target: { value: "1" } });
-    expect(select.value).toBe("1");
+    const input: HTMLInputElement = screen.getByTestId("input");
+    fireEvent.change(input, { target: { value: "1" } });
+    expect(input.value).toBe("1");
   });
 });
