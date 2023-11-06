@@ -2,9 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 
 import { useNavigate, useParams } from "react-router-dom";
 
-import DeleteModal from "../../Components/Modals/Task-modals/DeleteModal";
-import AddModal from "../../Components/Modals/Task-modals/AddModal";
-
 import * as S from "./styles";
 import { DeleteContext } from "../../Contexts/delete_edit_Context";
 import { DeleteType } from "../../Contexts/typesContext/delete_edit_Type";
@@ -17,7 +14,7 @@ import CategorieMain from "../../Components/CategorieMain/CategorieList";
 import SideBar from "../../Components/SideBar/SideBar";
 import SidebarTablet from "../../Components/SideBar/Sidebar-Tablet";
 import BurgerMenu from "../../Components/SideBar/BurgerMenu";
-import EditModal from "../../Components/Modals/Task-modals/EditModal";
+import ModalManager from "../../Components/Modals/ModalManager/TaskModalManager";
 
 const CategoriePage: React.FC = () => {
   const { name } = useParams<string>();
@@ -63,9 +60,11 @@ const CategoriePage: React.FC = () => {
 
       <CategorieMain name={name} />
 
-      {showEdit && <EditModal />}
-      {showDelete && <DeleteModal />}
-      {showAdd && <AddModal />}
+      <ModalManager
+        showEdit={showEdit}
+        showDelete={showDelete}
+        showAdd={showAdd}
+      />
     </S.Page>
   );
 };
