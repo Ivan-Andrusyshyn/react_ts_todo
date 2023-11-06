@@ -1,12 +1,5 @@
 interface CategorieMainProps {
   name: string | undefined;
-  handleDone: () => void;
-  handleAll: () => void;
-  handleNotDone: () => void;
-  allActive: boolean;
-  doneActive: boolean;
-  notDoneActive: boolean;
-  listOfTasks: any;
 }
 interface listCategoriesType {
   id: number;

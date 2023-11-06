@@ -7,18 +7,18 @@ import * as S from "../../../Pages/Categorie/styles";
 import { CategorieMainProps, listCategoriesType } from "../types/types";
 import AnimatedContainer from "../../Animations/AnimationsComponents";
 import Filter from "../../../assets/svg/filter.svg";
-const CategorieMain: React.FC<CategorieMainProps> = ({
-  name,
-  handleDone,
-  handleAll,
-  handleNotDone,
-  allActive,
-  doneActive,
-  notDoneActive,
-  listOfTasks,
-}) => {
+import useFilterTasks from "../../../hooks/useFilterTasks";
+const CategorieMain: React.FC<CategorieMainProps> = ({ name }) => {
   const { t } = useTranslation();
-
+  const {
+    handleAll,
+    handleDone,
+    handleNotDone,
+    allActive,
+    doneActive,
+    notDoneActive,
+    filteredList,
+  } = useFilterTasks(name);
   return (
     <S.MainWrapper data-testid="categoryContainer">
       <AnimatedContainer>
@@ -42,7 +42,7 @@ const CategorieMain: React.FC<CategorieMainProps> = ({
               <S.FilterIcon src={Filter} />
             </S.FilterField>
           </S.TitleAndFilter>
-          {listOfTasks.map((task: listCategoriesType) => (
+          {filteredList.map((task: listCategoriesType) => (
             <TaskItem
               key={task.id}
               id={task.id}

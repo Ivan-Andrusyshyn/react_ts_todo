@@ -6,8 +6,6 @@ import DeleteModal from "../../Components/Modals/Task-modals/DeleteModal";
 import AddModal from "../../Components/Modals/Task-modals/AddModal";
 
 import * as S from "./styles";
-import { TaskListContext } from "../../Contexts/taskListContext";
-import { TaskListType } from "../../Contexts/typesContext/taskType";
 import { DeleteContext } from "../../Contexts/delete_edit_Context";
 import { DeleteType } from "../../Contexts/typesContext/delete_edit_Type";
 import { AddContext } from "../../Contexts/addContext";
@@ -23,20 +21,15 @@ import EditModal from "../../Components/Modals/Task-modals/EditModal";
 
 const CategoriePage: React.FC = () => {
   const { name } = useParams<string>();
+
   const navigate = useNavigate();
   const { categList } = useContext(CategoriesContext) as CategorieContextType;
 
-  const { taskList, doneTasks, notDoneTasks } = useContext(
-    TaskListContext
-  ) as TaskListType;
   const { showDelete, showEdit } = useContext(DeleteContext) as DeleteType;
   const { showAdd } = useContext(AddContext) as AddType;
-  const [listToDisplay, setListToDisplay] = useState(0);
-  const listOfLists = [
-    taskList.filter((task) => task.categorie === name),
-    doneTasks.filter((task) => task.categorie === name),
-    notDoneTasks.filter((task) => task.categorie === name),
-  ];
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   useEffect(() => {
     if (categList) {
       const nameNav = categList[0]?.name;
@@ -47,32 +40,9 @@ const CategoriePage: React.FC = () => {
       }
     }
   }, []);
-  const [allActive, setAllActive] = useState(true);
-  const [doneActive, setDoneActive] = useState(false);
-  const [notDoneActive, setNotDoneActive] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const isTablet = useMediaQuery({ minWidth: 320, maxWidth: 960 });
 
-  function handleAll() {
-    setListToDisplay(0);
-    setAllActive(true);
-    setDoneActive(false);
-    setNotDoneActive(false);
-  }
-
-  function handleDone() {
-    setListToDisplay(1);
-    setAllActive(false);
-    setDoneActive(true);
-    setNotDoneActive(false);
-  }
-  function handleNotDone() {
-    setListToDisplay(2);
-    setAllActive(false);
-    setDoneActive(false);
-    setNotDoneActive(true);
-  }
   const toggleSidebar = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const clickedElement = e.target as HTMLElement;
     if (clickedElement.id === "backdrop") {
@@ -91,16 +61,7 @@ const CategoriePage: React.FC = () => {
       />
       {!isTablet && <SideBar />}
 
-      <CategorieMain
-        name={name}
-        handleDone={handleDone}
-        handleAll={handleAll}
-        handleNotDone={handleNotDone}
-        allActive={allActive}
-        doneActive={doneActive}
-        notDoneActive={notDoneActive}
-        listOfTasks={listOfLists[listToDisplay]}
-      />
+      <CategorieMain name={name} />
 
       {showEdit && <EditModal />}
       {showDelete && <DeleteModal />}
