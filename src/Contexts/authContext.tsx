@@ -19,6 +19,7 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
   const [isLoadingGoogle, setIsLoadingGoogle] = useState(false);
 
   const [isError, setIsError] = useState<string | null>(null);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setIsLoading(true);
@@ -37,13 +38,15 @@ export const AuthProvider: React.FC<ChildrenProps> = ({ children }) => {
       unsubscribe();
     };
   }, []);
+
   useEffect(() => {
     const errorTimeout = setTimeout(() => {
       setIsError(null);
     }, 2000);
     return () => clearTimeout(errorTimeout);
   }, [isError]);
-  const changeUserName = async (newName: string) => {
+
+  const changeUserName = async (newName: string | null) => {
     setIsLoading(true);
     try {
       const user = auth.currentUser;
