@@ -8,6 +8,7 @@ import { AuthType } from "../../Contexts/typesContext/authType";
 import ErrorMessageAuth from "../../Components/ErrorComponent";
 import AnimatedContainerBottom from "../../Components/Animations/AnimationsPages/toBottom";
 import AnimatedContainerTop from "../../Components/Animations/AnimationsPages/toTop";
+import useInput from "../../hooks/useInput";
 
 const SignUp = () => {
   const {
@@ -17,11 +18,10 @@ const SignUp = () => {
     isLoadingGoogle,
     isError,
   } = useContext(AuthContext) as AuthType;
-  const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
-  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const name = useInput("");
+  const email = useInput("");
+  const password = useInput("");
   useEffect(() => {
     const newTimeOut = setTimeout(() => {
       setError("");
@@ -30,17 +30,6 @@ const SignUp = () => {
       clearTimeout(newTimeOut);
     };
   }, [error]);
-  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
-  };
-
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-  };
 
   const handleSignUpClick = (e: React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -48,7 +37,7 @@ const SignUp = () => {
       setError("Please enter");
       return;
     }
-    registration(email, password, name);
+    registration(email.value, password.value, name.value);
   };
 
   return (
@@ -69,30 +58,30 @@ const SignUp = () => {
             <S.FieldName>Name</S.FieldName>
             <S.InputField
               data-testid="inputName"
-              value={name}
+              value={name.value}
               id="name"
               error={error}
-              onChange={handleNameChange}
+              onChange={name.handleChange}
               placeholder={error ? `${error} name.` : "Create your name"}
             ></S.InputField>
             <S.FieldName>Email</S.FieldName>
             <S.InputField
               data-testid="inputEmail"
-              value={email}
+              value={email.value}
               id="email"
               error={error}
               autoComplete="username"
-              onChange={handleEmailChange}
+              onChange={email.handleChange}
               placeholder={error ? `${error} email.` : "Insert your email"}
             />
             <S.FieldName>Password</S.FieldName>
             <S.InputField
               data-testid="inputPassword"
-              value={password}
+              value={password.value}
               id="password"
               error={error}
               autoComplete="current-password"
-              onChange={handlePasswordChange}
+              onChange={password.handleChange}
               placeholder={
                 error ? `${error} password.` : "Insert your password"
               }

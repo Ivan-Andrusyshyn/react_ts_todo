@@ -9,6 +9,7 @@ import AddCategorieModal from "../../Modals/Sidebar-modals/AddCategorieModal";
 import { Arrow } from "../..";
 import { CategorieContextType } from "../../../Contexts/typesContext/categoriesType";
 import { CategoriesContext } from "../../../Contexts/categoriesContext";
+import useInput from "../../../hooks/useInput";
 
 const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
   const [active, setActive] = useState(false);
@@ -16,11 +17,12 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
     CategoriesContext
   ) as CategorieContextType;
 
-  const [title, setTitle] = useState<string>("");
-  const [color, setColor] = useState<string>("");
   const [showForm, setShowForm] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const navigate = useNavigate();
+  const title = useInput("");
+  const color = useInput("");
+
   function handleActivate() {
     setActive(!active);
   }
@@ -50,9 +52,10 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
     }
     const category = {
       id: uuidv4(),
-      name: title,
-      color: color,
+      name: title.value,
+      color: color.value,
     };
+
     const isCategoryExists = categList.some(
       (existingCategory) => existingCategory.name === category.name
     );
@@ -61,15 +64,15 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
       return;
     }
     addCategory(category);
-    setTitle("");
-    setColor("");
+    title.clear();
     setShowForm(false);
+    color.clear();
   };
 
   const handleCancel = () => {
-    setTitle("");
+    title.clear();
     setShowForm(false);
-    setColor("");
+    color.clear();
   };
 
   return (
@@ -93,11 +96,11 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
           <AddCategorieModal
             error={error}
             setShowForm={setShowForm}
-            color={color}
+            color={color.value}
             handleCancel={handleCancel}
-            setColor={setColor}
-            setTitle={setTitle}
-            title={title}
+            colorChange={color.handleChange}
+            titleChange={title.handleChange}
+            title={title.value}
             addNewCategory={addNewCategory}
           />
         )}

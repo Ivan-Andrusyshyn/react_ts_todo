@@ -6,15 +6,7 @@ import { DeleteContext } from "../../../Contexts/delete_edit_Context";
 import { DeleteType } from "../../../Contexts/typesContext/delete_edit_Type";
 import { format, isBefore } from "date-fns";
 import { Edit, Erase } from "../..";
-
-interface TaskCardProps {
-  id: number;
-  name: string;
-  list: string;
-  color: string;
-  done: boolean;
-  date: number | Date;
-}
+import { TaskCardProps } from "../types/types";
 
 const TaskItem: React.FC<TaskCardProps> = ({
   id,
@@ -53,7 +45,6 @@ const TaskItem: React.FC<TaskCardProps> = ({
       </S.CheckField>
       <S.Description>
         <S.Name done={done}>{name}</S.Name>
-
         <S.ListBelong>
           <S.ColorTag color={color} />
           <S.ListName>{list}</S.ListName>

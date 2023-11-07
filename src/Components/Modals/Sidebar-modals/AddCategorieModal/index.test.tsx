@@ -20,7 +20,7 @@ describe("AddCategorieModal Component", () => {
     render(<AddCategorieModal {...mockPropsAddCategorieModal} />);
     const titleInput = screen.getByTestId("title-input");
     fireEvent.change(titleInput, { target: { value: "New Category" } });
-    expect(mockPropsAddCategorieModal.setTitle).toHaveBeenCalledWith(
+    expect(mockPropsAddCategorieModal.titleChange).toHaveBeenCalledWith(
       "New Category"
     );
   });

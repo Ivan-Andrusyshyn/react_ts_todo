@@ -8,8 +8,8 @@ const AddCategorieModal: React.FC<PropsSidebarForm> = ({
   setShowForm,
   color,
   handleCancel,
-  setColor,
-  setTitle,
+  colorChange,
+  titleChange,
   title,
   addNewCategory,
 }) => {
@@ -41,7 +41,7 @@ const AddCategorieModal: React.FC<PropsSidebarForm> = ({
             maxLength={10}
             error={error}
             placeholder={error && !title ? error : t("addCtgMdlPlch")}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={titleChange}
             data-testid="title-input"
           />
           <S.ColorInputWrapper>
@@ -49,7 +49,7 @@ const AddCategorieModal: React.FC<PropsSidebarForm> = ({
               value={color}
               type="color"
               error={error}
-              onChange={(e) => setColor(e.target.value)}
+              onChange={colorChange}
               data-testid="color-input"
             />
             <span style={styleColorInputText}>

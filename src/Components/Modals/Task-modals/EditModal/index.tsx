@@ -8,6 +8,7 @@ import Calendar from "../../Calendar";
 import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
 import { Arrow } from "../../..";
+import useInput from "../../../../hooks/useInput";
 const EditModal: React.FC = () => {
   const { editTask, taskList } = useContext(TaskListContext) as TaskListType;
   const { setShowEdit, id } = useContext(DeleteContext) as DeleteType;
@@ -15,27 +16,23 @@ const EditModal: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<number | Date>(new Date()); // Инициализируем выбранную дату как null
   const { t } = useTranslation();
 
-  const [taskName, setTaskName] = useState("");
   const [taskCat, setTaskCat] = useState(
     taskList.filter((item) => item.id === id)
   );
-
-  function handleTyping(event: React.ChangeEvent<HTMLInputElement>) {
-    setTaskName(event.target.value);
-  }
+  const taskName = useInput("");
   function handleCancel() {
     setShowEdit(false);
   }
 
   function handleEdit() {
-    taskCat[0].title = taskName;
+    taskCat[0].title = taskName.value;
     taskCat[0].date = selectedDate;
     editTask(id, taskCat[0]);
     setShowEdit(false);
   }
   useEffect(() => {
     const oldName = taskCat[0].title;
-    setTaskName(oldName);
+    taskName.setValue(oldName);
   }, [taskList]);
   const closeModalCalendar = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -56,8 +53,8 @@ const EditModal: React.FC = () => {
         <S.TitleInput
           data-testid="inputTitle"
           placeholder={t("mdlAdInpPlch")}
-          onChange={handleTyping}
-          value={taskName}
+          onChange={taskName.handleChange}
+          value={taskName.value}
         />
         <S.DatePicker
           data-testid="datepicker"

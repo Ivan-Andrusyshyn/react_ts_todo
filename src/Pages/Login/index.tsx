@@ -10,14 +10,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import AnimatedContainerBottom from "../../Components/Animations/AnimationsPages/toBottom";
 import AnimatedContainerTop from "../../Components/Animations/AnimationsPages/toTop";
+import useInput from "../../hooks/useInput";
 const Login: React.FC = () => {
   const { handleLogin, isLoading, isError } = useContext(
     AuthContext
   ) as AuthType;
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [showPassword, setShowPassword] = useState(false);
+  const email = useInput("");
+  const password = useInput("");
+
   useEffect(() => {
     const newTimeOut = setTimeout(() => {
       setError("");
@@ -32,15 +34,7 @@ const Login: React.FC = () => {
       setError("Please enter");
       return;
     }
-    handleLogin(email, password);
-  }
-
-  function handleEmail(event: React.ChangeEvent<HTMLInputElement>) {
-    setEmail(event.target.value);
-  }
-
-  function handlePassword(event: React.ChangeEvent<HTMLInputElement>) {
-    setPassword(event.target.value);
+    handleLogin(email.value, password.value);
   }
 
   return (
@@ -61,19 +55,19 @@ const Login: React.FC = () => {
             <S.InputField
               data-testid="inputEmail"
               autoComplete="username"
-              value={email}
+              value={email.value}
               error={error}
               id="email"
-              onChange={handleEmail}
+              onChange={email.handleChange}
               placeholder={error ? `${error} email.` : "Insert your email"}
             />
             <S.FieldName>Password</S.FieldName>
             <div style={{ position: "relative" }}>
               <S.InputField
                 data-testid="inputPassword"
-                value={password}
+                value={password.value}
                 id="password"
-                onChange={handlePassword}
+                onChange={password.handleChange}
                 placeholder={
                   error ? `${error} password.` : "Insert your password"
                 }

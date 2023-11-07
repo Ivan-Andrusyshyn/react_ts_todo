@@ -13,4 +13,12 @@ interface tagProps {
   name: string;
   active: boolean;
 }
-export type { CategorieMainProps, listCategoriesType, tagProps };
+interface TaskCardProps {
+  id: number;
+  name: string;
+  list: string;
+  color: string;
+  done: boolean;
+  date: number | Date;
+}
+export type { CategorieMainProps, TaskCardProps, listCategoriesType, tagProps };

@@ -106,10 +106,11 @@ const mockPropsAddCategorieModal = {
   setShowForm: jest.fn(),
   color: "",
   handleCancel: jest.fn(),
-  setColor: jest.fn(),
-  setTitle: jest.fn(),
+  colorChange: jest.fn(),
+  titleChange: jest.fn(),
   title: "",
   addNewCategory: jest.fn(),
+  setColor: jest.fn(),
 };
 
 const currentUser: AuthType = {

@@ -16,8 +16,9 @@ interface PropsSidebarForm {
   setShowForm: (arg: boolean) => void;
   color: string;
   handleCancel: () => void;
-  setColor: (arg: string) => void;
-  setTitle: (arg: string) => void;
+  colorChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  titleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+
   title: string;
   addNewCategory: (e: React.FormEvent) => void;
 }

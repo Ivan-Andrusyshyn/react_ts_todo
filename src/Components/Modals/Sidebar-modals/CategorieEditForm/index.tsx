@@ -1,20 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import * as S from "./styles";
 import { useTranslation } from "react-i18next";
 import { CategoryEditFormProps } from "../types/types";
+import useInput from "../../../../hooks/useInput";
 
 const CategoryEditForm: React.FC<CategoryEditFormProps> = ({
   initialName,
   initialColor,
   onSave,
 }) => {
-  const [editedName, setEditedName] = useState(initialName);
-  const [editedColor, setEditedColor] = useState(initialColor);
+  const editedName = useInput(initialName);
+  const editedColor = useInput(initialColor);
   const { t } = useTranslation();
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
-    onSave(editedName, editedColor);
+    onSave(editedName.value, editedColor.value);
   };
 
   return (
@@ -26,19 +27,19 @@ const CategoryEditForm: React.FC<CategoryEditFormProps> = ({
       >
         <S.TitleInput
           data-testid="title-input"
-          value={editedName}
+          value={editedName.value}
           type="text"
           maxLength={10}
-          onChange={(e) => setEditedName(e.target.value)}
+          onChange={editedName.handleChange}
         />
         <S.ColorInputWrapper>
           <S.ColorInput
             data-testid="color-input"
-            value={editedColor}
+            value={editedColor.value}
             type="color"
-            onChange={(e) => setEditedColor(e.target.value)}
+            onChange={editedColor.handleChange}
           />
-          <span>{editedColor ? editedColor : t("inptClr")}</span>
+          <span>{editedColor.value ? editedColor.value : t("inptClr")}</span>
         </S.ColorInputWrapper>
         <S.BtnWrapper>
           <S.FormBtn type="submit" data-testid="addBtn">

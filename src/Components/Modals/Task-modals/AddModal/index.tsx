@@ -14,20 +14,19 @@ import Calendar from "../../Calendar";
 import { format } from "date-fns";
 import { useTranslation } from "react-i18next";
 import { Arrow } from "../../..";
+import useInput from "../../../../hooks/useInput";
 const AddModal: React.FC = () => {
   const { addTask } = useContext(TaskListContext) as TaskListType;
   const { categList } = useContext(CategoriesContext) as CategorieContextType;
   const { setShowAdd } = useContext(AddContext) as AddType;
   const { t } = useTranslation();
 
-  const [taskName, setTaskName] = useState<string>("");
   const [taskCat, setTaskCat] = useState(0);
   const [error, setError] = useState<string>("");
   const [selectedDate, setSelectedDate] = useState<number | Date>(new Date()); // Инициализируем выбранную дату как null
   const [showCalendar, setShowCalendar] = useState(false);
-  function handleTyping(event: React.ChangeEvent<HTMLInputElement>) {
-    setTaskName(event.target.value);
-  }
+
+  const taskName = useInput("");
   useEffect(() => {
     const newTimeOut = setTimeout(() => {
       setError("");
@@ -40,14 +39,14 @@ const AddModal: React.FC = () => {
     setShowAdd(false);
   }
   function handleAdd() {
-    if (!taskName) {
+    if (!taskName.value) {
       setError("Please enter task name.");
       return;
     }
     if (categList[taskCat]) {
       const newTask: TaskProps = {
         id: Math.random(),
-        title: taskName,
+        title: taskName.value,
         categorie: categList[taskCat].name,
         color: categList[taskCat].color,
         done: false,
@@ -83,8 +82,8 @@ const AddModal: React.FC = () => {
           data-testid="input"
           error={error}
           placeholder={error ? error : t("mdlAdInpPlch")}
-          onChange={handleTyping}
-          value={taskName}
+          onChange={taskName.handleChange}
+          value={taskName.value}
         />
 
         <S.DatePicker
