@@ -18,6 +18,9 @@ describe("AddModal all", () => {
     const input = screen.getByTestId("input");
     const addButton = screen.getByTestId("btnAdd");
     fireEvent.change(input, { target: { value: taskName } });
+    fireEvent.change(screen.getByTestId("combobox"), {
+      target: { value: "1" },
+    });
     fireEvent.click(addButton);
     screen.getByTestId("combobox");
     expect(handleAddMock).toHaveBeenCalled();

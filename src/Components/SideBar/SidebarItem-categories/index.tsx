@@ -37,12 +37,12 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
   const addNewCategory = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!title) {
+    if (!title.value.trim()) {
       setError("Please enter category");
       return;
     }
 
-    if (!color) {
+    if (!color.value.trim()) {
       setError("Please select a category color");
       return;
     }

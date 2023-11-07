@@ -100,7 +100,28 @@ const mockPropsModalToggle = {
   showFormForEdit: jest.fn(),
   setModalOpenForm: jest.fn(),
 };
-
+const mockLoginComponentProps = {
+  email: {
+    value: "",
+    handleChange: jest.fn(),
+  },
+  password: {
+    value: "",
+    handleChange: jest.fn(),
+  },
+  showPassword: false,
+  error: "",
+  isLoading: false,
+  isError: null,
+  handleLoginClick: jest.fn(),
+  setShowPassword: jest.fn(),
+  registration: false,
+  name: {
+    value: "",
+    clear: jest.fn(),
+    handleChange: jest.fn(),
+  },
+};
 const mockPropsAddCategorieModal = {
   error: "",
   setShowForm: jest.fn(),
@@ -138,4 +159,5 @@ export {
   mockPropsModalToggle,
   mockPropsAddCategorieModal,
   currentUser,
+  mockLoginComponentProps,
 };

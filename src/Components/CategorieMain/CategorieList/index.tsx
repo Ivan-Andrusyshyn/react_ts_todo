@@ -1,47 +1,22 @@
-import { useTranslation } from "react-i18next";
 import AddTaskBtn from "../AddTask-Btn";
-import FilterTag from "../FilterTag";
 import TaskItem from "../TaskItem";
 import LanguageSelector from "../../../i18n/LanguageSelector";
 import * as S from "../../../Pages/Categorie/styles";
 import { CategorieMainProps, listCategoriesType } from "../types/types";
 import AnimatedContainer from "../../Animations/AnimationsComponents";
-import Filter from "../../../assets/svg/filter.svg";
 import useFilterTasks from "../../../hooks/useFilterTasks";
+import ButtonController from "../ButtonsFilter";
 const CategorieMain: React.FC<CategorieMainProps> = ({ name }) => {
-  const { t } = useTranslation();
-  const {
-    handleAll,
-    handleDone,
-    handleNotDone,
-    allActive,
-    doneActive,
-    notDoneActive,
-    filteredList,
-  } = useFilterTasks(name);
+  const { filteredList } = useFilterTasks(name);
   return (
     <S.MainWrapper data-testid="categoryContainer">
       <AnimatedContainer>
         <S.Main>
           <LanguageSelector />
           <S.Header>{name}</S.Header>
-          <S.TitleAndFilter data-testid="categoryPage_filter">
-            <S.Title onClick={handleDone} data-testid="filterBtnDoneTasks">
-              {t("upBar")}
-            </S.Title>
-            <S.FilterField>
-              <div onClick={handleAll} data-testid="filterBtnAllTasks">
-                <FilterTag name={t("filterAll")} active={allActive} />
-              </div>
-              <div onClick={handleDone}>
-                <FilterTag name={t("filterDn")} active={doneActive} />
-              </div>
-              <div onClick={handleNotDone} data-testid="filterBtnNotDoneTasks">
-                <FilterTag name={t("filterNDone")} active={notDoneActive} />
-              </div>
-              <S.FilterIcon src={Filter} />
-            </S.FilterField>
-          </S.TitleAndFilter>
+
+          <ButtonController name={name} />
+
           {filteredList.map((task: listCategoriesType) => (
             <TaskItem
               key={task.id}

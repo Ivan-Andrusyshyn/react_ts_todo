@@ -3,28 +3,7 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import LoginForm from ".";
 import ContextMockWrapper from "../../jestMock";
 import { MemoryRouter } from "react-router-dom";
-const mockProps = {
-  email: {
-    value: "",
-    handleChange: jest.fn(),
-  },
-  password: {
-    value: "",
-    handleChange: jest.fn(),
-  },
-  showPassword: false,
-  error: "",
-  isLoading: false,
-  isError: null,
-  handleLoginClick: jest.fn(),
-  setShowPassword: jest.fn(),
-  registration: false,
-  name: {
-    value: "",
-    clear: jest.fn(),
-    handleChange: jest.fn(),
-  },
-};
+import { mockLoginComponentProps as mockProps } from "../../jestMock/mockValue";
 describe("LoginForm Component", () => {
   let loginComponent: JSX.Element;
   beforeEach(() => {

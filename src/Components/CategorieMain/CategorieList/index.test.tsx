@@ -2,11 +2,21 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import CategorieMain from ".";
 import { mockCategoryListProps } from "../../../jestMock/mockValue";
 import ContextMockWrapper from "../../../jestMock";
-
+import { JSX } from "react/jsx-runtime";
+const mockFilteredList = [
+  {
+    id: 1,
+    title: "Test Task 1",
+  },
+  {
+    id: 2,
+    title: "Test Task 2",
+  },
+];
 describe("CategorieMain Component", () => {
-  let CatagoryListMock: JSX.Element;
+  let TestCategorie: JSX.Element;
   beforeEach(() => {
-    CatagoryListMock = (
+    TestCategorie = (
       <ContextMockWrapper>
         <CategorieMain {...mockCategoryListProps} />
       </ContextMockWrapper>
@@ -14,41 +24,16 @@ describe("CategorieMain Component", () => {
   });
 
   test("should render the CategorieMain component", () => {
-    render(CatagoryListMock);
+    render(TestCategorie);
     screen.getByTestId("categoryContainer");
-    screen.getByTestId("filterBtnDoneTasks");
+    screen.getByTestId("header");
+    screen.getByTestId("categoryPage_filter");
   });
 
-  test("should call handleDone when title is clicked", () => {
-    render(CatagoryListMock);
-    const title = screen.getByTestId("filterBtnDoneTasks");
-    fireEvent.click(title);
-    expect(mockCategoryListProps.handleDone).toHaveBeenCalledTimes(1);
-  });
-
-  test("should call handleAll when 'All' filter tag is clicked", () => {
-    render(CatagoryListMock);
-    const allFilterTag = screen.getByTestId("filterBtnAllTasks");
-    fireEvent.click(allFilterTag);
-    expect(mockCategoryListProps.handleAll).toHaveBeenCalledTimes(1);
-  });
-
-  test("should call handleNotDone when 'Not Done' filter tag is clicked", () => {
-    render(CatagoryListMock);
-    const notDoneFilterTag = screen.getByTestId("filterBtnNotDoneTasks");
-    fireEvent.click(notDoneFilterTag);
-    expect(mockCategoryListProps.handleNotDone).toHaveBeenCalledTimes(1);
-  });
-
-  test("should render task items", () => {
-    render(CatagoryListMock);
-    const task1 = screen.getByText("Task 1");
-    screen.getByText("Task 2");
-  });
-
-  test("should call AddTaskBtn when 'Add Task' button is clicked", () => {
-    render(CatagoryListMock);
-    const addTaskBtn = screen.getByTestId("addTaskBtn");
-    fireEvent.click(addTaskBtn);
+  test("should render TaskItem components", () => {
+    render(TestCategorie);
+    for (const task of mockFilteredList) {
+      screen.getByText(task.title);
+    }
   });
 });
