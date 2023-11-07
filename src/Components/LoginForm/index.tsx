@@ -19,7 +19,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
   name,
 }) => {
   return (
-    <form action="" onSubmit={handleLoginClick}>
+    <form action="" onSubmit={handleLoginClick} data-testid="login-form">
       {registration && (
         <>
           <S.FieldName>Name</S.FieldName>
