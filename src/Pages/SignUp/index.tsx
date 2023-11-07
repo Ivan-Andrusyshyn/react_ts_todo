@@ -5,10 +5,10 @@ import Logo from "../../assets/images/Logo.png";
 import * as S from "./styles";
 import LoaderInButton from "../../Components/Loader/AuthLoader";
 import { AuthType } from "../../Contexts/typesContext/authType";
-import ErrorMessageAuth from "../../Components/ErrorComponent";
 import AnimatedContainerBottom from "../../Components/Animations/AnimationsPages/toBottom";
 import AnimatedContainerTop from "../../Components/Animations/AnimationsPages/toTop";
 import useInput from "../../hooks/useInput";
+import LoginForm from "../../Components/LoginForm";
 
 const SignUp = () => {
   const {
@@ -19,6 +19,8 @@ const SignUp = () => {
     isError,
   } = useContext(AuthContext) as AuthType;
   const [error, setError] = useState<string>("");
+  const [showPassword, setShowPassword] = useState(false);
+
   const name = useInput("");
   const email = useInput("");
   const password = useInput("");
@@ -54,56 +56,19 @@ const SignUp = () => {
           <S.Subtitle>
             Please, insert your information to access your tasks.
           </S.Subtitle>
-          <form action="" onSubmit={handleSignUpClick}>
-            <S.FieldName>Name</S.FieldName>
-            <S.InputField
-              data-testid="inputName"
-              value={name.value}
-              id="name"
-              error={error}
-              onChange={name.handleChange}
-              placeholder={error ? `${error} name.` : "Create your name"}
-            ></S.InputField>
-            <S.FieldName>Email</S.FieldName>
-            <S.InputField
-              data-testid="inputEmail"
-              value={email.value}
-              id="email"
-              error={error}
-              autoComplete="username"
-              onChange={email.handleChange}
-              placeholder={error ? `${error} email.` : "Insert your email"}
-            />
-            <S.FieldName>Password</S.FieldName>
-            <S.InputField
-              data-testid="inputPassword"
-              value={password.value}
-              id="password"
-              error={error}
-              autoComplete="current-password"
-              onChange={password.handleChange}
-              placeholder={
-                error ? `${error} password.` : "Insert your password"
-              }
-              type={"password"}
-            />
+          <LoginForm
+            email={email}
+            password={password}
+            showPassword={showPassword}
+            error={error}
+            isLoading={isLoading}
+            isError={isError}
+            handleLoginClick={handleSignUpClick}
+            setShowPassword={setShowPassword}
+            registration={true}
+            name={name}
+          />
 
-            <S.KeepSigned>
-              <S.Checkbox />
-              <S.Subtitle>Remember me</S.Subtitle>
-            </S.KeepSigned>
-            {isError && (
-              <ErrorMessageAuth isError={isError} data-testid="error-message" />
-            )}
-            <S.SignIn
-              data-testid="btnRegister"
-              type="submit"
-              disabled={isLoading}
-            >
-              Sign Up
-              <LoaderInButton loaderColor={"#fff"} isLoading={isLoading} />
-            </S.SignIn>
-          </form>
           <S.Subtitle>
             Already have an account? <Link to="/login">Sign In</Link>
             <br />
