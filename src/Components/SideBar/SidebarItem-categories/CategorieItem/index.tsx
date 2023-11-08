@@ -1,87 +1,36 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import * as S from "./styles";
 import { Link, useParams } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { TaskListContext } from "../../../../Contexts/taskListContext";
-import { TaskListType } from "../../../../Contexts/typesContext/taskType";
-import { CategorieContextType } from "../../../../Contexts/typesContext/categoriesType";
-import { CategoriesContext } from "../../../../Contexts/categoriesContext";
 import ModalToggle from "../../../Modals/Sidebar-modals/ModalToggle";
 import { CategorieItemProps } from "../../types/types";
+import useCategorieItemLogic from "./CategorieItemLogic";
 
 const CategorieItem: React.FC<CategorieItemProps> = ({
   name,
   color,
-  categoryId,
+  id,
   onNavigate,
 }) => {
   const params = useParams();
-  const [isChecked, setIsChecked] = useState<boolean>(false);
-  const { categList, deleteCategory, editCategory } = useContext(
-    CategoriesContext
-  ) as CategorieContextType;
-  const { deleteCategoryTasks } = useContext(TaskListContext) as TaskListType;
 
-  const [editedName, setEditedName] = useState<string>("");
-  const [editedColor, setEditedColor] = useState<string>("#fff");
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [modalOpenForm, setModalOpenForm] = useState<boolean>(false);
+  const {
+    isChecked,
+    editedName,
+    editedColor,
+    isOpen,
+    modalOpenForm,
+    handleDelete,
+    showFormForEdit,
+    handleEdit,
+    handleCancel,
+    backdropCloseModal,
+    handleOpenModal,
+    setIsChecked,
+    setModalOpenForm,
+  } = useCategorieItemLogic({ name, color, id, onNavigate });
 
-  useEffect(() => {
-    setEditedColor(color);
-    setEditedName(name);
-  }, [name, color]);
-
-  const handleDelete = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    deleteCategory(categoryId);
-    const remainingCategories = categList.filter(
-      (cat) => cat.id !== categoryId
-    );
-    deleteCategoryTasks(name);
-    const nameCategorie =
-      remainingCategories[remainingCategories.length - 1]?.name;
-    if (nameCategorie) {
-      onNavigate("/categorie/" + nameCategorie);
-    } else {
-      onNavigate("/categorie/");
-    }
-  };
-  const showFormForEdit = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    setModalOpenForm(true);
-  };
-
-  const handleEdit = (editedName: string, editedColor: string) => {
-    const editedCategorie = {
-      id: uuidv4(),
-      name: editedName,
-      color: editedColor,
-    };
-    editCategory(categoryId, editedCategorie);
-    onNavigate("/categorie/" + editedName);
-  };
-
-  const handleCancel = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    if (e.currentTarget === e.target) {
-      setIsOpen(false);
-      setEditedName(name);
-      setEditedColor(color);
-    }
-  };
-  const backdropCloseModal = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
-    if (e.currentTarget === e.target) {
-      setModalOpenForm(!modalOpenForm);
-      setIsOpen(false);
-    }
-  };
-  const handleOpenModal = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (e.target) setIsOpen(!isOpen);
-  };
   return (
     <>
       <Link

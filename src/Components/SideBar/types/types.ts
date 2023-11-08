@@ -15,7 +15,7 @@ interface PropsSidebarForm {
 interface CategorieItemProps {
   name: string;
   color: string;
-  categoryId: string;
+  id: string;
   onNavigate: (path: string) => void;
 }
 interface PropAddBtn {

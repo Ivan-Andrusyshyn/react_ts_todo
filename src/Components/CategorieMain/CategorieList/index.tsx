@@ -8,6 +8,7 @@ import useFilterTasks from "../../../hooks/useFilterTasks";
 import ButtonController from "../ButtonsFilter";
 const CategorieMain: React.FC<CategorieMainProps> = ({ name }) => {
   const { filteredList } = useFilterTasks(name);
+
   return (
     <S.MainWrapper data-testid="categoryContainer">
       <AnimatedContainer>
@@ -18,15 +19,7 @@ const CategorieMain: React.FC<CategorieMainProps> = ({ name }) => {
           <ButtonController name={name} />
 
           {filteredList.map((task: listCategoriesType) => (
-            <TaskItem
-              key={task.id}
-              id={task.id}
-              name={task.title}
-              list={task.categorie}
-              color={task.color}
-              done={task.done}
-              date={task.date}
-            />
+            <TaskItem key={task.id} {...task} />
           ))}
           <AddTaskBtn />
         </S.Main>

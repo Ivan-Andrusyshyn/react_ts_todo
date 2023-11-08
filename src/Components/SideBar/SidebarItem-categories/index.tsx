@@ -84,13 +84,7 @@ const ExpandSidebarItem: React.FC<SidebarItemProps> = ({ name, icon }) => {
       </S.Container>
       <S.CatArea isActive={active}>
         {categList.map((cat) => (
-          <CategorieItem
-            key={cat.id}
-            categoryId={cat.id}
-            name={cat.name}
-            color={cat.color}
-            onNavigate={navigate}
-          />
+          <CategorieItem key={cat.id} {...cat} onNavigate={navigate} />
         ))}
         {showForm && (
           <AddCategorieModal

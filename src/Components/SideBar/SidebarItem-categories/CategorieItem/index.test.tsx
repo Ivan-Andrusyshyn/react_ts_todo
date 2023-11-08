@@ -16,13 +16,15 @@ describe("CategorieItem testing", () => {
           <CategorieItem
             name="TestCategory"
             color="#ff0000"
-            categoryId="12345"
+            id="12345"
             onNavigate={onNavigate}
           />
         </ContextMockWrapper>
       </MemoryRouter>
     );
-
+    afterEach(() => {
+      jest.clearAllMocks();
+    });
     handleDelete.mockImplementation((itemId) => {
       myArray = myArray.filter((item) => item.id !== itemId);
     });
@@ -52,8 +54,8 @@ describe("CategorieItem testing", () => {
     const deleteBtn = screen.getByTestId("delete-button");
     fireEvent.click(deleteBtn);
     expect(modalForm).toBeNull();
-    //  expect(handleDelete).toHaveBeenCalledWith("12345");
-    //  expect(myArray).not.toContainEqual({ id: "12345", name: "Item 1" });
+    expect(handleDelete).toHaveBeenCalledWith("12345");
+    expect(myArray).not.toContainEqual({ id: "12345", name: "Item 1" });
   });
 
   test("clicking on cancel button should close the modal form", () => {
@@ -63,10 +65,8 @@ describe("CategorieItem testing", () => {
     const editButton = screen.getByTestId("edit-button");
     fireEvent.click(editButton);
     const modalForm = screen.queryByTestId("modal-form");
-    const cancelButton = screen.queryByTestId("cancel-button");
-    {
-      cancelButton && fireEvent.click(cancelButton);
-    }
+    const cancelButton = screen.getByTestId("cancel-button");
+    fireEvent.click(cancelButton);
     expect(modalForm).toBeNull();
   });
 });

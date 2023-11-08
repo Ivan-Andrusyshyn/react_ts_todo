@@ -15,8 +15,8 @@ interface tagProps {
 }
 interface TaskCardProps {
   id: number;
-  name: string;
-  list: string;
+  title: string;
+  categorie: string;
   color: string;
   done: boolean;
   date: number | Date;

@@ -10,8 +10,8 @@ import { TaskCardProps } from "../types/types";
 
 const TaskItem: React.FC<TaskCardProps> = ({
   id,
-  name,
-  list,
+  title,
+  categorie,
   color,
   done,
   date,
@@ -44,10 +44,10 @@ const TaskItem: React.FC<TaskCardProps> = ({
         </S.CheckboxRing>
       </S.CheckField>
       <S.Description>
-        <S.Name done={done}>{name}</S.Name>
+        <S.Name done={done}>{title}</S.Name>
         <S.ListBelong>
           <S.ColorTag color={color} />
-          <S.ListName>{list}</S.ListName>
+          <S.ListName>{categorie}</S.ListName>
           <S.TermDate done={isBefore(new Date(date), new Date())}>
             Deadline: {dateConvertation()}
           </S.TermDate>
