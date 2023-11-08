@@ -5,7 +5,7 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ModalToggle from "../../../Modals/Sidebar-modals/ModalToggle";
 import { CategorieItemProps } from "../../types/types";
-import useCategorieItemLogic from "./CategorieItemLogic";
+import CategorieItemHook from "./CategorieItemHook";
 
 const CategorieItem: React.FC<CategorieItemProps> = ({
   name,
@@ -29,7 +29,7 @@ const CategorieItem: React.FC<CategorieItemProps> = ({
     handleOpenModal,
     setIsChecked,
     setModalOpenForm,
-  } = useCategorieItemLogic({ name, color, id, onNavigate });
+  } = CategorieItemHook({ name, color, id, onNavigate });
 
   return (
     <>

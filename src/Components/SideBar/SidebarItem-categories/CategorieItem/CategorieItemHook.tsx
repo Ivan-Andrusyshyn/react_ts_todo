@@ -10,7 +10,7 @@ interface CategorieItemsLogicProps {
   id: string;
   onNavigate: (path: string) => void;
 }
-export const useCategorieItemLogic = ({
+export const CategorieItemHook = ({
   name,
   color,
   id,
@@ -95,4 +95,4 @@ export const useCategorieItemLogic = ({
     setModalOpenForm,
   };
 };
-export default useCategorieItemLogic;
+export default CategorieItemHook;
