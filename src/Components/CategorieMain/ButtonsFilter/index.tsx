@@ -12,14 +12,12 @@ const ButtonsFilter: React.FC<ButtonFilterProp> = ({ name }) => {
 
   return (
     <S.TitleAndFilter data-testid="categoryPage_filter">
-      <S.Title onClick={controller.handleDone} data-testid="filterBtnDoneTasks">
-        {t("upBar")}
-      </S.Title>
+      <S.Title onClick={controller.handleDone}>{t("upBar")}</S.Title>
       <S.FilterField>
         <div onClick={controller.handleAll} data-testid="filterBtnAllTasks">
           <FilterTag name={t("filterAll")} active={controller.allActive} />
         </div>
-        <div onClick={controller.handleDone}>
+        <div onClick={controller.handleDone} data-testid="filterBtnDoneTasks">
           <FilterTag name={t("filterDn")} active={controller.doneActive} />
         </div>
         <div

@@ -72,14 +72,17 @@ const AddModal: React.FC = () => {
   return (
     <S.Background data-testid="backdropModal">
       {showCalendar && (
-        <S.ModalOverlay onClick={closeModalCalendar}>
+        <S.ModalOverlay
+          onClick={closeModalCalendar}
+          data-testid="calendarModal"
+        >
           <Calendar setSelectedDate={setSelectedDate} />
         </S.ModalOverlay>
       )}
       <S.Container>
         <S.Text>{t("mdlAdInp")}</S.Text>
         <S.TitleInput
-          data-testid="input"
+          data-testid="inputAddModal"
           error={error}
           placeholder={error ? error : t("mdlAdInpPlch")}
           onChange={taskName.handleChange}
@@ -89,6 +92,7 @@ const AddModal: React.FC = () => {
         <S.DatePicker
           isActive={showCalendar}
           onClick={() => setShowCalendar(true)}
+          data-testid="datePicker"
         >
           {format(selectedDate, "yyyy-MM-dd")}
           <S.Arrow isActive={showCalendar} src={Arrow} />
@@ -102,7 +106,7 @@ const AddModal: React.FC = () => {
           ))}
         </S.Select>
         <S.Buttons>
-          <S.AddButton onClick={handleAdd} data-testid="btnAdd">
+          <S.AddButton onClick={handleAdd} data-testid="btnAddModal">
             {t("mdlAdBtnAdd")}
           </S.AddButton>
           <S.CancelButton onClick={handleCancel} data-testid="btnCancel">
